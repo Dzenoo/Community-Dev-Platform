@@ -1,9 +1,9 @@
-import LogoNavigation from "@/components/shared/LogoNavigation";
+import LogoNavigation from "@/components/shared/navigation/LogoNavigation";
 import "../globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import SidebarNavigation from "@/components/shared/SidebarNavigation";
-import InformationNavigation from "@/components/shared/InformationNavigation";
+import SidebarNavigation from "@/components/shared/navigation/SidebarNavigation";
+import InformationNavigation from "@/components/shared/navigation/InformationNavigation";
 
 const inter = Inter({ subsets: ["latin"] });
 

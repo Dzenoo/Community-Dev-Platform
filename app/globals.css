@@ -9,6 +9,10 @@
   --black-grayish-color: #222222;
 } */
 
+body {
+  background-color: #121212;
+}
+
 .section_title {
   @apply text-4xl font-bold;
 }
@@ -19,4 +23,8 @@
 
 .section_subtitle {
   @apply text-xl font-light;
+}
+
+.input_navigation {
+  @apply py-2 pr-40 pl-12 border bg-[#121212] rounded-md border-none text-white transition-all;
 }
