@@ -26,5 +26,21 @@ body {
 }
 
 .input_navigation {
-  @apply py-2 pr-40 pl-12 border bg-[#121212] rounded-md border-none text-white transition-all;
+  @apply py-2 w-[40em] pl-12 border bg-[#121212] rounded-md border-none text-white transition-all;
+}
+
+.input_navigation_result_box {
+  @apply w-full h-60 overflow-y-scroll rounded-b-md bg-white absolute transition-opacity;
+  animation: input_navigation_animation 0.7s ease;
+}
+
+/* KEYFRAMES */
+
+@keyframes input_navigation_animation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 2;
+  }
 }

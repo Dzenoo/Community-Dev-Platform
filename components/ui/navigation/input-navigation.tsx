@@ -1,6 +1,10 @@
+"use client";
 import Image from "next/image";
+import { useState } from "react";
 
 const InputNavigation = () => {
+  const [isOpenedSearch, setIsOpenedSearch] = useState<boolean>(false);
+
   return (
     <div className="relative">
       <Image
@@ -10,7 +14,21 @@ const InputNavigation = () => {
         width={16}
         height={16}
       />
-      <input placeholder="Search Globaly" className="input_navigation" />
+      <input
+        placeholder="Search Globaly"
+        className="input_navigation"
+        onMouseOver={() => setIsOpenedSearch(true)}
+        onMouseOut={() => setIsOpenedSearch(false)}
+      />
+      {isOpenedSearch && (
+        <div
+          onMouseOver={() => setIsOpenedSearch(true)}
+          onMouseOut={() => setIsOpenedSearch(false)}
+          className="input_navigation_result_box"
+        >
+          Search
+        </div>
+      )}
     </div>
   );
 };
