@@ -35,7 +35,6 @@ body {
 }
 
 /* KEYFRAMES */
-
 @keyframes input_navigation_animation {
   0% {
     opacity: 0;
