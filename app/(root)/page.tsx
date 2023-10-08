@@ -4,7 +4,7 @@ import QuestionList from "@/components/ui/questions/QuestionList";
 
 export default function Home() {
   return (
-    <main>
+    <main className="flex flex-col gap-8">
       <TopBar />
       <FilterBar />
       <QuestionList />

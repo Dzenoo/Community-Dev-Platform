@@ -70,3 +70,18 @@ export const InformationTagsNavigationData = [
     title: "TypeScript",
   },
 ];
+
+export const FilterButtonsData = [
+  {
+    id: "b1",
+    title: "Recommended",
+  },
+  {
+    id: "b2",
+    title: "Newest",
+  },
+  {
+    id: "b3",
+    title: "Frequent",
+  },
+];

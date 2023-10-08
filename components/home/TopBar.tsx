@@ -3,7 +3,7 @@ import LinkButton from "../ui/elements/link";
 
 const TopBar = () => {
   return (
-    <section className="flex justify-between items-end gap-6">
+    <section className="flex justify-between items-end gap-6 flex-wrap">
       <div className="grow">
         <Input
           id={"search-questions"}
