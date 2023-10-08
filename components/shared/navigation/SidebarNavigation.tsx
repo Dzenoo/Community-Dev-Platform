@@ -10,8 +10,8 @@ const SidebarNavigation = () => {
   const pathname = usePathname();
 
   return (
-    <div className="px-6 py-8 shadow-md sticky left-0 top-0 h-screen bg-[#222222] flex flex-col justify-between max-lg:hidden">
-      <ul className="flex flex-col gap-8">
+    <div className="px-4 py-8 shadow-md sticky left-0 top-0 h-screen bg-[#222222] flex flex-col justify-between max-lg:hidden">
+      <ul className="flex flex-col gap-6">
         {SidebarNavigationData.map((link: SidebarNavigationDataTypes) => {
           return link.title === "Profile" ? (
             <Link key={link.id} href={"/id/profile"}>

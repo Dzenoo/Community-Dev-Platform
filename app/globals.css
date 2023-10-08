@@ -82,6 +82,10 @@ body {
   @apply flex flex-col items-stretch gap-2;
 }
 
+.tags {
+  @apply p-4 rounded-md bg-[#121212] shadow-md text-white w-fit;
+}
+
 /* KEYFRAMES */
 @keyframes input_navigation_animation {
   0% {
