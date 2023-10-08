@@ -74,6 +74,14 @@ body {
   @apply section_subtitle_smaller text-[#ADADAD];
 }
 
+.form_flex {
+  @apply flex items-stretch gap-2;
+}
+
+.form_flex_col {
+  @apply flex flex-col items-stretch gap-2;
+}
+
 /* KEYFRAMES */
 @keyframes input_navigation_animation {
   0% {
