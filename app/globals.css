@@ -59,7 +59,7 @@ body {
 }
 
 .link {
-  @apply py-2 w-full text-center bg-[#004ee7] text-white text-xl rounded-md transition-all hover:bg-[#4469c0] hover:border-[#4469c0];
+  @apply py-2 px-4 w-full text-center bg-[#004ee7] text-white text-xl rounded-md transition-all hover:bg-[#4469c0] hover:border-[#4469c0];
 }
 
 .card {
