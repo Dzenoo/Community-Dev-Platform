@@ -116,7 +116,7 @@ export const QuestionsData = [
     title: "How to use map function in Python?",
     tags: [
       { id: "t1", title: "javascript" },
-      { id: "t2", title: "arrays" },
+      { id: "t2", title: "python" },
     ],
     user: "user789",
     votes: 5,

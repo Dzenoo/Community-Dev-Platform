@@ -15,30 +15,25 @@ const QuestionItem: React.FC<QuestionItemPropsTypes> = ({
 }) => {
   return (
     <Card>
-      <div className="grid grid-cols-2 items-end gap-4 w-full">
-        <div className="flex flex-col justify-between gap-16">
+      <div className="flex flex-col justify-between gap-8 w-full">
+        <div className="flex flex-col justify-between gap-12">
           <div>
-            <Link
-              href={`/questions/${id}`}
-              className="section_title_smaller text-white truncate"
-            >
+            <Link href={`/${id}`} className="section_title_smaller text-white">
               {title}
             </Link>
-            <div className="mt-4 flex gap-4 items-stretch">
+            <div className="mt-4 flex gap-4 items-stretch flex-wrap">
               {tags.map((tag) => (
                 <Tags key={tag.id} id={tag.id} title={tag.title} />
               ))}
             </div>
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 flex-wrap">
             <div className="w-12 h-12 bg-blue-600 rounded-full"></div>
-            <h2 className="section_subtitle_smaller text-white">{user}</h2>
-            <p className="section_subtitle_smaller text-white">
-              | Asked 12h ago
-            </p>
+            <h2 className="section_subtitle text-white">{user}</h2>
+            <p className="text-white text-xs">| Asked 12h ago</p>
           </div>
         </div>
-        <div className="flex items-center gap-8">
+        <div className="flex items-center gap-8 justify-between flex-wrap">
           <div className="question_item_actions">
             <Image
               src="/assets/graphics/heart.png"

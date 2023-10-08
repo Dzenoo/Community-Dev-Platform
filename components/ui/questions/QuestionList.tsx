@@ -1,6 +1,6 @@
 import { QuestionsData } from "@/constants";
-import QuestionItem from "./QuestionItem";
 import { QuestionItemPropsTypes } from "@/types/questions";
+import QuestionItem from "./QuestionItem";
 
 const QuestionList = () => {
   return (

@@ -13,6 +13,11 @@ body {
   background-color: #121212;
 }
 
+::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+
 .section_title {
   @apply text-4xl font-bold;
 }
