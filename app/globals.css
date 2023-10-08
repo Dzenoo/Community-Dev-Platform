@@ -38,6 +38,26 @@ body {
   @apply text-white px-8 py-4 flex items-center gap-7 rounded-md transition-all hover:bg-[#004ee7];
 }
 
+.button_normal {
+  @apply py-2 w-full bg-[#004ee7] text-white text-xl rounded-md transition-all hover:bg-[#4469c0] hover:border-[#4469c0];
+}
+
+.button_success {
+  @apply py-2 w-full bg-[#1f9f4c] text-white text-xl rounded-md transition-all hover:bg-[#2b844a] hover:border-[#2b844a];
+}
+
+.button_danger {
+  @apply py-2 w-full bg-[#ff4f4f] text-white text-xl rounded-md transition-all hover:bg-[#b93333] hover:border-[#b93333];
+}
+
+.button_outlined {
+  @apply py-2 w-full border text-white text-xl rounded-md transition-all hover:bg-[#004ee7] hover:border-[#004ee7];
+}
+
+.link {
+  @apply py-2 w-full text-center bg-[#004ee7] text-white text-xl rounded-md transition-all hover:bg-[#4469c0] hover:border-[#4469c0];
+}
+
 /* KEYFRAMES */
 @keyframes input_navigation_animation {
   0% {

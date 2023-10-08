@@ -1,9 +1,10 @@
 "use client";
 import { SidebarNavigationData } from "@/constants";
 import { SidebarNavigationDataTypes } from "@/types/sidebar-navigation";
+import { usePathname } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import LinkButton from "@/components/ui/elements/link";
 
 const SidebarNavigation = () => {
   const pathname = usePathname();
@@ -47,9 +48,9 @@ const SidebarNavigation = () => {
           );
         })}
       </ul>
-      <div className="pb-12">
-        <h2>Signup</h2>
-        <h2>Login</h2>
+      <div className="pb-12 flex flex-col gap-2">
+        <LinkButton href="/signup">Signup</LinkButton>
+        <LinkButton href="/login">Login</LinkButton>
       </div>
     </div>
   );
