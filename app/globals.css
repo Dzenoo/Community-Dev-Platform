@@ -63,7 +63,7 @@ body {
 }
 
 .card {
-  @apply p-6 bg-[#222222] rounded-md shadow-md w-fit h-fit;
+  @apply p-6 bg-[#222222] rounded-md shadow-md;
 }
 
 .input {
@@ -84,6 +84,14 @@ body {
 
 .tags {
   @apply p-4 rounded-md bg-[#121212] shadow-md text-white w-fit;
+}
+
+.question_item_actions {
+  @apply flex items-center gap-2;
+}
+
+.question_item_actions_span {
+  @apply section_title_smaller text-white;
 }
 
 /* KEYFRAMES */

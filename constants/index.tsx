@@ -85,3 +85,43 @@ export const FilterButtonsData = [
     title: "Frequent",
   },
 ];
+
+export const QuestionsData = [
+  {
+    id: "q1",
+    title: "How to clone an array in JavaScript?",
+    tags: [
+      { id: "t1", title: "javascript" },
+      { id: "t2", title: "arrays" },
+    ],
+    user: "user123",
+    votes: 10,
+    answers: 5,
+    views: 100,
+  },
+  {
+    id: "q2",
+    title: "What is React and how does it work?",
+    tags: [
+      { id: "t1", title: "javascript" },
+      { id: "t2", title: "arrays" },
+    ],
+    user: "user456",
+    votes: 15,
+    answers: 8,
+    views: 200,
+  },
+  {
+    id: "q3",
+    title: "How to use map function in Python?",
+    tags: [
+      { id: "t1", title: "javascript" },
+      { id: "t2", title: "arrays" },
+    ],
+    user: "user789",
+    votes: 5,
+    answers: 3,
+    views: 50,
+  },
+  // Add more questions here
+];

@@ -24,7 +24,9 @@ export default function RootLayout({
         <LogoNavigation />
         <main className="flex">
           <SidebarNavigation />
-          <section className="grow p-8 overflow-y-scroll">{children}</section>
+          <section className="grow p-8 h-screen overflow-y-scroll">
+            {children}
+          </section>
           <InformationNavigation />
         </main>
       </body>
