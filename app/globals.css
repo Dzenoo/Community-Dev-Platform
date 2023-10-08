@@ -34,6 +34,10 @@ body {
   animation: input_navigation_animation 0.7s ease;
 }
 
+.sidebar_link {
+  @apply text-white px-8 py-4 flex items-center gap-7 rounded-md transition-all hover:bg-[#004ee7];
+}
+
 /* KEYFRAMES */
 @keyframes input_navigation_animation {
   0% {
