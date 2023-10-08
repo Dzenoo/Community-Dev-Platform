@@ -7,7 +7,7 @@ export enum ButtonVariant {
 
 export interface ButtonPropsTypes {
   children: React.ReactNode;
-  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   type?: "submit" | "button";
   variant: "Normal" | "Success" | "Danger" | "Outlined";
 }

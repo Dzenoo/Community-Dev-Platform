@@ -25,6 +25,10 @@ body {
   @apply text-xl font-light;
 }
 
+.section_subtitle_smaller {
+  @apply text-lg font-light;
+}
+
 .input_navigation {
   @apply py-2 w-[40em] pl-12 border bg-[#121212] rounded-md border-none text-white transition-all;
 }
@@ -56,6 +60,18 @@ body {
 
 .link {
   @apply py-2 w-full text-center bg-[#004ee7] text-white text-xl rounded-md transition-all hover:bg-[#4469c0] hover:border-[#4469c0];
+}
+
+.card {
+  @apply p-6 bg-[#222222] rounded-md shadow-md w-fit h-fit;
+}
+
+.input {
+  @apply p-4 rounded-md bg-[#2B2B2B] text-white;
+}
+
+.label {
+  @apply section_subtitle_smaller text-[#ADADAD];
 }
 
 /* KEYFRAMES */
