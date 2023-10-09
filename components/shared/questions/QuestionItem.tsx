@@ -1,8 +1,8 @@
 import Link from "next/link";
-import Card from "../elements/card";
+import Card from "../../ui/elements/card";
 import Tags from "../tags/tags";
 import { QuestionItemPropsTypes } from "@/types/questions";
-import Image from "next/image";
+import { generateQuestionActionsData } from "@/library/utility";
 
 const QuestionItem: React.FC<QuestionItemPropsTypes> = ({
   id,
@@ -34,30 +34,17 @@ const QuestionItem: React.FC<QuestionItemPropsTypes> = ({
           </div>
         </div>
         <div className="flex items-center gap-8 justify-between flex-wrap">
-          <div className="question_item_actions">
-            <Image
-              src="/assets/graphics/heart.png"
-              alt="votes"
-              width={20}
-              height={20}
-            />
-            <span className="question_item_actions_span">{votes}</span>
-            <p className="section_subtitle_smaller text-white">Votes</p>
-          </div>
-          <div className="question_item_actions">
-            <Image
-              src="/assets/graphics/comment.png"
-              alt="comments"
-              width={20}
-              height={20}
-            />
-            <span className="question_item_actions_span">{answers}</span>
-            <p className="section_subtitle_smaller text-white">Answers</p>
-          </div>
-          <div className="question_item_actions">
-            <span className="question_item_actions_span">{views}</span>
-            <p className="section_subtitle_smaller text-white">Views</p>
-          </div>
+          {generateQuestionActionsData(
+            "/assets/graphics/heart.png",
+            votes,
+            "Votes"
+          )}
+          {generateQuestionActionsData(
+            "/assets/graphics/comment.png",
+            answers,
+            "Answers"
+          )}
+          {generateQuestionActionsData("", views, "Views")}
         </div>
       </div>
     </Card>

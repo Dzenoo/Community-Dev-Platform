@@ -90,38 +90,46 @@ export const QuestionsData = [
   {
     id: "q1",
     title: "How to clone an array in JavaScript?",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
     tags: [
       { id: "t1", title: "javascript" },
       { id: "t2", title: "arrays" },
     ],
     user: "user123",
     votes: 10,
+    downvotes: 10,
     answers: 5,
     views: 100,
   },
   {
     id: "q2",
     title: "What is React and how does it work?",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
     tags: [
       { id: "t1", title: "javascript" },
       { id: "t2", title: "arrays" },
     ],
     user: "user456",
     votes: 15,
+    downvotes: 20,
     answers: 8,
     views: 200,
   },
   {
     id: "q3",
     title: "How to use map function in Python?",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
     tags: [
       { id: "t1", title: "javascript" },
       { id: "t2", title: "python" },
     ],
     user: "user789",
     votes: 5,
+    downvotes: 8,
     answers: 3,
     views: 50,
   },
-  // Add more questions here
 ];

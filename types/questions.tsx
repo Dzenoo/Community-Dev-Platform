@@ -7,6 +7,21 @@ export interface QuestionItemPropsTypes {
   }[];
   user: string;
   votes: number;
+  downvotes?: number;
   answers: number;
+  description?: string;
   views: number;
+}
+
+export interface QuestionDetailsActionsContentPropsTypes {
+  id: string;
+  votes: number;
+  downvotes?: number;
+}
+
+export interface QuestionDetailsActionsButtonPropsTypes {
+  icon: string;
+  onClick: any;
+  data?: string | number;
+  type: string;
 }
