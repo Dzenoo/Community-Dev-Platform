@@ -2,6 +2,8 @@ import { generateQuestionActionsData } from "@/library/utility";
 import { QuestionItemPropsTypes } from "@/types/questions";
 import QuestionDetailsActions from "./QuestionDetailsActions";
 import QuestionDetailsCode from "./QuestionDetailsCode";
+import QuestionDetailsAnswer from "./QuestionDetailsAnswer";
+import Tags from "../../tags/tags";
 
 const QuestionDetailsContent: React.FC<QuestionItemPropsTypes> = ({
   id,
@@ -13,6 +15,7 @@ const QuestionDetailsContent: React.FC<QuestionItemPropsTypes> = ({
   downvotes,
   views,
   codeSnippet,
+  tags,
 }) => {
   return (
     <div className="flex flex-col gap-4">
@@ -33,7 +36,7 @@ const QuestionDetailsContent: React.FC<QuestionItemPropsTypes> = ({
         <div className="flex items-center gap-4 flex-wrap">
           {generateQuestionActionsData(
             "/assets/graphics/comment.png",
-            answers,
+            answers.length,
             "Answers"
           )}
           {generateQuestionActionsData("", views, "Views")}
@@ -43,6 +46,17 @@ const QuestionDetailsContent: React.FC<QuestionItemPropsTypes> = ({
         </div>
         <div>
           <QuestionDetailsCode codeSnippet={codeSnippet} />
+        </div>
+        <div className="mt-12 flex gap-4">
+          {tags.map((tag) => (
+            <Tags key={tag.id} {...tag} />
+          ))}
+        </div>
+        <div className="mt-12 pb-12">
+          <h2 className="section_title text-white">Answers</h2>
+          {answers.map((answer) => (
+            <QuestionDetailsAnswer key={answer.id} {...answer} />
+          ))}
         </div>
       </div>
     </div>

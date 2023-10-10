@@ -41,7 +41,7 @@ const QuestionItem: React.FC<QuestionItemPropsTypes> = ({
           )}
           {generateQuestionActionsData(
             "/assets/graphics/comment.png",
-            answers,
+            answers.length,
             "Answers"
           )}
           {generateQuestionActionsData("", views, "Views")}

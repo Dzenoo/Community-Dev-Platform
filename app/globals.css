@@ -18,6 +18,10 @@ body {
   height: 3px;
 }
 
+.section {
+  @apply h-full overflow-y-scroll;
+}
+
 .section_title {
   @apply text-4xl font-bold;
 }
@@ -88,7 +92,7 @@ body {
 }
 
 .tags {
-  @apply p-4 rounded-md bg-[#121212] shadow-md text-white w-fit;
+  @apply p-4 rounded-md bg-[#004de73d] shadow-md text-white w-fit;
 }
 
 .question_item_actions {

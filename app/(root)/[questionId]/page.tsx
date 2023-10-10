@@ -7,7 +7,9 @@ const QuestionDetails = ({ params }: { params: { questionId: string } }) => {
   );
 
   return (
-    <section>{question && <QuestionDetailsContent {...question} />}</section>
+    <section className="section">
+      {question && <QuestionDetailsContent {...question} />}
+    </section>
   );
 };
 

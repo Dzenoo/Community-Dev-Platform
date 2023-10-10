@@ -102,7 +102,19 @@ export const QuestionsData = [
     }`,
     votes: 10,
     downvotes: 10,
-    answers: 5,
+    answers: [
+      {
+        id: "a1",
+        user: "user123",
+        description:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
+        codeSnippet: `function cloneArray(arr) {
+         return [...arr];
+        }`,
+        votes: 10,
+        downvotes: 10,
+      },
+    ],
     views: 100,
   },
   {
@@ -120,7 +132,19 @@ export const QuestionsData = [
     }`,
     votes: 15,
     downvotes: 20,
-    answers: 8,
+    answers: [
+      {
+        id: "a1",
+        user: "user123",
+        description:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
+        codeSnippet: `function cloneArray(arr) {
+         return [...arr];
+        }`,
+        votes: 10,
+        downvotes: 10,
+      },
+    ],
     views: 200,
   },
   {
@@ -138,7 +162,19 @@ export const QuestionsData = [
     }`,
     votes: 5,
     downvotes: 8,
-    answers: 3,
+    answers: [
+      {
+        id: "a1",
+        user: "user123",
+        description:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
+        codeSnippet: `function cloneArray(arr) {
+         return [...arr];
+        }`,
+        votes: 10,
+        downvotes: 10,
+      },
+    ],
     views: 50,
   },
 ];

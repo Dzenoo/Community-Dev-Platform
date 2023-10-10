@@ -1,3 +1,6 @@
+import { MouseEventHandler } from "react";
+import { QuestionAnswerPropsTypes } from "./answer";
+
 export interface QuestionItemPropsTypes {
   id: string;
   title: string;
@@ -8,8 +11,8 @@ export interface QuestionItemPropsTypes {
   user: string;
   votes: number;
   codeSnippet: string;
-  downvotes?: number;
-  answers: number;
+  downvotes: number;
+  answers: QuestionAnswerPropsTypes[];
   description?: string;
   views: number;
 }
@@ -17,16 +20,16 @@ export interface QuestionItemPropsTypes {
 export interface QuestionDetailsActionsContentPropsTypes {
   id: string;
   votes: number;
-  downvotes?: number;
-}
-
-export interface QuestionDetailsActionsButtonPropsTypes {
-  icon: string;
-  onClick: any;
-  data?: string | number;
-  type: string;
+  downvotes: number;
 }
 
 export interface QuestionDetailsCodeComponentPropsTypes {
   codeSnippet: string;
+}
+
+export interface QuestionDetailsActionsDataPropsTypes {
+  icon: string;
+  onClick: MouseEventHandler<HTMLButtonElement>;
+  data?: number | string;
+  type: string;
 }

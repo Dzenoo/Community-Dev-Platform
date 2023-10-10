@@ -2,7 +2,7 @@
 import { QuestionDetailsActionsContentPropsTypes } from "@/types/questions";
 import QuestionDetailsActionsData from "./QuestionDetailsActionsData";
 
-const QuestionDetailsActions: React.FC<
+const QuestionDetailsAnswerActions: React.FC<
   QuestionDetailsActionsContentPropsTypes
 > = ({ id, votes, downvotes }) => {
   return (
@@ -19,13 +19,8 @@ const QuestionDetailsActions: React.FC<
         type="downvote"
         data={downvotes}
       />
-      <QuestionDetailsActionsData
-        icon="/assets/graphics/heart.png"
-        onClick={() => {}}
-        type="Save"
-      />
     </div>
   );
 };
 
-export default QuestionDetailsActions;
+export default QuestionDetailsAnswerActions;
