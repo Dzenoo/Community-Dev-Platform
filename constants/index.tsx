@@ -97,6 +97,9 @@ export const QuestionsData = [
       { id: "t2", title: "arrays" },
     ],
     user: "user123",
+    codeSnippet: `function cloneArray(arr) {
+      return [...arr];
+    }`,
     votes: 10,
     downvotes: 10,
     answers: 5,
@@ -112,6 +115,9 @@ export const QuestionsData = [
       { id: "t2", title: "arrays" },
     ],
     user: "user456",
+    codeSnippet: `function cloneArray(arr) {
+      return [...arr];
+    }`,
     votes: 15,
     downvotes: 20,
     answers: 8,
@@ -127,6 +133,9 @@ export const QuestionsData = [
       { id: "t2", title: "python" },
     ],
     user: "user789",
+    codeSnippet: `function cloneArray(arr) {
+      return [...arr];
+    }`,
     votes: 5,
     downvotes: 8,
     answers: 3,

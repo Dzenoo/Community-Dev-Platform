@@ -7,6 +7,7 @@ export interface QuestionItemPropsTypes {
   }[];
   user: string;
   votes: number;
+  codeSnippet: string;
   downvotes?: number;
   answers: number;
   description?: string;
@@ -24,4 +25,8 @@ export interface QuestionDetailsActionsButtonPropsTypes {
   onClick: any;
   data?: string | number;
   type: string;
+}
+
+export interface QuestionDetailsCodeComponentPropsTypes {
+  codeSnippet: string;
 }

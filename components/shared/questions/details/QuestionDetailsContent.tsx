@@ -1,6 +1,7 @@
 import { generateQuestionActionsData } from "@/library/utility";
 import { QuestionItemPropsTypes } from "@/types/questions";
 import QuestionDetailsActions from "./QuestionDetailsActions";
+import QuestionDetailsCode from "./QuestionDetailsCode";
 
 const QuestionDetailsContent: React.FC<QuestionItemPropsTypes> = ({
   id,
@@ -11,6 +12,7 @@ const QuestionDetailsContent: React.FC<QuestionItemPropsTypes> = ({
   votes,
   downvotes,
   views,
+  codeSnippet,
 }) => {
   return (
     <div className="flex flex-col gap-4">
@@ -38,6 +40,9 @@ const QuestionDetailsContent: React.FC<QuestionItemPropsTypes> = ({
         </div>
         <div className="mt-6">
           <p className="section_subtitle text-white">{description}</p>
+        </div>
+        <div>
+          <QuestionDetailsCode codeSnippet={codeSnippet} />
         </div>
       </div>
     </div>

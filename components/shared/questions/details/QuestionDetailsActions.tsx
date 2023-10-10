@@ -8,7 +8,7 @@ const QuestionDetailsActionsButton: React.FC<
   QuestionDetailsActionsButtonPropsTypes
 > = ({ icon, onClick, data, type }) => {
   return (
-    <button onClick={onClick} className="flex gap-2">
+    <button onClick={onClick} className="flex items-center gap-2">
       <Image
         src={icon}
         alt={type}
