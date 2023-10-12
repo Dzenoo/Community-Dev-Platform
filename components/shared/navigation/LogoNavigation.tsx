@@ -19,7 +19,7 @@ const LogoNavigation = () => {
       <div className="hidden md:block">
         <ProfileNavigation />
       </div>
-      <button className="block md:hidden">
+      <button type="button" className="block md:hidden">
         <Image
           src="/assets/graphics/btn.png"
           alt="menu"

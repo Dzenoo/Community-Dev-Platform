@@ -6,7 +6,7 @@ const QuestionList = () => {
   return (
     <ul className="pb-12 flex flex-col gap-2">
       {QuestionsData.map((data: QuestionItemPropsTypes) => (
-        <li>
+        <li key={data.id}>
           <QuestionItem {...data} />
         </li>
       ))}
