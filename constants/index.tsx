@@ -6,57 +6,16 @@ export const SidebarNavigationData = [
     title: "Home",
   },
   {
-    id: "s2",
-    href: "/collections",
-    icon: "/assets/graphics/layers.png",
-    title: "Collections",
-  },
-  {
     id: "s3",
     href: "/community",
     icon: "/assets/graphics/community.png",
     title: "Community",
   },
   {
-    id: "s4",
-    href: "/profile",
-    icon: "/assets/graphics/setting.png",
-    title: "Profile",
-  },
-  {
     id: "s5",
     href: "/tags",
     icon: "/assets/graphics/price-tag.png",
     title: "Tags",
-  },
-  {
-    id: "s6",
-    href: "/ask-question",
-    icon: "/assets/graphics/conversation.png",
-    title: "Ask a Question",
-  },
-];
-
-export const InformationNavigationData = [
-  {
-    id: "s1",
-    href: "/",
-    title: "What are difference between React and Angular?",
-  },
-  {
-    id: "s2",
-    href: "/",
-    title: "What are difference between React and Angular?",
-  },
-  {
-    id: "s3",
-    href: "/",
-    title: "What are difference between React and Angular?",
-  },
-  {
-    id: "s4",
-    href: "/",
-    title: "What are difference between React and Angular?",
   },
 ];
 
