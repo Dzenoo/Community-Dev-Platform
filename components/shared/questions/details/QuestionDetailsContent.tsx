@@ -13,8 +13,8 @@ const QuestionDetailsContent: React.FC<QuestionItemPropsTypes> = ({
   answers,
   votes,
   downvotes,
+  language,
   views,
-  codeSnippet,
   tags,
 }) => {
   return (
@@ -42,10 +42,23 @@ const QuestionDetailsContent: React.FC<QuestionItemPropsTypes> = ({
           {generateQuestionActionsData("", views, "Views")}
         </div>
         <div className="mt-6">
-          <p className="section_subtitle text-white">{description}</p>
-        </div>
-        <div>
-          <QuestionDetailsCode codeSnippet={codeSnippet} />
+          {description?.split(/```/)?.map((section, index) => {
+            if (index % 2 === 0) {
+              return (
+                <p className="section_subtitle text-white" key={index}>
+                  {section}
+                </p>
+              );
+            } else {
+              return (
+                <QuestionDetailsCode
+                  codeSnippet={section}
+                  language={language}
+                  key={index}
+                />
+              );
+            }
+          })}
         </div>
         <div className="mt-12 flex gap-4">
           {tags.map((tag) => (

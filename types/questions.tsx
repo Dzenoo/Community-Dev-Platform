@@ -10,10 +10,10 @@ export interface QuestionItemPropsTypes {
   }[];
   user: string;
   votes: number;
-  codeSnippet: string;
   downvotes: number;
   answers: QuestionAnswerPropsTypes[];
   description?: string;
+  language?: string;
   views: number;
 }
 
@@ -25,6 +25,7 @@ export interface QuestionDetailsActionsContentPropsTypes {
 
 export interface QuestionDetailsCodeComponentPropsTypes {
   codeSnippet: string;
+  language?: string;
 }
 
 export interface QuestionDetailsActionsDataPropsTypes {
