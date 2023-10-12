@@ -17,6 +17,10 @@ export interface QuestionItemPropsTypes {
   views: number;
 }
 
+export interface QuestionListPropsTypes {
+  questions: QuestionItemPropsTypes[];
+}
+
 export interface QuestionDetailsActionsContentPropsTypes {
   id: string;
   votes: number;

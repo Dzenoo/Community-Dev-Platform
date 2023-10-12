@@ -1,5 +1,5 @@
 import QuestionList from "@/components/questions/QuestionList";
-import { TagsData } from "@/constants";
+import { QuestionsData, TagsData } from "@/constants";
 
 const TagsDetailsPage = ({ params }: { params: { tagId: string } }) => {
   const tag = TagsData.find((tag) => tag.id === params.tagId);
@@ -13,7 +13,7 @@ const TagsDetailsPage = ({ params }: { params: { tagId: string } }) => {
         </h2>
       </div>
       <div className="mt-12">
-        <QuestionList />
+        <QuestionList questions={QuestionsData} />
       </div>
     </section>
   );
