@@ -196,68 +196,68 @@ export const QuestionsData = [
 
 export const TagsData = [
   {
-    id: 1,
+    id: "t1",
     name: "javascript",
     questionsCount: 20,
     description:
       "JavaScript is a popular programming language used for web development.",
   },
   {
-    id: 2,
+    id: "t2",
     name: "python",
     questionsCount: 12,
     description:
       "Python is a versatile and easy-to-learn programming language.",
   },
   {
-    id: 3,
+    id: "t3",
     name: "react",
     questionsCount: 35,
     description: "React is a JavaScript library for building user interfaces.",
   },
   {
-    id: 4,
+    id: "t4",
     name: "java",
     questionsCount: 26,
     description:
       "Java is a widely-used, platform-independent programming language.",
   },
   {
-    id: 5,
+    id: "t5",
     name: "c++",
     questionsCount: 29,
     description:
       "C++ is an extension of the C programming language with object-oriented features.",
   },
   {
-    id: 6,
+    id: "t6",
     name: "html",
     questionsCount: 26,
     description: "HTML is the standard markup language for creating web pages.",
   },
   {
-    id: 7,
+    id: "t7",
     name: "css",
     questionsCount: 18,
     description:
       "CSS is used for styling web pages and making them visually appealing.",
   },
   {
-    id: 8,
+    id: "t8",
     name: "node.js",
     questionsCount: 16,
     description:
       "Node.js is a runtime environment for server-side JavaScript applications.",
   },
   {
-    id: 9,
+    id: "t9",
     name: "ruby-on-rails",
     questionsCount: 12,
     description:
       "Ruby on Rails is a web application framework written in Ruby.",
   },
   {
-    id: 10,
+    id: "t10",
     name: "php",
     questionsCount: 16,
     description: "PHP is a server-side scripting language for web development.",

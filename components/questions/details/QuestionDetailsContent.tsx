@@ -74,7 +74,7 @@ const QuestionDetailsContent: React.FC<QuestionItemPropsTypes> = ({
             ))}
           </div>
         </div>
-        <div>
+        <div className="mt-6">
           <QuestionAnswerForm />
         </div>
       </div>
