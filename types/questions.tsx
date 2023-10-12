@@ -13,11 +13,13 @@ export interface QuestionItemPropsTypes {
   downvotes: number;
   answers: QuestionAnswerPropsTypes[];
   description?: string;
+  showActions?: boolean;
   language?: string;
   views: number;
 }
 
 export interface QuestionListPropsTypes {
+  showActions?: boolean;
   questions: QuestionItemPropsTypes[];
 }
 

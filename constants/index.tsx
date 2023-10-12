@@ -75,6 +75,7 @@ export const ProgrammingLanguagesData = [
 export const QuestionsData = [
   {
     id: "q1",
+    questionId: "q1",
     title: "How to clone an array in JavaScript?",
     description:
       "Lorem ipsum dolor sit amet,```<h2>Js</h2>``` consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ```function cloneArray(arr) { return [...arr]```  Ut enim ad minim veniam, quis, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
@@ -101,6 +102,7 @@ export const QuestionsData = [
   },
   {
     id: "q2",
+    questionId: "q1",
     title: "What is React and how does it work?",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
@@ -127,6 +129,7 @@ export const QuestionsData = [
   },
   {
     id: "q3",
+    questionId: "q1",
     title: "How to use map function in Python?",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
@@ -271,5 +274,26 @@ export const CommunityUsers = [
       { id: "t2", title: "React.Js" },
       { id: "t3", title: "Next.Js" },
     ],
+  },
+];
+
+export const ProfileStatisticsData = [
+  {
+    id: 1,
+    path: "/assets/images/golden.png",
+    name: "Gold",
+    quantity: 7,
+  },
+  {
+    id: 2,
+    path: "/assets/images/silver.png",
+    name: "Silver",
+    quantity: 2,
+  },
+  {
+    id: 3,
+    path: "/assets/images/bronze.png",
+    name: "Bronze",
+    quantity: 4,
   },
 ];

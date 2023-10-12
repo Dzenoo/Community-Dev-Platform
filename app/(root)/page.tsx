@@ -1,7 +1,7 @@
-import FilterBar from "@/components/home/FilterBar";
-import TopBar from "@/components/home/TopBar";
-import QuestionList from "@/components/questions/QuestionList";
 import { QuestionsData } from "@/constants";
+import TopBar from "@/components/home/TopBar";
+import FilterBar from "@/components/home/FilterBar";
+import QuestionList from "@/components/questions/QuestionList";
 
 export default function Home() {
   return (
