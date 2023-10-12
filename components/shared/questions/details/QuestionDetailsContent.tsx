@@ -3,6 +3,7 @@ import { QuestionItemPropsTypes } from "@/types/questions";
 import QuestionDetailsActions from "./QuestionDetailsActions";
 import QuestionDetailsCode from "./QuestionDetailsCode";
 import QuestionDetailsAnswer from "./QuestionDetailsAnswer";
+import QuestionAnswerForm from "./QuestionAnswerForm";
 import Tags from "../../tags/tags";
 
 const QuestionDetailsContent: React.FC<QuestionItemPropsTypes> = ({
@@ -18,12 +19,10 @@ const QuestionDetailsContent: React.FC<QuestionItemPropsTypes> = ({
   tags,
 }) => {
   return (
-    <div className="flex flex-col gap-4">
-      {/* ACTIONS */}
+    <div className="flex flex-col gap-4 pb-12">
       <div className="flex justify-end items-end">
         <QuestionDetailsActions votes={votes} downvotes={downvotes} id={id} />
       </div>
-      {/* CONTENT */}
       <div className="flex flex-col gap-4">
         <div className="flex items-center gap-4 flex-wrap">
           <div className="w-12 h-12 bg-blue-600 rounded-full"></div>
@@ -65,11 +64,18 @@ const QuestionDetailsContent: React.FC<QuestionItemPropsTypes> = ({
             <Tags key={tag.id} {...tag} />
           ))}
         </div>
-        <div className="mt-12 pb-12">
-          <h2 className="section_title text-white">Answers</h2>
-          {answers.map((answer) => (
-            <QuestionDetailsAnswer key={answer.id} {...answer} />
-          ))}
+        <div className="mt-12">
+          <h2 className="section_title text-white">
+            Answers ({answers.length})
+          </h2>
+          <div className="px-6 flex flex-col gap-12">
+            {answers.map((answer) => (
+              <QuestionDetailsAnswer key={answer.id} {...answer} />
+            ))}
+          </div>
+        </div>
+        <div>
+          <QuestionAnswerForm />
         </div>
       </div>
     </div>

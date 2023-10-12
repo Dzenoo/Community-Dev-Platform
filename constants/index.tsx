@@ -86,6 +86,21 @@ export const FilterButtonsData = [
   },
 ];
 
+export const ProgrammingLanguagesData = [
+  { id: 1, name: "JavaScript", value: "javascript" },
+  { id: 2, name: "Python", value: "python" },
+  { id: 3, name: "Java", value: "java" },
+  { id: 4, name: "C++", value: "cpp" },
+  { id: 5, name: "HTML", value: "html" },
+  { id: 6, name: "CSS", value: "css" },
+  { id: 7, name: "Ruby", value: "ruby" },
+  { id: 8, name: "Swift", value: "swift" },
+  { id: 9, name: "Go", value: "go" },
+  { id: 10, name: "PHP", value: "php" },
+  { id: 11, name: "TypeScript", value: "typescript" },
+  { id: 12, name: "SQL", value: "sql" },
+];
+
 export const QuestionsData = [
   {
     id: "q1",

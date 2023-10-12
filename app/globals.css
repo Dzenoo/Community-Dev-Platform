@@ -52,19 +52,19 @@ body {
 }
 
 .button_normal {
-  @apply py-2 w-full bg-[#004ee7] text-white text-xl rounded-md transition-all hover:bg-[#4469c0] hover:border-[#4469c0];
+  @apply py-2 px-2 w-full bg-[#004ee7] text-white text-lg rounded-md transition-all hover:bg-[#4469c0] hover:border-[#4469c0];
 }
 
 .button_success {
-  @apply py-2 w-full bg-[#1f9f4c] text-white text-xl rounded-md transition-all hover:bg-[#2b844a] hover:border-[#2b844a];
+  @apply py-2 px-2 w-full bg-[#1f9f4c] text-white text-lg rounded-md transition-all hover:bg-[#2b844a] hover:border-[#2b844a];
 }
 
 .button_danger {
-  @apply py-2 w-full bg-[#ff4f4f] text-white text-xl rounded-md transition-all hover:bg-[#b93333] hover:border-[#b93333];
+  @apply py-2 px-2 w-full bg-[#ff4f4f] text-white text-lg rounded-md transition-all hover:bg-[#b93333] hover:border-[#b93333];
 }
 
 .button_outlined {
-  @apply py-2 w-full border text-white text-xl rounded-md transition-all hover:bg-[#004ee7] hover:border-[#004ee7];
+  @apply py-2 px-2 w-full border text-white text-lg rounded-md transition-all hover:bg-[#004ee7] hover:border-[#004ee7];
 }
 
 .link {
@@ -77,6 +77,14 @@ body {
 
 .input {
   @apply p-4 rounded-md bg-[#2B2B2B] text-white;
+}
+
+.textarea {
+  @apply p-4 rounded-md bg-[#2B2B2B] text-white resize-none border-none h-96;
+}
+
+.select {
+  @apply appearance-none border border-gray-300 rounded-lg p-2 w-40 focus:outline-none focus:ring focus:border-gray-400;
 }
 
 .label {
