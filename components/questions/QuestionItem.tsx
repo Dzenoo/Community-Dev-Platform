@@ -1,6 +1,6 @@
 import Link from "next/link";
-import Card from "../../ui/elements/card";
-import Tags from "../tags/TagLink";
+import Card from "@/components/ui/elements/card";
+import Tags from "@/components/tags/TagLink";
 import { QuestionItemPropsTypes } from "@/types/questions";
 import { generateQuestionActionsData } from "@/library/utility";
 

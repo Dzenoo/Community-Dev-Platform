@@ -23,11 +23,15 @@ export default function RootLayout({
       <body className={inter.className}>
         <LogoNavigation />
         <main className="flex">
-          <SidebarNavigation />
-          <section className="grow p-4 h-screen overflow-y-scroll md:p-8">
+          <div className="basis-[440px] max-lg:hidden">
+            <SidebarNavigation />
+          </div>
+          <section className="p-4 grow basis-full h-screen overflow-y-scroll md:p-8">
             {children}
           </section>
-          <InformationNavigation />
+          <div>
+            <InformationNavigation />
+          </div>
         </main>
       </body>
     </html>

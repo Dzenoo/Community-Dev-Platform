@@ -1,4 +1,4 @@
-import Tags from "@/components/shared/tags/TagLink";
+import Tags from "@/components/tags/TagLink";
 import {
   InformationNavigationData,
   InformationTagsNavigationData,

@@ -1,4 +1,4 @@
-import QuestionDetailsContent from "@/components/shared/questions/details/QuestionDetailsContent";
+import QuestionDetailsContent from "@/components/questions/details/QuestionDetailsContent";
 import { QuestionsData } from "@/constants";
 
 const QuestionDetails = ({ params }: { params: { questionId: string } }) => {

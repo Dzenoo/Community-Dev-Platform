@@ -1,5 +1,5 @@
 import Link from "next/link";
-import InputNavigation from "../../ui/navigation/input-navigation";
+import InputNavigation from "@/components/ui/navigation/input-navigation";
 import ProfileNavigation from "@/components/ui/navigation/profile-navigation";
 import Image from "next/image";
 
