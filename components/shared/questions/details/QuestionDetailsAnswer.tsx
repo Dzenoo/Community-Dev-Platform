@@ -5,7 +5,7 @@ import QuestionDetailsAnswerActions from "./QuestionDetailsAnswerActions";
 const QuestionDetailsAnswer: React.FC<QuestionAnswerPropsTypes> = ({
   user,
   description,
-  codeSnippet,
+  language,
   id,
   votes,
   downvotes,
@@ -26,11 +26,24 @@ const QuestionDetailsAnswer: React.FC<QuestionAnswerPropsTypes> = ({
           />
         </div>
       </div>
-      <div className="mt-6">
-        <p className="section_subtitle text-white">{description}</p>
-      </div>
-      <div>
-        <QuestionDetailsCode codeSnippet={codeSnippet} />
+      <div className="mt-4">
+        {description?.split(/```/)?.map((section, index) => {
+          if (index % 2 === 0) {
+            return (
+              <p className="section_subtitle text-white" key={index}>
+                {section}
+              </p>
+            );
+          } else {
+            return (
+              <QuestionDetailsCode
+                codeSnippet={section}
+                language={language}
+                key={index}
+              />
+            );
+          }
+        })}
       </div>
     </div>
   );

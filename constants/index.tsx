@@ -67,7 +67,7 @@ export const InformationTagsNavigationData = [
   {
     id: "s4",
     href: "/",
-    title: "TypeScript",
+    title: "typescript",
   },
 ];
 
@@ -97,9 +97,6 @@ export const QuestionsData = [
       { id: "t2", title: "arrays" },
     ],
     user: "user123",
-    codeSnippet: `function cloneArray(arr) {
-      return [...arr];
-    }`,
     votes: 10,
     downvotes: 10,
     language: "typescript",
@@ -108,11 +105,9 @@ export const QuestionsData = [
         id: "a1",
         user: "user123",
         description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
-        codeSnippet: `function cloneArray(arr) {
-         return [...arr];
-        }`,
+          "Lorem ipsum dolor sit amet,```<h2>Js</h2>``` consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ```function cloneArray(arr) { return [...arr]```  Ut enim ad minim veniam, quis, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
         votes: 10,
+        language: "typescript",
         downvotes: 10,
       },
     ],
@@ -128,22 +123,17 @@ export const QuestionsData = [
       { id: "t2", title: "arrays" },
     ],
     user: "user456",
-    codeSnippet: `function cloneArray(arr) {
-      return [...arr];
-    }`,
     votes: 15,
     downvotes: 20,
-    language: "Typescript",
+    language: "typescript",
     answers: [
       {
         id: "a1",
         user: "user123",
         description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
-        codeSnippet: `function cloneArray(arr) {
-         return [...arr];
-        }`,
+          "Lorem ipsum dolor sit amet,```<h2>Js</h2>``` consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ```function cloneArray(arr) { return [...arr]```  Ut enim ad minim veniam, quis, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
         votes: 10,
+        language: "typescript",
         downvotes: 10,
       },
     ],
@@ -159,22 +149,17 @@ export const QuestionsData = [
       { id: "t2", title: "python" },
     ],
     user: "user789",
-    codeSnippet: `function cloneArray(arr) {
-      return [...arr];
-    }`,
     votes: 5,
     downvotes: 8,
-    language: "Typescript",
+    language: "typescript",
     answers: [
       {
         id: "a1",
         user: "user123",
         description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
-        codeSnippet: `function cloneArray(arr) {
-         return [...arr];
-        }`,
+          "Lorem ipsum dolor sit amet,```<h2>Js</h2>``` consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ```function cloneArray(arr) { return [...arr]```  Ut enim ad minim veniam, quis, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
         votes: 10,
+        language: "typescript",
         downvotes: 10,
       },
     ],

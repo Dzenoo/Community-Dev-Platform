@@ -2,7 +2,7 @@ export interface QuestionAnswerPropsTypes {
   id: string;
   user: string;
   description: string;
-  codeSnippet: string;
+  language: string;
   votes: number;
   downvotes: number;
 }
