@@ -18,7 +18,7 @@ const QuestionAnswerForm = () => {
           <Button variant="Outlined">Generate AI answer</Button>
         </div>
       </div>
-      <div>
+      <div className="my-4">
         <Input
           id="answer"
           label=""
@@ -26,7 +26,7 @@ const QuestionAnswerForm = () => {
           placeholder="Enter Answer Here. For adding code, insert it between (```)."
         />
       </div>
-      <div>
+      <div className="my-4">
         <Button variant="Normal" type="submit">
           Submit
         </Button>

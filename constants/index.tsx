@@ -263,3 +263,54 @@ export const TagsData = [
     description: "PHP is a server-side scripting language for web development.",
   },
 ];
+
+export const CommunityUsers = [
+  {
+    id: 1,
+    username: "user1",
+    name: "John Doe",
+    image: "user1.jpg",
+    reputation: 100,
+    tags: [
+      { id: "t1", title: "Node.Js" },
+      { id: "t2", title: "React.Js" },
+      { id: "t3", title: "Next.Js" },
+    ],
+  },
+  {
+    id: 2,
+    username: "user2",
+    name: "Jane Smith",
+    image: "user2.jpg",
+    reputation: 150,
+    tags: [
+      { id: "t1", title: "Node.Js" },
+      { id: "t2", title: "React.Js" },
+      { id: "t3", title: "Next.Js" },
+    ],
+  },
+  {
+    id: 3,
+    username: "user3",
+    name: "Bob Johnson",
+    image: "user3.jpg",
+    reputation: 80,
+    tags: [
+      { id: "t1", title: "Node.Js" },
+      { id: "t2", title: "React.Js" },
+      { id: "t3", title: "Next.Js" },
+    ],
+  },
+  {
+    id: 4,
+    username: "user4",
+    name: "Alice Brown",
+    image: "user4.jpg",
+    reputation: 200,
+    tags: [
+      { id: "t1", title: "Node.Js" },
+      { id: "t2", title: "React.Js" },
+      { id: "t3", title: "Next.Js" },
+    ],
+  },
+];
