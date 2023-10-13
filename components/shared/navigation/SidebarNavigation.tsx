@@ -4,7 +4,7 @@ import { SidebarNavigationDataTypes } from "@/types/sidebar-navigation";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import LinkButton from "@/components/ui/elements/link";
+import LinkButton from "@/components/shared/ui/elements/link";
 
 const SidebarNavigation = () => {
   const pathname = usePathname();

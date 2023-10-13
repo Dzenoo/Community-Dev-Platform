@@ -1,4 +1,4 @@
-import Button from "../ui/elements/button";
+import Button from "@/components/shared/ui/elements/button";
 
 const ProfileFilter = () => {
   return (

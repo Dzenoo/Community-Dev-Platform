@@ -1,6 +1,6 @@
 import { CommunityItemPropsTypes } from "@/types/community";
-import Card from "@/components/ui/elements/card";
-import TagLink from "../tags/TagLink";
+import Card from "@/components/shared/ui/elements/card";
+import TagLink from "@/components/tags/TagLink";
 
 const CommunityItem: React.FC<CommunityItemPropsTypes> = ({
   id,

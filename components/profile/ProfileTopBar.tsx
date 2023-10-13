@@ -1,5 +1,5 @@
 import Link from "next/link";
-import LinkButton from "../ui/elements/link";
+import LinkButton from "@/components/shared/ui/elements/link";
 import Image from "next/image";
 
 const ProfileTopBar = () => {

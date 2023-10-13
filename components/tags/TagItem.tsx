@@ -1,5 +1,5 @@
 import { TagItemPropsTypes } from "@/types/tags";
-import Card from "../ui/elements/card";
+import Card from "@/components/shared/ui/elements/card";
 import TagLink from "./TagLink";
 
 const TagItem: React.FC<TagItemPropsTypes> = ({

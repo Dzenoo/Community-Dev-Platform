@@ -1,5 +1,5 @@
 import { ProgrammingLanguagesData } from "@/constants";
-import Input from "../ui/elements/input";
+import Input from "@/components/shared/ui/elements/input";
 
 const TagsTopBar = () => {
   return (

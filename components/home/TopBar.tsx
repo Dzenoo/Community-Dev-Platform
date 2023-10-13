@@ -1,5 +1,5 @@
-import Input from "../ui/elements/input";
-import LinkButton from "../ui/elements/link";
+import Input from "@/components/shared/ui/elements/input";
+import LinkButton from "@/components/shared/ui/elements/link";
 
 const TopBar = () => {
   return (

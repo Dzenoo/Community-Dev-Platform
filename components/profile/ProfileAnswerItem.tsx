@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Card from "../ui/elements/card";
+import Card from "@/components/shared/ui/elements/card";
 import { ProfileAsnwersDataItemPropsTypes } from "@/types/profile";
 
 const ProfileAnswerItem: React.FC<ProfileAsnwersDataItemPropsTypes> = ({

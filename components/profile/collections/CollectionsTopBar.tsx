@@ -1,4 +1,4 @@
-import Input from "@/components/ui/elements/input";
+import Input from "@/components/shared/ui/elements/input";
 import { ProgrammingLanguagesData } from "@/constants";
 
 const CollectionsTopBar = () => {

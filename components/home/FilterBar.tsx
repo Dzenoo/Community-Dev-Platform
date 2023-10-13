@@ -1,5 +1,5 @@
 import { FilterButtonsData } from "@/constants";
-import Button from "../ui/elements/button";
+import Button from "@/components/shared/ui/elements/button";
 
 const FilterBar = () => {
   return (

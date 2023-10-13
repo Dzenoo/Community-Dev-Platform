@@ -4,7 +4,7 @@ import QuestionDetailsActions from "./QuestionDetailsActions";
 import QuestionDetailsCode from "./QuestionDetailsCode";
 import QuestionDetailsAnswer from "./QuestionDetailsAnswer";
 import QuestionAnswerForm from "./QuestionAnswerForm";
-import Tags from "../../tags/TagLink";
+import Tags from "@/components/tags/TagLink";
 
 const QuestionDetailsContent: React.FC<QuestionItemPropsTypes> = ({
   id,
