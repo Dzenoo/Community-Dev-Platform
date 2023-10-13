@@ -3,4 +3,5 @@ export interface InputPropsTypes {
   placeholder?: string;
   label: string;
   type?: "textarea";
+  helperText?: string;
 }

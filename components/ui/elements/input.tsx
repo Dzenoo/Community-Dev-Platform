@@ -1,6 +1,12 @@
 import { InputPropsTypes } from "@/types/input";
 
-const Input: React.FC<InputPropsTypes> = ({ type, id, placeholder, label }) => {
+const Input: React.FC<InputPropsTypes> = ({
+  type,
+  id,
+  placeholder,
+  label,
+  helperText,
+}) => {
   if (type === "textarea") {
     return (
       <div className="flex flex-col gap-2">
@@ -12,6 +18,7 @@ const Input: React.FC<InputPropsTypes> = ({ type, id, placeholder, label }) => {
           placeholder={placeholder || `Enter ${label}`}
           className="textarea"
         />
+        <p className="section_subtitle_smaller text-gray-400">{helperText}</p>
       </div>
     );
   }
@@ -26,6 +33,7 @@ const Input: React.FC<InputPropsTypes> = ({ type, id, placeholder, label }) => {
         placeholder={placeholder || "Enter Correct Value"}
         className="input"
       />
+      <p className="section_subtitle_smaller text-gray-400">{helperText}</p>
     </div>
   );
 };

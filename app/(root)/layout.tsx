@@ -6,7 +6,6 @@ import SidebarNavigation from "@/components/shared/navigation/SidebarNavigation"
 import InformationNavigation from "@/components/shared/navigation/InformationNavigation";
 
 const inter = Inter({ subsets: ["latin"] });
-
 export const metadata: Metadata = {
   title: "Community Dev",
   description:

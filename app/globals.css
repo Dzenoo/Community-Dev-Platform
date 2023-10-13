@@ -88,7 +88,7 @@ body {
 }
 
 .label {
-  @apply section_subtitle_smaller text-[#ADADAD];
+  @apply section_subtitle_smaller text-white;
 }
 
 .form_flex {
