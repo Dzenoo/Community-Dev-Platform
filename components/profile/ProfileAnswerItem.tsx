@@ -4,15 +4,13 @@ import { ProfileAsnwersDataItemPropsTypes } from "@/types/profile";
 
 const ProfileAnswerItem: React.FC<ProfileAsnwersDataItemPropsTypes> = ({
   title,
-  id,
+  // id,
   questionId,
 }) => {
-  console.log(id);
-
   return (
     <Card>
       <div className="flex flex-col justify-between gap-8 w-full">
-        <div className="flex justify-between">
+        <div className="flex justify-between flex-wrap gap-4">
           <div className="flex flex-col justify-between gap-12">
             <div>
               <Link

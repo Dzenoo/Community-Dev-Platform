@@ -1,5 +1,5 @@
 import { ProgrammingLanguagesData } from "@/constants";
-import Input from "@/components/ui/elements/input";
+import Input from "@/components/shared/ui/elements/input";
 
 const CommunityTopBar = () => {
   return (

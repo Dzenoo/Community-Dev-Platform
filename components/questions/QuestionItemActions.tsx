@@ -3,7 +3,7 @@ import Image from "next/image";
 const QuestionItemActions = () => {
   return (
     <div>
-      <div className="flex gap-4 items-center">
+      <div className="flex gap-4 items-center justify-center flex-wrap">
         <div>
           <button className="text-red-400 text-xl">X</button>
         </div>

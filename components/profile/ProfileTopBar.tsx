@@ -4,15 +4,15 @@ import Image from "next/image";
 
 const ProfileTopBar = () => {
   return (
-    <div className="flex justify-between items-start gap-4">
-      <div className="flex gap-6 items-center">
+    <div className="flex justify-between items-start gap-12 max-md:flex-wrap">
+      <div className="flex gap-6 items-center max-md:flex-wrap">
         <div className="w-40 h-40 rounded-full bg-blue-600"></div>
         <div className="flex flex-col gap-4 justify-between">
           <div className="flex flex-col gap-2">
             <h2 className="section_title text-white font-bold">John Doe</h2>
             <p className="section_subtitle text-gray-400 font-bold">@johndoe</p>
           </div>
-          <div className="flex gap-8 items-center">
+          <div className="my-6 flex gap-8 items-center max-md:flex-wrap">
             <div>
               <Link href="/" className="section_subtitle_smaller text-blue-700">
                 Portfolio

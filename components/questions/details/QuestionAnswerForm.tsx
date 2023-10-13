@@ -5,9 +5,9 @@ import { ProgrammingLanguagesData } from "@/constants";
 const QuestionAnswerForm = () => {
   return (
     <form className="flex flex-col gap-2">
-      <div className="flex justify-between">
+      <div className="flex justify-between gap-4 max-md:flex-wrap">
         <h2 className="section_title text-white">Answer</h2>
-        <div className="flex gap-4">
+        <div className="flex gap-4 max-md:basis-full">
           <select className="select">
             {ProgrammingLanguagesData.map((language) => (
               <option key={language.id} value={language.value}>
