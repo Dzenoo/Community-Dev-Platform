@@ -1,8 +1,8 @@
+import QuestionItem from "@/components/questions/QuestionItem";
 import {
   QuestionItemPropsTypes,
   QuestionListPropsTypes,
 } from "@/types/questions";
-import QuestionItem from "@/components/questions/QuestionItem";
 
 const QuestionList: React.FC<QuestionListPropsTypes> = ({
   questions,

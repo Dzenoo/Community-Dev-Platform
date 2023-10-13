@@ -47,7 +47,7 @@ const ProfileTopBar = () => {
         </div>
       </div>
       <div>
-        <LinkButton href={"/edit-profile"}>Edit Profile</LinkButton>
+        <LinkButton href={"/profile/u2/edit-profile"}>Edit Profile</LinkButton>
       </div>
     </div>
   );

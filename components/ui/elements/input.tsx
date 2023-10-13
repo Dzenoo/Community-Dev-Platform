@@ -30,7 +30,7 @@ const Input: React.FC<InputPropsTypes> = ({
       </label>
       <input
         id={id}
-        placeholder={placeholder || "Enter Correct Value"}
+        placeholder={placeholder || `Enter ${label}`}
         className="input"
       />
       <p className="section_subtitle_smaller text-gray-400">{helperText}</p>

@@ -24,8 +24,10 @@ const AskQuestionForm = () => {
           <Input id="tags" label="Add Tags" helperText="Add tags to question" />
         </div>
       </div>
-      <div>
-        <Button variant="Normal">Post Question</Button>
+      <div className="flex justify-end items-end">
+        <div className="max-w-2xl">
+          <Button variant="Normal">Post Question</Button>
+        </div>
       </div>
     </form>
   );
