@@ -1,5 +1,6 @@
-import Card from "@/components/ui/elements/card";
+import Card from "@/components/shared/ui/elements/card";
 import LoginForm from "./LoginForm";
+import Link from "next/link";
 
 const LoginCard = () => {
   return (
@@ -11,6 +12,14 @@ const LoginCard = () => {
         </p>
       </div>
       <LoginForm />
+      <div>
+        <h2 className="section_subtitle text-white text-center">
+          Dont have an account?{" "}
+          <Link href="/signup" className="font-bold">
+            Signup Here
+          </Link>
+        </h2>
+      </div>
     </Card>
   );
 };

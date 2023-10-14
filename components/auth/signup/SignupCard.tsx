@@ -1,5 +1,6 @@
-import Card from "@/components/ui/elements/card";
+import Card from "@/components/shared/ui/elements/card";
 import SignupForm from "./SignupForm";
+import Link from "next/link";
 
 const SignupCard = () => {
   return (
@@ -11,6 +12,14 @@ const SignupCard = () => {
         </p>
       </div>
       <SignupForm />
+      <div>
+        <h2 className="section_subtitle text-white text-center">
+          Already have an account?{" "}
+          <Link href="/login" className="font-bold">
+            Login Here
+          </Link>
+        </h2>
+      </div>
     </Card>
   );
 };

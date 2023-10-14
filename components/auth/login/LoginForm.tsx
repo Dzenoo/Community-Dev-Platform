@@ -1,7 +1,6 @@
 "use client";
-import Button from "@/components/ui/elements/button";
-import Input from "@/components/ui/elements/input";
-import Link from "next/link";
+import Button from "@/components/shared/ui/elements/button";
+import Input from "@/components/shared/ui/elements/input";
 
 const LoginForm = () => {
   return (
@@ -13,14 +12,6 @@ const LoginForm = () => {
       <Button variant="Normal" type="submit">
         Login
       </Button>
-      <div>
-        <h2 className="section_subtitle text-white text-center">
-          Dont have an account?{" "}
-          <Link href="/signup" className="font-bold">
-            Signup Here
-          </Link>
-        </h2>
-      </div>
     </form>
   );
 };

@@ -9,6 +9,7 @@ const TopBar = () => {
           id={"search-questions"}
           label={"Search Questions"}
           placeholder="Search Questions"
+          isValid={true}
         />
       </div>
       <div className="mb-2">

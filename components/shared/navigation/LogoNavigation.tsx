@@ -2,10 +2,15 @@ import Link from "next/link";
 import InputNavigation from "@/components/shared/ui/navigation/input-navigation";
 import ProfileNavigation from "@/components/shared/ui/navigation/profile-navigation";
 import Image from "next/image";
+import { SetStateAction } from "react";
 
-const LogoNavigation = () => {
+const LogoNavigation = ({
+  setSidebarIsOpen,
+}: {
+  setSidebarIsOpen: React.Dispatch<SetStateAction<boolean>>;
+}) => {
   return (
-    <header className="py-2 px-6 shadow-md flex justify-between items-center bg-[#222222]">
+    <header className="z-40 py-2 px-6 shadow-md flex justify-between items-center bg-[#222222]">
       <div>
         <Link href="/">
           <h2 className="text-2xl font-bold text-white">
@@ -16,10 +21,14 @@ const LogoNavigation = () => {
       <div className="basis-36 hidden lg:block">
         <InputNavigation />
       </div>
-      <div className="hidden md:block">
+      <div className="hidden lg:block">
         <ProfileNavigation />
       </div>
-      <button type="button" className="block md:hidden">
+      <button
+        type="button"
+        className="block lg:hidden"
+        onClick={() => setSidebarIsOpen((prevSidebar) => !prevSidebar)}
+      >
         <Image
           src="/assets/graphics/btn.png"
           alt="menu"

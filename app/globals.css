@@ -47,6 +47,20 @@ body {
   animation: input_navigation_animation 0.7s ease;
 }
 
+.sidebar {
+  @apply px-4 py-8 shadow-md basis-[440px] sticky left-0 top-0 h-screen bg-[#222222] flex flex-col justify-between;
+}
+
+.sidebar_mobile_open {
+  @apply z-40 py-8 px-4 h-full shadow-md bg-[#222222] absolute w-[260px] flex flex-col justify-between;
+  animation: sidebar_navigation_animation 0.7s ease;
+}
+
+.sidebar_mobile_closed {
+  @apply hidden;
+  animation: sidebar_navigation_animation 0.7s ease;
+}
+
 .sidebar_link {
   @apply text-white px-8 py-4 flex items-center gap-7 rounded-md transition-all hover:bg-[#004ee7];
 }
@@ -118,5 +132,16 @@ body {
   }
   100% {
     opacity: 2;
+  }
+}
+
+@keyframes sidebar_navigation_animation {
+  0% {
+    opacity: 0;
+    width: 0;
+  }
+  100% {
+    opacity: 2;
+    width: 260px;
   }
 }

@@ -1,16 +1,34 @@
 "use client";
+import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { SidebarNavigationData } from "@/constants";
 import { SidebarNavigationDataTypes } from "@/types/sidebar-navigation";
-import { usePathname } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import LinkButton from "@/components/shared/ui/elements/link";
 
-const SidebarNavigation = () => {
+const SidebarNavigation = ({ sidebarIsOpen }: { sidebarIsOpen: boolean }) => {
+  const [sidebarClassName, setSidebarClassName] = useState<string>("sidebar");
   const pathname = usePathname();
 
+  function handleResize() {
+    if (window.innerWidth > 1024) {
+      setSidebarClassName("sidebar");
+    } else {
+      sidebarIsOpen
+        ? setSidebarClassName("sidebar_mobile_open")
+        : setSidebarClassName("sidebar_mobile_closed");
+    }
+  }
+
+  useEffect(() => {
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [sidebarIsOpen]);
+
   return (
-    <div className="px-4 py-8 shadow-md sticky left-0 top-0 h-screen bg-[#222222] flex flex-col justify-between">
+    <div className={sidebarClassName}>
       <ul className="flex flex-col gap-2">
         {SidebarNavigationData.map((link: SidebarNavigationDataTypes) => {
           return (
