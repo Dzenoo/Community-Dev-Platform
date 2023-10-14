@@ -1,4 +1,5 @@
 import Image from "next/image";
+import bcrypt from "bcryptjs";
 
 export function generateQuestionActionsData<
   T extends string | undefined,
@@ -12,4 +13,19 @@ export function generateQuestionActionsData<
       <p className="section_subtitle_smaller text-white">{type}</p>
     </div>
   );
+}
+
+// Create function for hashing password and comparing password with bcrypt
+
+export function hashPassword<T extends string>(password: T) {
+  return bcrypt.hash(password, 12);
+}
+
+// Create function for comparing password with bcrypt
+
+export async function comparePassword<T extends string>(
+  password: T,
+  hashedPassword: T
+) {
+  return await bcrypt.compare(password, hashedPassword);
 }

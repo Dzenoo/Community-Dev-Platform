@@ -1,3 +1,4 @@
+"use client";
 import ProfileAnswersList from "@/components/profile/ProfileAnswersList";
 import ProfileFilter from "@/components/profile/ProfileFilter";
 import ProfileStatistics from "@/components/profile/ProfileStatistics";

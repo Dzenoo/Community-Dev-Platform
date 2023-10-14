@@ -1,6 +1,7 @@
 import { QuestionAnswerPropsTypes } from "@/types/answer";
 import QuestionDetailsCode from "./QuestionDetailsCode";
 import QuestionDetailsAnswerActions from "./QuestionDetailsAnswerActions";
+import Image from "next/image";
 
 const QuestionDetailsAnswer: React.FC<QuestionAnswerPropsTypes> = ({
   user,
@@ -14,7 +15,12 @@ const QuestionDetailsAnswer: React.FC<QuestionAnswerPropsTypes> = ({
     <div className="my-12 flex flex-col gap-4">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4 flex-wrap">
-          <div className="w-12 h-12 bg-blue-600 rounded-full"></div>
+          <Image
+            src="/assets/images/profile.png"
+            alt="user"
+            width={40}
+            height={40}
+          />
           <h2 className="section_subtitle text-white">{user}</h2>
           <p className="text-white text-xs">| Asnwered 12h ago</p>
         </div>

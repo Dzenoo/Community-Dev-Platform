@@ -12,11 +12,17 @@ const Button: React.FC<ButtonPropsTypes> = ({
   type,
   variant,
   onClick,
+  disabled,
 }) => {
   const variantClassName = variantClassNames[variant];
 
   return (
-    <button onClick={onClick} type={type} className={variantClassName}>
+    <button
+      onClick={onClick}
+      type={type}
+      className={variantClassName}
+      disabled={disabled}
+    >
       {children}
     </button>
   );

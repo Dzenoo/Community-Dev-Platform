@@ -2,6 +2,7 @@ import "../globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import NavigationLayout from "@/components/shared/navigation/NavigationLayout";
+import AuthProvider from "@/context/AuthProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
@@ -17,9 +18,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="overflow-hidden">
-      <body className={inter.className}>
-        <NavigationLayout children={children} />
-      </body>
+      <AuthProvider>
+        <body className={inter.className}>
+          <NavigationLayout children={children} />
+        </body>
+      </AuthProvider>
     </html>
   );
 }

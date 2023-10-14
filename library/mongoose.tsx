@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const url = process.env.MONGODB_URL!;
 
-export async function connectToDb() {
+export async function connectToDb(): Promise<void> {
   mongoose.set("strictQuery", true);
 
   try {

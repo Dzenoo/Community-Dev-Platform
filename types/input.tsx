@@ -1,5 +1,6 @@
 export interface InputPropsTypes {
-  type?: "textarea";
+  type?: string;
+  elementType?: "textarea";
   id: string;
   placeholder?: string;
   label: string;

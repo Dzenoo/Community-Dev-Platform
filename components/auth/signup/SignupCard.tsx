@@ -13,7 +13,7 @@ const SignupCard = () => {
       </div>
       <SignupForm />
       <div>
-        <h2 className="section_subtitle text-white text-center">
+        <h2 className="mt-4 section_subtitle text-white text-center">
           Already have an account?{" "}
           <Link href="/login" className="font-bold">
             Login Here

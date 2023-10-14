@@ -6,8 +6,11 @@ import { SidebarNavigationDataTypes } from "@/types/sidebar-navigation";
 import Image from "next/image";
 import Link from "next/link";
 import LinkButton from "@/components/shared/ui/elements/link";
+import { signOut, useSession } from "next-auth/react";
+import Button from "../ui/elements/button";
 
 const SidebarNavigation = ({ sidebarIsOpen }: { sidebarIsOpen: boolean }) => {
+  const { data: session } = useSession();
   const [sidebarClassName, setSidebarClassName] = useState<string>("sidebar");
   const pathname = usePathname();
 
@@ -49,55 +52,66 @@ const SidebarNavigation = ({ sidebarIsOpen }: { sidebarIsOpen: boolean }) => {
             </Link>
           );
         })}
-        <Link href={`/profile/u2`}>
-          <li
-            className={`sidebar_link section_subtitle_smaller ${
-              pathname === "/profile/u2" && "bg-[#004ee7]"
-            }`}
-          >
-            <Image
-              src="/assets/graphics/setting.png"
-              alt="setting"
-              width={20}
-              height={20}
-            />
-            Profile
-          </li>
-        </Link>
-        <Link href={`/profile/u2/collections`}>
-          <li
-            className={`sidebar_link section_subtitle_smaller ${
-              pathname === `/profile/u2/collections` && "bg-[#004ee7]"
-            }`}
-          >
-            <Image
-              src="/assets/graphics/layers.png"
-              alt="setting"
-              width={20}
-              height={20}
-            />
-            Collections
-          </li>
-        </Link>
-        <Link href={`/ask-question`}>
-          <li
-            className={`sidebar_link section_subtitle_smaller ${
-              pathname === "/ask-question" && "bg-[#004ee7]"
-            }`}
-          >
-            <Image
-              src="/assets/graphics/conversation.png"
-              alt="setting"
-              width={20}
-              height={20}
-            />
-            Ask Question
-          </li>
-        </Link>
+        {session?.user && (
+          <Link href={`/profile/u2`}>
+            <li
+              className={`sidebar_link section_subtitle_smaller ${
+                pathname === "/profile/u2" && "bg-[#004ee7]"
+              }`}
+            >
+              <Image
+                src="/assets/graphics/setting.png"
+                alt="setting"
+                width={20}
+                height={20}
+              />
+              Profile
+            </li>
+          </Link>
+        )}
+        {session?.user && (
+          <Link href={`/profile/u2/collections`}>
+            <li
+              className={`sidebar_link section_subtitle_smaller ${
+                pathname === `/profile/u2/collections` && "bg-[#004ee7]"
+              }`}
+            >
+              <Image
+                src="/assets/graphics/layers.png"
+                alt="setting"
+                width={20}
+                height={20}
+              />
+              Collections
+            </li>
+          </Link>
+        )}
+        {session?.user && (
+          <Link href={`/ask-question`}>
+            <li
+              className={`sidebar_link section_subtitle_smaller ${
+                pathname === "/ask-question" && "bg-[#004ee7]"
+              }`}
+            >
+              <Image
+                src="/assets/graphics/conversation.png"
+                alt="setting"
+                width={20}
+                height={20}
+              />
+              Ask Question
+            </li>
+          </Link>
+        )}
       </ul>
       <div className="pb-12 flex flex-col gap-2">
-        <LinkButton href="/signup">Signup</LinkButton>
-        <LinkButton href="/login">Login</LinkButton>
+        {!session?.user && <LinkButton href="/signup">Signup</LinkButton>}
+        {!session?.user && <LinkButton href="/login">Login</LinkButton>}
+        {session?.user && (
+          <Button variant="Normal" onClick={signOut}>
+            Logout
+          </Button>
+        )}
       </div>
     </div>
   );

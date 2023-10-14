@@ -90,11 +90,11 @@ body {
 }
 
 .input {
-  @apply p-4 rounded-md bg-[#2B2B2B] text-white border-2;
+  @apply p-4 rounded-md bg-[#2B2B2B] text-white;
 }
 
 .textarea {
-  @apply p-4 rounded-md bg-[#2B2B2B] text-white resize-none border-2 h-96;
+  @apply p-4 rounded-md bg-[#2B2B2B] text-white resize-none h-96;
 }
 
 .select {

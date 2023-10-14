@@ -3,12 +3,15 @@ import InputNavigation from "@/components/shared/ui/navigation/input-navigation"
 import ProfileNavigation from "@/components/shared/ui/navigation/profile-navigation";
 import Image from "next/image";
 import { SetStateAction } from "react";
+import { useSession } from "next-auth/react";
 
 const LogoNavigation = ({
   setSidebarIsOpen,
 }: {
   setSidebarIsOpen: React.Dispatch<SetStateAction<boolean>>;
 }) => {
+  const { data: session } = useSession();
+
   return (
     <header className="z-40 py-2 px-6 shadow-md flex justify-between items-center bg-[#222222]">
       <div>
@@ -18,12 +21,16 @@ const LogoNavigation = ({
           </h2>
         </Link>
       </div>
-      <div className="basis-36 hidden lg:block">
-        <InputNavigation />
-      </div>
-      <div className="hidden lg:block">
-        <ProfileNavigation />
-      </div>
+      {session?.user && (
+        <div className="basis-36 hidden lg:block">
+          <InputNavigation />
+        </div>
+      )}
+      {session?.user && (
+        <div className="hidden lg:block">
+          <ProfileNavigation name={session?.user?.name?.toString()} />
+        </div>
+      )}
       <button
         type="button"
         className="block lg:hidden"

@@ -4,6 +4,7 @@ import Tags from "@/components/tags/TagLink";
 import QuestionItemActions from "./QuestionItemActions";
 import { QuestionItemPropsTypes } from "@/types/questions";
 import { generateQuestionActionsData } from "@/library/utility";
+import Image from "next/image";
 
 const QuestionItem: React.FC<QuestionItemPropsTypes> = ({
   id,
@@ -34,7 +35,12 @@ const QuestionItem: React.FC<QuestionItemPropsTypes> = ({
               </div>
             </div>
             <div className="flex items-center gap-4 flex-wrap">
-              <div className="w-12 h-12 bg-blue-600 rounded-full"></div>
+              <Image
+                src="/assets/images/profile.png"
+                alt="user"
+                width={40}
+                height={40}
+              />
               <h2 className="section_subtitle text-white">{user}</h2>
               <p className="text-white text-xs">| Asked 12h ago</p>
             </div>

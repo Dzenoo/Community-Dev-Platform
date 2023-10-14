@@ -2,6 +2,7 @@ import { InputPropsTypes } from "@/types/input";
 
 const Input: React.FC<InputPropsTypes> = ({
   type,
+  elementType,
   id,
   placeholder,
   label,
@@ -11,18 +12,19 @@ const Input: React.FC<InputPropsTypes> = ({
   errorText,
 }) => {
   const element =
-    type === "textarea" ? (
+    elementType === "textarea" ? (
       <textarea
         id={id}
         placeholder={placeholder || `Enter ${label}`}
-        className={`textarea ${!isValid && "border-red-400"}`}
+        className={`textarea ${!isValid && "border-2 border-red-400"}`}
         onChange={onChange}
       />
     ) : (
       <input
+        type={type}
         id={id}
         placeholder={placeholder || `Enter ${label}`}
-        className={`input  ${!isValid && "border-red-400"}`}
+        className={`input  ${!isValid && "border-2 border-red-400"}`}
         onChange={onChange}
       />
     );

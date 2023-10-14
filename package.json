@@ -13,11 +13,14 @@
     "mongodb": "^6.1.0",
     "mongoose": "^7.6.2",
     "next": "13.5.4",
+    "next-auth": "^4.23.2",
     "react": "^18",
     "react-dom": "^18",
     "react-syntax-highlighter": "^15.5.0"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.4",
+    "@types/next-auth": "^3.15.0",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
