@@ -1,10 +1,13 @@
 import mongoose, { Schema, Document } from "mongoose";
 
 export interface UserTypes extends Document {
-  firstName: string;
+  name: string;
   username: string;
   email: string;
   password: string;
+  location: string;
+  biography: string;
+  portfolio: string;
 }
 
 const UserSchema: Schema = new mongoose.Schema(
@@ -26,6 +29,15 @@ const UserSchema: Schema = new mongoose.Schema(
     password: {
       type: String,
       required: [true, "Password is required"],
+    },
+    location: {
+      type: String,
+    },
+    biography: {
+      type: String,
+    },
+    portfolio: {
+      type: String,
     },
   },
   { timestamps: true }

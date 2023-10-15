@@ -34,6 +34,9 @@ export async function signupUser<
       email,
       username,
       password: hashedPassword,
+      biography: "Biography Profile",
+      location: "Location",
+      portfolio: "/",
     });
 
     await createdUser.save();
@@ -42,5 +45,20 @@ export async function signupUser<
   } catch (error) {
     console.log(error);
     throw new Error("Signup failed");
+  }
+}
+
+export async function fetchUser<Uid extends string>(userId: Uid) {
+  try {
+    connectToDb();
+
+    const user = await User.findById(userId).select("-password");
+
+    if (!user) return;
+
+    return user;
+  } catch (error) {
+    console.log(error);
+    throw new Error("Fetching user failed");
   }
 }

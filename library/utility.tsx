@@ -29,3 +29,15 @@ export async function comparePassword<T extends string>(
 ) {
   return await bcrypt.compare(password, hashedPassword);
 }
+
+// Create function to calculate date when user joined based on createdAt date
+
+export function calculateDate(date: Date) {
+  const createdAt = new Date(date);
+
+  return createdAt.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+}

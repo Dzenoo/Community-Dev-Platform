@@ -22,3 +22,15 @@ export interface ProfileAsnwersDataItemPropsTypes {
   questionId: string | number;
   title: string;
 }
+
+export interface ProfileTopBarPropsTypes {
+  user: {
+    id: string | number;
+    name: string;
+    username: string;
+    location: string;
+    portfolio: string;
+    biography: string;
+    createdAt: Date;
+  };
+}

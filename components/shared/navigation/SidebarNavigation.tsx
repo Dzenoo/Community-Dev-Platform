@@ -53,7 +53,8 @@ const SidebarNavigation = ({ sidebarIsOpen }: { sidebarIsOpen: boolean }) => {
           );
         })}
         {session?.user && (
-          <Link href={`/profile/u2`}>
+          // @ts-ignore
+          <Link href={`/profile/${session.user.id}`}>
             <li
               className={`sidebar_link section_subtitle_smaller ${
                 pathname === "/profile/u2" && "bg-[#004ee7]"
