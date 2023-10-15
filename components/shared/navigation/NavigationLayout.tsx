@@ -12,7 +12,7 @@ const NavigationLayout = ({ children }: { children: ReactNode }) => {
       <LogoNavigation setSidebarIsOpen={setSidebarIsOpen} />
       <main className="flex">
         <SidebarNavigation sidebarIsOpen={sidebarIsOpen} />
-        <section className="p-4 grow basis-full h-screen overflow-y-scroll md:p-8">
+        <section className="relative p-4 grow basis-full h-screen overflow-y-scroll md:p-8">
           {children}
         </section>
         <div>

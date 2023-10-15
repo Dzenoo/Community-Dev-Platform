@@ -277,24 +277,3 @@ export const CommunityUsers = [
     ],
   },
 ];
-
-export const ProfileStatisticsData = [
-  {
-    id: 1,
-    path: "/assets/images/golden.png",
-    name: "Gold",
-    quantity: 7,
-  },
-  {
-    id: 2,
-    path: "/assets/images/silver.png",
-    name: "Silver",
-    quantity: 2,
-  },
-  {
-    id: 3,
-    path: "/assets/images/bronze.png",
-    name: "Bronze",
-    quantity: 4,
-  },
-];

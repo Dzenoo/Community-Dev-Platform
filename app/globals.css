@@ -14,8 +14,13 @@ body {
 }
 
 ::-webkit-scrollbar {
-  width: 3px;
-  height: 3px;
+  background-color: #121212;
+  width: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 20px;
+  background-color: #004ee7;
 }
 
 .section {
@@ -136,6 +141,15 @@ body {
 }
 
 @keyframes sidebar_navigation_animation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 2;
+  }
+}
+
+@keyframes modals_animation_open {
   0% {
     opacity: 0;
   }

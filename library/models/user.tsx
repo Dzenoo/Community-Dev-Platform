@@ -10,6 +10,9 @@ export interface UserTypes extends Document {
   biography: string;
   portfolio: string;
   questions: QuestionTypes[];
+  goldBadges: number;
+  silverBadges: number;
+  bronzeBadges: number;
 }
 
 const UserSchema: Schema = new mongoose.Schema(
@@ -40,6 +43,18 @@ const UserSchema: Schema = new mongoose.Schema(
     },
     portfolio: {
       type: String,
+    },
+    goldBadges: {
+      type: Number,
+      default: 0,
+    },
+    silverBadges: {
+      type: Number,
+      default: 0,
+    },
+    bronzeBadges: {
+      type: Number,
+      default: 0,
     },
     questions: [
       {

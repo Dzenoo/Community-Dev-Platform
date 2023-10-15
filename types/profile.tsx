@@ -1,3 +1,5 @@
+import { QuestionItemPropsTypes } from "./questions";
+
 export interface ProfileStatisticsPropsTypes {
   profileStatistics: ProfileItemPropsTypes[];
 }
@@ -23,8 +25,9 @@ export interface ProfileAsnwersDataItemPropsTypes {
   title: string;
 }
 
-export interface ProfileTopBarPropsTypes {
+export interface ProfilePropsTypes {
   user: {
+    questions: QuestionItemPropsTypes[];
     id: string | number;
     name: string;
     username: string;

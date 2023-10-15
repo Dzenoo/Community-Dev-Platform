@@ -1,10 +1,10 @@
 import Link from "next/link";
 import LinkButton from "@/components/shared/ui/elements/link";
 import Image from "next/image";
-import { ProfileTopBarPropsTypes } from "@/types/profile";
+import { ProfilePropsTypes } from "@/types/profile";
 import { calculateDate } from "@/library/utility";
 
-const ProfileTopBar: React.FC<ProfileTopBarPropsTypes> = ({ user }) => {
+const ProfileTopBar: React.FC<ProfilePropsTypes> = ({ user }) => {
   const joinedDate = calculateDate(user?.createdAt);
 
   return (

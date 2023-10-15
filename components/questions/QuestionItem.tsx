@@ -48,7 +48,7 @@ const QuestionItem: React.FC<QuestionItemPropsTypes> = ({
               <p className="text-white text-xs">| {askedQUestion}</p>
             </div>
           </div>
-          {showActions && <QuestionItemActions />}
+          {showActions && <QuestionItemActions id={_id} />}
         </div>
         <div className="flex items-center gap-8 justify-between flex-wrap">
           {generateQuestionActionsData(
