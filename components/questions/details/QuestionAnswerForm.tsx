@@ -22,7 +22,8 @@ const QuestionAnswerForm = () => {
         <Input
           id="answer"
           label=""
-          type="textarea"
+          elementType="textarea"
+          isValid={true}
           placeholder="Enter Answer Here. For adding code, insert it between (```)."
         />
       </div>

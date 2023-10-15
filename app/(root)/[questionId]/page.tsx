@@ -1,14 +1,30 @@
 import QuestionDetailsContent from "@/components/questions/details/QuestionDetailsContent";
-import { QuestionsData } from "@/constants";
+import { fetchQuestionById } from "@/library/actions/questions.actions";
 
-const QuestionDetails = ({ params }: { params: { questionId: string } }) => {
-  const question = QuestionsData.find(
-    (question) => question.id === params.questionId
-  );
+const QuestionDetails = async ({
+  params,
+}: {
+  params: { questionId: string };
+}) => {
+  const question = await fetchQuestionById(params.questionId);
 
   return (
     <section className="section">
-      {question && <QuestionDetailsContent {...question} />}
+      {question && (
+        <QuestionDetailsContent
+          _id={question._id}
+          title={question.title}
+          downvotes={question.downvotes}
+          description={question.description}
+          votes={question.votes}
+          tags={question.tags}
+          user={question.user}
+          answers={question.answers}
+          views={question.views}
+          createdAt={question.createdAt}
+          showActions={false}
+        />
+      )}
     </section>
   );
 };

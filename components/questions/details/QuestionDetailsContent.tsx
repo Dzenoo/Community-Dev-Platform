@@ -1,4 +1,4 @@
-import { generateQuestionActionsData } from "@/library/utility";
+import { calculateDate, generateQuestionActionsData } from "@/library/utility";
 import { QuestionItemPropsTypes } from "@/types/questions";
 import QuestionDetailsActions from "./QuestionDetailsActions";
 import QuestionDetailsCode from "./QuestionDetailsCode";
@@ -8,7 +8,7 @@ import Tags from "@/components/tags/TagLink";
 import Image from "next/image";
 
 const QuestionDetailsContent: React.FC<QuestionItemPropsTypes> = ({
-  id,
+  _id,
   user,
   title,
   description,
@@ -18,11 +18,14 @@ const QuestionDetailsContent: React.FC<QuestionItemPropsTypes> = ({
   language,
   views,
   tags,
+  createdAt,
 }) => {
+  const askedQUestion = calculateDate(createdAt);
+
   return (
     <div className="flex flex-col gap-4 pb-12">
       <div className="flex justify-end items-end">
-        <QuestionDetailsActions votes={votes} downvotes={downvotes} id={id} />
+        <QuestionDetailsActions votes={votes} downvotes={downvotes} id={_id} />
       </div>
       <div className="flex flex-col gap-4">
         <div className="flex items-center gap-4 flex-wrap">
@@ -32,8 +35,8 @@ const QuestionDetailsContent: React.FC<QuestionItemPropsTypes> = ({
             width={40}
             height={40}
           />
-          <h2 className="section_subtitle text-white">{user}</h2>
-          <p className="text-white text-xs">| Asked 12h ago</p>
+          <h2 className="section_subtitle text-white">{user?.username}</h2>
+          <p className="text-white text-md">| {askedQUestion}</p>
         </div>
         <div>
           <h2 className="section_title_smaller text-white">{title}</h2>
@@ -41,7 +44,7 @@ const QuestionDetailsContent: React.FC<QuestionItemPropsTypes> = ({
         <div className="flex items-center gap-4 flex-wrap">
           {generateQuestionActionsData(
             "/assets/graphics/comment.png",
-            answers.length,
+            answers?.length,
             "Answers"
           )}
           {generateQuestionActionsData("", views, "Views")}
@@ -66,16 +69,16 @@ const QuestionDetailsContent: React.FC<QuestionItemPropsTypes> = ({
           })}
         </div>
         <div className="mt-12 flex gap-4">
-          {tags.map((tag) => (
-            <Tags key={tag.id} {...tag} />
+          {tags?.map((tag) => (
+            <Tags key={tag._id} title={tag.title} />
           ))}
         </div>
         <div className="mt-12">
           <h2 className="section_title text-white">
-            Answers ({answers.length})
+            Answers ({answers?.length})
           </h2>
           <div className="px-6 flex flex-col gap-12">
-            {answers.map((answer) => (
+            {answers?.map((answer) => (
               <QuestionDetailsAnswer key={answer.id} {...answer} />
             ))}
           </div>

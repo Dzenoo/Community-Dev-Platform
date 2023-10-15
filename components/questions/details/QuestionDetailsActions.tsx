@@ -23,6 +23,7 @@ const QuestionDetailsActions: React.FC<
         icon="/assets/graphics/heart.png"
         onClick={() => {}}
         type="Save"
+        data={undefined}
       />
     </div>
   );

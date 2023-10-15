@@ -14,11 +14,13 @@ const QuestionDetailsActionsData: React.FC<
         height={26}
         className={`${type === "vote" && "rotate-180"}`}
       />
-      {data && (
-        <span className="p-2 bg-[#004de777] text-white font-bold rounded-md">
-          {data}
-        </span>
-      )}
+      <span
+        className={`p-2 px-4 bg-[#004de777] text-white font-bold rounded-md ${
+          data === undefined && "hidden"
+        }`}
+      >
+        {data}
+      </span>
     </button>
   );
 };

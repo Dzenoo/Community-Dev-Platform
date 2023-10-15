@@ -50,3 +50,15 @@ export async function fetchQuestions() {
     console.log(error);
   }
 }
+
+export async function fetchQuestionById(id: string) {
+  try {
+    connectToDb();
+
+    const question = await Question.findById(id).populate("user", "username");
+
+    return question;
+  } catch (error) {
+    console.log(error);
+  }
+}

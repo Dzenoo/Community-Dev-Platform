@@ -19,6 +19,7 @@ export interface QuestionItemPropsTypes {
   showActions?: boolean;
   language?: string;
   views: number;
+  createdAt: Date;
 }
 
 export interface QuestionListPropsTypes {
@@ -40,6 +41,6 @@ export interface QuestionDetailsCodeComponentPropsTypes {
 export interface QuestionDetailsActionsDataPropsTypes {
   icon: string;
   onClick: MouseEventHandler<HTMLButtonElement>;
-  data?: number | string;
+  data: number | string | undefined;
   type: string;
 }
