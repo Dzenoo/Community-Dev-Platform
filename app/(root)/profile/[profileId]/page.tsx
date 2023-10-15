@@ -16,7 +16,7 @@ const ProfilePage = async ({ params }: { params: { profileId: string } }) => {
       <ProfileStatistics profileStatistics={ProfileStatisticsData} />
       <div>
         <ProfileFilter />
-        <QuestionList questions={QuestionsData} showActions={true} />
+        <QuestionList questions={user?.questions} showActions={true} />
         <ProfileAnswersList profileAnswers={QuestionsData} />
       </div>
     </section>

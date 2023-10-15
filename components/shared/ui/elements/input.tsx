@@ -10,6 +10,7 @@ const Input: React.FC<InputPropsTypes> = ({
   isValid,
   helperText,
   errorText,
+  defaultValue,
 }) => {
   const element =
     elementType === "textarea" ? (
@@ -18,6 +19,7 @@ const Input: React.FC<InputPropsTypes> = ({
         placeholder={placeholder || `Enter ${label}`}
         className={`textarea ${!isValid && "border-2 border-red-400"}`}
         onChange={onChange}
+        defaultValue={defaultValue}
       />
     ) : (
       <input
@@ -26,6 +28,7 @@ const Input: React.FC<InputPropsTypes> = ({
         placeholder={placeholder || `Enter ${label}`}
         className={`input  ${!isValid && "border-2 border-red-400"}`}
         onChange={onChange}
+        defaultValue={defaultValue}
       />
     );
 

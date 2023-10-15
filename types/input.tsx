@@ -8,4 +8,5 @@ export interface InputPropsTypes {
   isValid?: boolean;
   helperText?: string;
   errorText?: string;
+  defaultValue?: string;
 }

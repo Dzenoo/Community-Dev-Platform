@@ -1,12 +1,22 @@
 import EditProfileForm from "@/components/profile/edit-profile/EditProfileForm";
+import { fetchUser } from "@/library/actions/user.actions";
 
-const EditPage = () => {
+const EditPage = async ({ params }: { params: { profileId: string } }) => {
+  const user = await fetchUser(params.profileId);
+  if (!user) return null;
+
   return (
     <section className="mb-12">
       <div>
         <h2 className="section_title text-white">Edit Profile</h2>
       </div>
-      <EditProfileForm />
+      <EditProfileForm
+        userId={user?._id}
+        name={user?.name}
+        username={user?.username}
+        location={user?.location}
+        biography={user?.biography}
+      />
     </section>
   );
 };

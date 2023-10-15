@@ -1,5 +1,6 @@
 "use server";
 
+import Question from "../models/question";
 import User from "../models/user";
 import { connectToDb } from "../mongoose";
 import { hashPassword } from "../utility";
@@ -52,7 +53,9 @@ export async function fetchUser<Uid extends string>(userId: Uid) {
   try {
     connectToDb();
 
-    const user = await User.findById(userId).select("-password");
+    const user = await User.findById(userId)
+      .populate({ path: "questions", model: Question })
+      .select("-password");
 
     if (!user) return;
 
@@ -60,5 +63,42 @@ export async function fetchUser<Uid extends string>(userId: Uid) {
   } catch (error) {
     console.log(error);
     throw new Error("Fetching user failed");
+  }
+}
+
+// Function for editing profile
+
+export async function editProfile<
+  Name extends string,
+  Username extends string,
+  Biography extends string,
+  Location extends string
+>(
+  userId: string,
+  name: Name,
+  username: Username,
+  biography: Biography,
+  location: Location
+) {
+  try {
+    connectToDb();
+
+    const user = await User.findById(userId);
+
+    if (!user) return;
+
+    if (!name || !username || !biography || !location) return;
+
+    user.name = name;
+    user.username = username;
+    user.biography = biography;
+    user.location = location;
+
+    await user.save();
+
+    return user;
+  } catch (error) {
+    console.log(error);
+    throw new Error("Editing profile failed");
   }
 }

@@ -3,7 +3,7 @@ import Card from "@/components/shared/ui/elements/card";
 import Tags from "@/components/tags/TagLink";
 import QuestionItemActions from "./QuestionItemActions";
 import { QuestionItemPropsTypes } from "@/types/questions";
-import { generateQuestionActionsData } from "@/library/utility";
+import { calculateDate, generateQuestionActionsData } from "@/library/utility";
 import Image from "next/image";
 
 const QuestionItem: React.FC<QuestionItemPropsTypes> = ({
@@ -15,7 +15,10 @@ const QuestionItem: React.FC<QuestionItemPropsTypes> = ({
   votes,
   answers,
   views,
+  createdAt,
 }) => {
+  const askedQUestion = calculateDate(createdAt);
+
   return (
     <Card>
       <div className="flex flex-col justify-between gap-8 w-full">
@@ -42,7 +45,7 @@ const QuestionItem: React.FC<QuestionItemPropsTypes> = ({
                 height={40}
               />
               <h2 className="section_subtitle text-white">{user?.username}</h2>
-              <p className="text-white text-xs">| Asked 12h ago</p>
+              <p className="text-white text-xs">| {askedQUestion}</p>
             </div>
           </div>
           {showActions && <QuestionItemActions />}
