@@ -8,29 +8,34 @@ import {
   VALIDATOR_EMAIL,
   VALIDATOR_MINLENGTH,
 } from "@/library/validators/validators";
+import { checkFormValidity } from "@/library/utility";
 
 const SignupForm = () => {
   const router = useRouter();
-  const { formState, inputChangeHandler } = useForm(
-    {
-      name: {
-        value: "",
-        isValid: true,
-      },
-      email: {
-        value: "",
-        isValid: true,
-      },
-      username: {
-        value: "",
-        isValid: true,
-      },
-      password: {
-        value: "",
-        isValid: true,
-      },
+  const { formState, inputChangeHandler } = useForm({
+    name: {
+      value: "",
+      isValid: true,
     },
-    false
+    email: {
+      value: "",
+      isValid: true,
+    },
+    username: {
+      value: "",
+      isValid: true,
+    },
+    password: {
+      value: "",
+      isValid: true,
+    },
+  });
+
+  const isFormValid = checkFormValidity(
+    formState.inputs.name.value === "" ||
+      formState.inputs.email.value === "" ||
+      formState.inputs.username.value === "" ||
+      formState.inputs.password.value === ""
   );
 
   async function onSubmitHandler(event: React.FormEvent<HTMLFormElement>) {
@@ -45,7 +50,7 @@ const SignupForm = () => {
       return alert("Please fill all fields");
     }
 
-    if (formState.formIsValid) {
+    if (isFormValid) {
       const response = await signupUser(
         formState.inputs.name.value,
         formState.inputs.email.value,
@@ -115,7 +120,11 @@ const SignupForm = () => {
           }
         />
       </div>
-      <Button variant="Normal" type="submit" disabled={!formState.formIsValid}>
+      <Button
+        variant={isFormValid ? "Normal" : "Danger"}
+        type="submit"
+        disabled={!isFormValid}
+      >
         Signup
       </Button>
     </form>

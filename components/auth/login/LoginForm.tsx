@@ -9,22 +9,25 @@ import {
 import { useRouter } from "next/navigation";
 import { FormEvent } from "react";
 import { signIn } from "next-auth/react";
+import { checkFormValidity } from "@/library/utility";
 
 const LoginForm = () => {
   const router = useRouter();
-  const { formState, inputChangeHandler } = useForm(
-    {
-      email: {
-        value: "",
-        isValid: true,
-      },
-
-      password: {
-        value: "",
-        isValid: true,
-      },
+  const { formState, inputChangeHandler } = useForm({
+    email: {
+      value: "",
+      isValid: true,
     },
-    false
+
+    password: {
+      value: "",
+      isValid: true,
+    },
+  });
+
+  const isFormValid = checkFormValidity(
+    formState.inputs.email.value === "" ||
+      formState.inputs.password.value === ""
   );
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
@@ -37,7 +40,7 @@ const LoginForm = () => {
       return alert("Please fill all fields");
     }
 
-    if (formState.formIsValid) {
+    if (isFormValid) {
       try {
         const result = await signIn("credentials", {
           email: formState.inputs.email.value,
@@ -87,7 +90,11 @@ const LoginForm = () => {
           }
         />
       </div>
-      <Button variant="Normal" type="submit" disabled={!formState.formIsValid}>
+      <Button
+        variant={isFormValid ? "Normal" : "Danger"}
+        type="submit"
+        disabled={!isFormValid}
+      >
         Login
       </Button>
     </form>

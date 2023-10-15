@@ -41,3 +41,17 @@ export function calculateDate(date: Date) {
     day: "numeric",
   });
 }
+
+// Crate function that checks form validity
+
+export function checkFormValidity<T extends any>(condition: T) {
+  let formIsValid;
+
+  if (condition) {
+    formIsValid = false;
+  } else {
+    formIsValid = true;
+  }
+
+  return formIsValid;
+}

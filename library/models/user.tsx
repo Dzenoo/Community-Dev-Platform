@@ -1,4 +1,5 @@
 import mongoose, { Schema, Document } from "mongoose";
+import { QuestionTypes } from "./question";
 
 export interface UserTypes extends Document {
   name: string;
@@ -8,6 +9,7 @@ export interface UserTypes extends Document {
   location: string;
   biography: string;
   portfolio: string;
+  questions: QuestionTypes[];
 }
 
 const UserSchema: Schema = new mongoose.Schema(
@@ -39,6 +41,13 @@ const UserSchema: Schema = new mongoose.Schema(
     portfolio: {
       type: String,
     },
+    questions: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Question",
+        default: [],
+      },
+    ],
   },
   { timestamps: true }
 );

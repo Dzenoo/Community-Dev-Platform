@@ -138,10 +138,8 @@ body {
 @keyframes sidebar_navigation_animation {
   0% {
     opacity: 0;
-    width: 0;
   }
   100% {
     opacity: 2;
-    width: 260px;
   }
 }

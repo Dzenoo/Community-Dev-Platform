@@ -58,6 +58,7 @@ export const FilterButtonsData = [
 ];
 
 export const ProgrammingLanguagesData = [
+  { id: 0, name: "Select Language", value: "" },
   { id: 1, name: "JavaScript", value: "javascript" },
   { id: 2, name: "Python", value: "python" },
   { id: 3, name: "Java", value: "java" },

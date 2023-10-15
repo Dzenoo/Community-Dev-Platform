@@ -5,7 +5,7 @@ export interface QuestionItemPropsTypes {
   id: string;
   title: string;
   tags: {
-    id: string;
+    id?: string;
     title: string;
   }[];
   user: string;

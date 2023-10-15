@@ -8,8 +8,7 @@ import { fetchUser } from "@/library/actions/user.actions";
 
 const ProfilePage = async ({ params }: { params: { profileId: string } }) => {
   const user = await fetchUser(params.profileId);
-
-  console.log(user);
+  if (!user) return null;
 
   return (
     <section className="my-6 flex flex-col gap-12">

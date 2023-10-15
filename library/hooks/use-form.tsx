@@ -10,23 +10,21 @@ import { validate } from "../validators/validators";
 function reducer(state: ValidatorState, action: ValidatorReducerAction) {
   switch (action.type) {
     case "on_change": {
-      const updatedInputs = {
-        ...state.inputs,
-        [action.inputId]: {
-          value: action.value,
-          isValid: validate(action.value, action.validators),
-        },
-      };
-
-      const formIsValid = Object.values(updatedInputs).reduce(
-        (isValid, input) => isValid && input.isValid,
-        true
-      );
+      for (const inputId in state.inputs) {
+        if (!state.inputs[inputId]) {
+          continue;
+        }
+      }
 
       return {
         ...state,
-        inputs: updatedInputs,
-        formIsValid: formIsValid,
+        inputs: {
+          ...state.inputs,
+          [action.inputId]: {
+            value: action.value,
+            isValid: validate(action.value, action.validators),
+          },
+        },
       };
     }
     default: {
@@ -35,14 +33,10 @@ function reducer(state: ValidatorState, action: ValidatorReducerAction) {
   }
 }
 
-export function useForm(
-  initialInputs: { [key: string]: InitialInputsTypes },
-  initialValidity: boolean
-) {
+export function useForm(initialInputs: { [key: string]: InitialInputsTypes }) {
   const [formState, dispatch] = useReducer(reducer, {
     inputs: initialInputs,
-    formIsValid: initialValidity,
-  });
+  } as ValidatorState);
 
   const inputChangeHandler = useCallback(
     (id: string, value: string, validators: ValidatorPropertiesTypes[]) => {
