@@ -7,7 +7,7 @@ import { generateQuestionActionsData } from "@/library/utility";
 import Image from "next/image";
 
 const QuestionItem: React.FC<QuestionItemPropsTypes> = ({
-  id,
+  _id,
   title,
   tags,
   user,
@@ -23,14 +23,14 @@ const QuestionItem: React.FC<QuestionItemPropsTypes> = ({
           <div className="flex flex-col justify-between gap-12">
             <div>
               <Link
-                href={`/${id}`}
+                href={`/${_id}`}
                 className="section_title_smaller text-white"
               >
                 {title}
               </Link>
               <div className="mt-4 flex gap-4 items-stretch flex-wrap">
-                {tags.map((tag) => (
-                  <Tags key={tag.id} id={tag.id} title={tag.title} />
+                {tags?.map((tag) => (
+                  <Tags key={tag._id} _id={tag._id} title={tag.title} />
                 ))}
               </div>
             </div>
@@ -41,7 +41,7 @@ const QuestionItem: React.FC<QuestionItemPropsTypes> = ({
                 width={40}
                 height={40}
               />
-              <h2 className="section_subtitle text-white">{user}</h2>
+              <h2 className="section_subtitle text-white">{user?.username}</h2>
               <p className="text-white text-xs">| Asked 12h ago</p>
             </div>
           </div>
@@ -55,7 +55,7 @@ const QuestionItem: React.FC<QuestionItemPropsTypes> = ({
           )}
           {generateQuestionActionsData(
             "/assets/graphics/comment.png",
-            answers.length,
+            answers?.length,
             "Answers"
           )}
           {generateQuestionActionsData("", views, "Views")}

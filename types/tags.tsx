@@ -1,5 +1,5 @@
 export interface TagsPropsTypes {
-  id: string | number;
+  _id?: string;
   title: string;
 }
 

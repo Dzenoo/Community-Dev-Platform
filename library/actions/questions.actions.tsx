@@ -38,3 +38,15 @@ export async function postQuestion(
     console.log(error);
   }
 }
+
+export async function fetchQuestions() {
+  try {
+    connectToDb();
+
+    const questions = await Question.find({}).populate("user", "username");
+
+    return questions;
+  } catch (error) {
+    console.log(error);
+  }
+}

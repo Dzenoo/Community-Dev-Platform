@@ -2,13 +2,16 @@ import { MouseEventHandler } from "react";
 import { QuestionAnswerPropsTypes } from "./answer";
 
 export interface QuestionItemPropsTypes {
-  id: string;
+  _id: string;
   title: string;
   tags: {
-    id?: string;
+    _id?: string;
     title: string;
   }[];
-  user: string;
+  user: {
+    _id: string;
+    username: string;
+  };
   votes: number;
   downvotes: number;
   answers: QuestionAnswerPropsTypes[];
