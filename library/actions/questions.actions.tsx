@@ -121,3 +121,35 @@ export async function fetchUserAnswers<Uid extends string>(
     console.log(error);
   }
 }
+
+// Edit questions actions
+
+export async function deleteQuestion<Qid extends string, Uid extends string>(
+  questionId: Qid,
+  userId: Uid
+): Promise<void> {
+  connectToDb();
+
+  try {
+    const question = await Question.findById(questionId);
+    const user = await User.findById(userId);
+
+    if (!question || !user) return;
+
+    if (question.user.toString() !== userId) {
+      return;
+    }
+
+    const answerIds = question.answers;
+    if (answerIds.length > 0) {
+      await Answer.deleteMany({ _id: { $in: answerIds } });
+    }
+
+    user.questions.pull(questionId);
+    await user.save();
+
+    await Question.findByIdAndDelete(questionId);
+  } catch (error) {
+    console.log(error);
+  }
+}

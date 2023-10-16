@@ -49,7 +49,7 @@ const QuestionDetailsContent: React.FC<QuestionItemPropsTypes> = ({
           )}
           {generateQuestionActionsData("", views, "Views")}
         </div>
-        <div className="mt-6">
+        <div className="mt-6 break-words">
           {description?.split(/```/)?.map((section, index) => {
             if (index % 2 === 0) {
               return (
