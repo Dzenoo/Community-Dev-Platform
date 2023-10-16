@@ -3,6 +3,7 @@
 import { connectToDb } from "../mongoose";
 import Question from "../models/question";
 import User from "../models/user";
+import Answer from "../models/answer";
 
 export async function postQuestion(
   title: string,
@@ -55,9 +56,67 @@ export async function fetchQuestionById(id: string) {
   try {
     connectToDb();
 
-    const question = await Question.findById(id).populate("user", "username");
+    const question = await Question.findById(id)
+      .populate("user", "username")
+      .populate({
+        path: "answers",
+        model: Answer,
+        populate: {
+          path: "user",
+          model: User,
+          select: "username",
+        },
+      });
 
     return question;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function answerOnQuestion<
+  Uid extends string,
+  Qid extends string,
+  D extends string,
+  L extends string
+>(userId: Uid, questionId: Qid, description: D, language: L): Promise<void> {
+  connectToDb();
+
+  try {
+    const question = await Question.findById(questionId);
+
+    if (!question) return;
+
+    const createdAnswer = await Answer.create({
+      user: userId,
+      question: questionId,
+      description,
+      language,
+    });
+
+    question.answers.push(createdAnswer._id);
+    await question.save();
+    await createdAnswer.save();
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function fetchUserAnswers<Uid extends string>(
+  userId: Uid
+): Promise<any> {
+  connectToDb();
+
+  try {
+    const answers = await Answer.find({ user: userId }).populate({
+      path: "question",
+      model: Question,
+      select: "title user",
+    });
+
+    if (!answers) return;
+
+    return answers;
   } catch (error) {
     console.log(error);
   }

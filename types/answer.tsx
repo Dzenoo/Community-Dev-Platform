@@ -1,6 +1,8 @@
 export interface QuestionAnswerPropsTypes {
-  id: string;
-  user: string;
+  _id: string;
+  user: {
+    username: string;
+  };
   description: string;
   language: string;
   votes: number;

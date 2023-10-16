@@ -4,8 +4,7 @@ import { ProfileAsnwersDataItemPropsTypes } from "@/types/profile";
 
 const ProfileAnswerItem: React.FC<ProfileAsnwersDataItemPropsTypes> = ({
   title,
-  // id,
-  questionId,
+  question,
 }) => {
   return (
     <Card>
@@ -14,7 +13,7 @@ const ProfileAnswerItem: React.FC<ProfileAsnwersDataItemPropsTypes> = ({
           <div className="flex flex-col justify-between gap-12">
             <div>
               <Link
-                href={`/${questionId}`}
+                href={`/${question}`}
                 className="section_title_smaller text-white"
               >
                 {title}

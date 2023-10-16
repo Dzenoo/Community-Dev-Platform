@@ -70,21 +70,35 @@ const QuestionDetailsContent: React.FC<QuestionItemPropsTypes> = ({
         </div>
         <div className="mt-12 flex gap-4">
           {tags?.map((tag) => (
-            <Tags key={tag._id} title={tag.title} />
+            <Tags key={tag._id} _id={tag._id} title={tag.title} />
           ))}
         </div>
         <div className="mt-12">
           <h2 className="section_title text-white">
             Answers ({answers?.length})
           </h2>
-          <div className="px-6 flex flex-col gap-12">
-            {answers?.map((answer) => (
-              <QuestionDetailsAnswer key={answer.id} {...answer} />
-            ))}
+          <div className="px-6 py-12 flex break-words flex-col gap-12">
+            {answers?.length === 0 ? (
+              <p className="section_title_smaller text-white text-center">
+                No answers yet
+              </p>
+            ) : (
+              answers?.map((answer) => (
+                <QuestionDetailsAnswer
+                  key={answer._id}
+                  _id={answer._id}
+                  user={answer.user}
+                  description={answer.description}
+                  language={answer.language}
+                  votes={answer.votes}
+                  downvotes={answer.downvotes}
+                />
+              ))
+            )}
           </div>
         </div>
         <div className="mt-6">
-          <QuestionAnswerForm />
+          <QuestionAnswerForm questionId={_id} />
         </div>
       </div>
     </div>

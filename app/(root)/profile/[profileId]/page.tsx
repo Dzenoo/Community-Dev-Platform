@@ -2,12 +2,13 @@ import ProfileAnswersList from "@/components/profile/ProfileAnswersList";
 import ProfileStatistics from "@/components/profile/ProfileStatistics";
 import ProfileTopBar from "@/components/profile/ProfileTopBar";
 import QuestionList from "@/components/questions/QuestionList";
-import { QuestionsData } from "@/constants";
+import { fetchUserAnswers } from "@/library/actions/questions.actions";
 import { fetchUser } from "@/library/actions/user.actions";
 
 const ProfilePage = async ({ params }: { params: { profileId: string } }) => {
   const user = await fetchUser(params.profileId);
   if (!user) return null;
+  const answers = await fetchUserAnswers(params.profileId);
 
   const ProfileStatisticsData = [
     {
@@ -46,7 +47,7 @@ const ProfilePage = async ({ params }: { params: { profileId: string } }) => {
         <div>
           <h2 className="section_title_smaller text-white my-4">Answers</h2>
           <div className="h-96 overflow-y-scroll">
-            <ProfileAnswersList profileAnswers={QuestionsData} />
+            <ProfileAnswersList profileAnswers={answers} />
           </div>
         </div>
       </div>

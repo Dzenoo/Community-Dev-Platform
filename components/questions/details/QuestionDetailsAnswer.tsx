@@ -7,12 +7,12 @@ const QuestionDetailsAnswer: React.FC<QuestionAnswerPropsTypes> = ({
   user,
   description,
   language,
-  id,
+  _id,
   votes,
   downvotes,
 }) => {
   return (
-    <div className="my-12 flex flex-col gap-4">
+    <div className="my-4 flex flex-col gap-4">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4 flex-wrap">
           <Image
@@ -21,14 +21,13 @@ const QuestionDetailsAnswer: React.FC<QuestionAnswerPropsTypes> = ({
             width={40}
             height={40}
           />
-          <h2 className="section_subtitle text-white">{user}</h2>
-          <p className="text-white text-xs">| Asnwered 12h ago</p>
+          <h2 className="section_subtitle text-white">{user?.username}</h2>
         </div>
         <div className="">
           <QuestionDetailsAnswerActions
             votes={votes}
             downvotes={downvotes}
-            id={id}
+            id={_id}
           />
         </div>
       </div>
