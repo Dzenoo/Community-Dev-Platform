@@ -18,6 +18,7 @@ const ProfileAnswersList: React.FC<ProfileAnswersDataListPropsTypes> = ({
             key={answers._id}
             question={answers.question._id}
             title={answers.question.title}
+            description={answers.question.description}
           />
         ))
       )}

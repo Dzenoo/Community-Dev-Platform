@@ -111,7 +111,7 @@ export async function fetchUserAnswers<Uid extends string>(
     const answers = await Answer.find({ user: userId }).populate({
       path: "question",
       model: Question,
-      select: "title user",
+      select: "title user description",
     });
 
     if (!answers) return;
