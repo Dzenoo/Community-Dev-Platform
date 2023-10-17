@@ -10,6 +10,7 @@ export interface UserTypes extends Document {
   biography: string;
   portfolio: string;
   questions: QuestionTypes[];
+  savedQuestions: string[];
   goldBadges: number;
   silverBadges: number;
   bronzeBadges: number;
@@ -57,6 +58,13 @@ const UserSchema: Schema = new mongoose.Schema(
       default: 0,
     },
     questions: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Question",
+        default: [],
+      },
+    ],
+    savedQuestions: [
       {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Question",

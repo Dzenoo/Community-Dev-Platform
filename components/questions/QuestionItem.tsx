@@ -12,7 +12,7 @@ const QuestionItem: React.FC<QuestionItemPropsTypes> = ({
   tags,
   user,
   showActions,
-  votes,
+  upvotes,
   answers,
   views,
   createdAt,
@@ -53,7 +53,7 @@ const QuestionItem: React.FC<QuestionItemPropsTypes> = ({
         <div className="flex items-center gap-8 justify-between flex-wrap">
           {generateQuestionActionsData(
             "/assets/graphics/heart.png",
-            votes,
+            upvotes?.length,
             "Votes"
           )}
           {generateQuestionActionsData(
@@ -61,7 +61,7 @@ const QuestionItem: React.FC<QuestionItemPropsTypes> = ({
             answers?.length,
             "Answers"
           )}
-          {generateQuestionActionsData("", views, "Views")}
+          {generateQuestionActionsData("", views?.length, "Views")}
         </div>
       </div>
     </Card>

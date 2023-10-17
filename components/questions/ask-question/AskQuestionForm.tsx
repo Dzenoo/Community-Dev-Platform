@@ -66,7 +66,8 @@ const AskQuestionForm = () => {
       // @ts-ignore
       session?.user?.id,
       formState.inputs.description.value,
-      formState.inputs.language.value
+      formState.inputs.language.value,
+      "/"
     );
 
     router.push("/");

@@ -39,7 +39,8 @@ const QuestionAnswerForm = ({ questionId }: { questionId: string }) => {
         session.user.id,
         questionId,
         formState.inputs.description.value,
-        formState.inputs.language.value
+        formState.inputs.language.value,
+        `/questions/${questionId}`
       );
     } else {
       alert("Please fill all fields.");

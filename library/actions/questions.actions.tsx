@@ -4,13 +4,15 @@ import { connectToDb } from "../mongoose";
 import Question from "../models/question";
 import User from "../models/user";
 import Answer from "../models/answer";
+import { revalidatePath } from "next/cache";
 
 export async function postQuestion(
   title: string,
   tags: { title: string }[],
   userId: string,
   description: string,
-  language: string
+  language: string,
+  path: string
 ): Promise<void> {
   try {
     connectToDb();
@@ -35,6 +37,8 @@ export async function postQuestion(
 
     user.questions.push(question._id);
     await user.save();
+
+    revalidatePath(path);
   } catch (error) {
     console.log(error);
   }
@@ -79,7 +83,13 @@ export async function answerOnQuestion<
   Qid extends string,
   D extends string,
   L extends string
->(userId: Uid, questionId: Qid, description: D, language: L): Promise<void> {
+>(
+  userId: Uid,
+  questionId: Qid,
+  description: D,
+  language: L,
+  path: string
+): Promise<void> {
   connectToDb();
 
   try {
@@ -97,6 +107,8 @@ export async function answerOnQuestion<
     question.answers.push(createdAnswer._id);
     await question.save();
     await createdAnswer.save();
+
+    revalidatePath(path);
   } catch (error) {
     console.log(error);
   }
@@ -126,7 +138,8 @@ export async function fetchUserAnswers<Uid extends string>(
 
 export async function deleteQuestion<Qid extends string, Uid extends string>(
   questionId: Qid,
-  userId: Uid
+  userId: Uid,
+  path: string
 ): Promise<void> {
   connectToDb();
 
@@ -149,6 +162,83 @@ export async function deleteQuestion<Qid extends string, Uid extends string>(
     await user.save();
 
     await Question.findByIdAndDelete(questionId);
+
+    revalidatePath(path);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// Create action to upvote and downvote questions
+
+async function voteQuestion<Qid extends string, Uid extends string>(
+  questionId: Qid,
+  userId: Uid,
+  voteType: "upvotes" | "downvotes",
+  path: string
+): Promise<void> {
+  connectToDb();
+
+  try {
+    const question = await Question.findById(questionId);
+
+    if (!question) return;
+
+    if (question[voteType].includes(userId)) {
+      question[voteType].pull(userId);
+      await question.save();
+    } else {
+      question[voteType].push(userId);
+      await question.save();
+    }
+
+    revalidatePath(path);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function upvoteQuestion<Qid extends string, Uid extends string>(
+  questionId: Qid,
+  userId: Uid,
+  path: string
+): Promise<void> {
+  await voteQuestion(questionId, userId, "upvotes", path);
+}
+
+// Downvote question action
+
+export async function downvoteQuestion<Qid extends string, Uid extends string>(
+  questionId: Qid,
+  userId: Uid,
+  path: string
+): Promise<void> {
+  await voteQuestion(questionId, userId, "downvotes", path);
+}
+
+// Save to collection action
+
+export async function saveToCollection<Qid extends string, Uid extends string>(
+  questionId: Qid,
+  userId: Uid,
+  path: string
+) {
+  connectToDb();
+
+  try {
+    const user = await User.findById(userId);
+
+    if (!user) return;
+
+    if (user.savedQuestions.includes(questionId)) {
+      user.savedQuestions.pull(questionId);
+      await user.save();
+    } else {
+      user.savedQuestions.push(questionId);
+      await user.save();
+    }
+
+    revalidatePath(path);
   } catch (error) {
     console.log(error);
   }

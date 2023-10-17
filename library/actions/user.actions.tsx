@@ -3,6 +3,7 @@
 import Question from "../models/question";
 import User from "../models/user";
 import { connectToDb } from "../mongoose";
+import { revalidatePath } from "next/cache";
 import { hashPassword } from "../utility";
 
 export async function signupUser<
@@ -78,7 +79,8 @@ export async function editProfile<
   name: Name,
   username: Username,
   biography: Biography,
-  location: Location
+  location: Location,
+  path: string
 ) {
   try {
     connectToDb();
@@ -95,6 +97,7 @@ export async function editProfile<
     user.location = location;
 
     await user.save();
+    revalidatePath(path);
 
     return user;
   } catch (error) {

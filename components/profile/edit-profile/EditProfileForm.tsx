@@ -54,7 +54,8 @@ const EditProfileForm = ({
         formState.inputs.name.value,
         formState.inputs.username.value,
         formState.inputs.biography.value,
-        formState.inputs.location.value
+        formState.inputs.location.value,
+        `/profile/${userId}`
       );
 
       router.push(`/profile/${userId}`);

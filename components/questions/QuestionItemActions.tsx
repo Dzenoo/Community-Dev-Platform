@@ -2,9 +2,11 @@
 import Image from "next/image";
 import { deleteQuestion } from "@/library/actions/questions.actions";
 import { useSession } from "next-auth/react";
+import { usePathname } from "next/navigation";
 
 const QuestionItemActions = ({ id }: { id: string }) => {
   const { data: session } = useSession();
+  const pathname = usePathname();
 
   async function deleteQuestionConfirm() {
     const confirm = window.confirm(
@@ -13,7 +15,7 @@ const QuestionItemActions = ({ id }: { id: string }) => {
 
     if (confirm) {
       // @ts-ignore
-      await deleteQuestion(id, session?.user.id);
+      await deleteQuestion(id, session?.user.id, pathname);
     }
   }
 

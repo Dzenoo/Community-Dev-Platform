@@ -12,13 +12,13 @@ export interface QuestionItemPropsTypes {
     _id: string;
     username: string;
   };
-  votes: number;
-  downvotes: number;
+  upvotes: string[];
+  downvotes: string[];
   answers: QuestionAnswerPropsTypes[];
   description?: string;
   showActions?: boolean;
   language?: string;
-  views: number;
+  views: string[];
   createdAt: Date;
 }
 
@@ -29,7 +29,7 @@ export interface QuestionListPropsTypes {
 
 export interface QuestionDetailsActionsContentPropsTypes {
   id: string;
-  votes: number;
+  upvotes: number;
   downvotes: number;
 }
 

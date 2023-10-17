@@ -13,7 +13,7 @@ const QuestionDetailsContent: React.FC<QuestionItemPropsTypes> = ({
   title,
   description,
   answers,
-  votes,
+  upvotes,
   downvotes,
   language,
   views,
@@ -25,7 +25,11 @@ const QuestionDetailsContent: React.FC<QuestionItemPropsTypes> = ({
   return (
     <div className="flex flex-col gap-4 pb-12">
       <div className="flex justify-end items-end">
-        <QuestionDetailsActions votes={votes} downvotes={downvotes} id={_id} />
+        <QuestionDetailsActions
+          upvotes={upvotes?.length}
+          downvotes={downvotes?.length}
+          id={_id}
+        />
       </div>
       <div className="flex flex-col gap-4">
         <div className="flex items-center gap-4 flex-wrap">
@@ -47,7 +51,7 @@ const QuestionDetailsContent: React.FC<QuestionItemPropsTypes> = ({
             answers?.length,
             "Answers"
           )}
-          {generateQuestionActionsData("", views, "Views")}
+          {generateQuestionActionsData("", views?.length, "Views")}
         </div>
         <div className="mt-6 break-words">
           {description?.split(/```/)?.map((section, index) => {

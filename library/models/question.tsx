@@ -5,12 +5,12 @@ export interface QuestionTypes extends Document {
   title: string;
   tags: { title: string }[];
   user: mongoose.Types.ObjectId; // Reference to the User who asked the question
-  votes: number;
-  downvotes: number;
+  upvotes: mongoose.Types.ObjectId[];
+  downvotes: mongoose.Types.ObjectId[];
   answers: mongoose.Types.ObjectId[]; // References to Answer documents
   description: string;
   language: string;
-  views: number;
+  views: mongoose.Types.ObjectId[];
 }
 
 const QuestionSchema: Schema = new mongoose.Schema(
@@ -32,14 +32,20 @@ const QuestionSchema: Schema = new mongoose.Schema(
       required: true,
       ref: "User", // Reference to the User schema
     },
-    votes: {
-      type: Number,
-      default: 0,
-    },
-    downvotes: {
-      type: Number,
-      default: 0,
-    },
+    upvotes: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User", // Reference to the User schema
+        default: [],
+      },
+    ],
+    downvotes: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User", // Reference to the User schema
+        default: [],
+      },
+    ],
     answers: [
       {
         type: mongoose.Schema.Types.ObjectId,
@@ -55,10 +61,13 @@ const QuestionSchema: Schema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    views: {
-      type: Number,
-      default: 0,
-    },
+    views: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User", // Reference to the Answer schema
+        default: [],
+      },
+    ],
   },
   { timestamps: true }
 );
