@@ -48,7 +48,7 @@ body {
 }
 
 .input_navigation_result_box {
-  @apply w-full h-60 overflow-y-scroll rounded-b-md bg-white absolute transition-opacity;
+  @apply z-40 w-full h-60 overflow-y-scroll rounded-b-md bg-white absolute transition-opacity;
   animation: input_navigation_animation 0.7s ease;
 }
 

@@ -94,7 +94,7 @@ const QuestionDetailsContent: React.FC<QuestionItemPropsTypes> = ({
                   user={answer.user}
                   description={answer.description}
                   language={answer.language}
-                  votes={answer.votes}
+                  upvotes={answer.upvotes}
                   downvotes={answer.downvotes}
                 />
               ))

@@ -5,8 +5,8 @@ export interface AnswerTypes extends Document {
   question: mongoose.Types.ObjectId;
   description: string;
   language: string;
-  votes: number;
-  downvotes: number;
+  upvotes: string[];
+  downvotes: string[];
 }
 
 const AnswerSchema: Schema = new mongoose.Schema({
@@ -28,14 +28,20 @@ const AnswerSchema: Schema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  votes: {
-    type: Number,
-    default: 0,
-  },
-  downvotes: {
-    type: Number,
-    default: 0,
-  },
+  upvotes: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      default: [],
+    },
+  ],
+  downvotes: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      default: [],
+    },
+  ],
 });
 
 const Answer = mongoose.models.Answer || mongoose.model("Answer", AnswerSchema);

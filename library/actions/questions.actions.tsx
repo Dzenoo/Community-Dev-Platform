@@ -243,3 +243,47 @@ export async function saveToCollection<Qid extends string, Uid extends string>(
     console.log(error);
   }
 }
+
+// Vote Answer action
+
+export async function voteAnswer<Aid extends string, Uid extends string>(
+  answerId: Aid,
+  userId: Uid,
+  voteType: "upvotes" | "downvotes",
+  path: string
+): Promise<void> {
+  connectToDb();
+
+  try {
+    const answer = await Answer.findById(answerId);
+    if (!answer) return;
+
+    if (answer[voteType].includes(userId)) {
+      answer[voteType].pull(userId);
+      await answer.save();
+    } else {
+      answer[voteType].push(userId);
+      await answer.save();
+    }
+
+    revalidatePath(path);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function upvoteAnswer<Aid extends string, Uid extends string>(
+  answerId: Aid,
+  userId: Uid,
+  path: string
+): Promise<void> {
+  await voteAnswer(answerId, userId, "upvotes", path);
+}
+
+export async function downvoteAnswer<Aid extends string, Uid extends string>(
+  answerId: Aid,
+  userId: Uid,
+  path: string
+): Promise<void> {
+  await voteAnswer(answerId, userId, "downvotes", path);
+}

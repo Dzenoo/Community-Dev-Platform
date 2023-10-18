@@ -8,7 +8,7 @@ const QuestionDetailsAnswer: React.FC<QuestionAnswerPropsTypes> = ({
   description,
   language,
   _id,
-  votes,
+  upvotes,
   downvotes,
 }) => {
   return (
@@ -25,8 +25,8 @@ const QuestionDetailsAnswer: React.FC<QuestionAnswerPropsTypes> = ({
         </div>
         <div className="">
           <QuestionDetailsAnswerActions
-            votes={votes}
-            downvotes={downvotes}
+            upvotes={upvotes?.length}
+            downvotes={downvotes?.length}
             id={_id}
           />
         </div>

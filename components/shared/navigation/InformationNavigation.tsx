@@ -21,7 +21,7 @@ const InformationNavigation = () => {
         <h2 className="section_title_smaller text-white">Popular Tags</h2>
         <ul className="grid grid-cols-2 gap-4">
           {InformationTagsNavigationData.map((question) => (
-            <Tags id={question.id} key={question.id} title={question.title} />
+            <Tags _id={question.id} key={question.id} title={question.title} />
           ))}
         </ul>
       </div>

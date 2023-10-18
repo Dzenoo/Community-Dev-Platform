@@ -5,6 +5,6 @@ export interface QuestionAnswerPropsTypes {
   };
   description: string;
   language: string;
-  votes: number;
-  downvotes: number;
+  upvotes: string[];
+  downvotes: string[];
 }
