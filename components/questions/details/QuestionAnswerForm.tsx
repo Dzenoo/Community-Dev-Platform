@@ -66,7 +66,6 @@ const QuestionAnswerForm = ({ questionId }: { questionId: string }) => {
               </option>
             ))}
           </select>
-          <Button variant="Outlined">Generate AI answer</Button>
         </div>
       </div>
       <div className="my-4">

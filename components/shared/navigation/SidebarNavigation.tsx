@@ -9,7 +9,8 @@ import Link from "next/link";
 import LinkButton from "@/components/shared/ui/elements/link";
 import Button from "../ui/elements/button";
 
-const SidebarNavigation = ({ sidebarIsOpen }: { sidebarIsOpen: boolean }) => {
+const SidebarNavigation = () => {
+  const [sidebarIsOpen, setSidebarIsOpen] = useState<boolean>(false);
   const { data: session } = useSession();
   const [sidebarClassName, setSidebarClassName] = useState<string>("sidebar");
   const pathname = usePathname();

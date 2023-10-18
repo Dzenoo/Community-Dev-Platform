@@ -1,15 +1,10 @@
+"use client";
 import Link from "next/link";
 import InputNavigation from "@/components/shared/ui/navigation/input-navigation";
 import ProfileNavigation from "@/components/shared/ui/navigation/profile-navigation";
-import Image from "next/image";
-import { SetStateAction } from "react";
 import { useSession } from "next-auth/react";
 
-const LogoNavigation = ({
-  setSidebarIsOpen,
-}: {
-  setSidebarIsOpen: React.Dispatch<SetStateAction<boolean>>;
-}) => {
+const LogoNavigation = () => {
   const { data: session } = useSession();
 
   return (
@@ -31,18 +26,6 @@ const LogoNavigation = ({
           <ProfileNavigation name={session?.user?.name?.toString()} />
         </div>
       )}
-      <button
-        type="button"
-        className="block lg:hidden"
-        onClick={() => setSidebarIsOpen((prevSidebar) => !prevSidebar)}
-      >
-        <Image
-          src="/assets/graphics/btn.png"
-          alt="menu"
-          width={20}
-          height={20}
-        />
-      </button>
     </header>
   );
 };
