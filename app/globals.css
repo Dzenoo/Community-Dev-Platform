@@ -130,6 +130,18 @@ body {
   @apply section_title_smaller text-white;
 }
 
+.tags_box {
+  @apply mt-4 bg-white p-4 rounded-md shadow-md hidden;
+}
+
+.show_tags_box_container {
+  @apply flex gap-4 items-center flex-wrap visible transition-all;
+}
+
+.button_tags {
+  @apply p-4 rounded-md text-white font-bold bg-blue-600 transition-all hover:bg-blue-400;
+}
+
 /* KEYFRAMES */
 @keyframes input_navigation_animation {
   0% {

@@ -1,6 +1,7 @@
 export interface TagsPropsTypes {
   _id?: string;
   title: string;
+  shouldTruncate?: boolean;
 }
 
 export interface TagListPropsTypes {
@@ -8,7 +9,7 @@ export interface TagListPropsTypes {
 }
 
 export interface TagItemPropsTypes {
-  id: string | number;
+  id: string;
   name: string;
   questionsCount: number;
   description: string;

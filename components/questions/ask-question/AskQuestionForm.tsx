@@ -42,18 +42,11 @@ const AskQuestionForm = () => {
       tags.length === 0
   );
 
-  function addTagsHandler() {
-    if (formState.inputs.tag.value === "") {
-      return alert("Please enter a valid tag");
+  function addTagsHandler(tagValue: string) {
+    if (tags.find((t) => t.title === tagValue)) {
+      alert("Tag already exists");
     } else {
-      if (tags.find((t) => t.title === formState.inputs.tag.value)) {
-        alert("Tag already exists");
-      } else {
-        setTags((prevTags) => [
-          ...prevTags,
-          { title: formState.inputs.tag.value },
-        ]);
-      }
+      setTags((prevTags) => [...prevTags, { title: tagValue }]);
     }
   }
 
@@ -140,20 +133,36 @@ const AskQuestionForm = () => {
               <Input
                 id="tags"
                 label="Add Tags"
-                helperText="Add tags to question"
-                isValid={formState.inputs.tag.isValid}
-                errorText="Please enter a valid tags"
+                isValid={true}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                   inputChangeHandler("tag", e.target.value, [
                     VALIDATOR_REQUIRE(),
                   ])
                 }
               />
-            </div>
-            <div>
-              <Button type="button" variant="Normal" onClick={addTagsHandler}>
-                Add Tag
-              </Button>
+              <div
+                className={`tags_box ${
+                  formState.inputs.tag.value.length > 0 &&
+                  "show_tags_box_container"
+                }`}
+              >
+                {ProgrammingLanguagesData.filter((language) =>
+                  language.name
+                    .toLowerCase()
+                    .startsWith(formState.inputs.tag.value)
+                ).map((language) => {
+                  return (
+                    <button
+                      key={language.id}
+                      className="button_tags"
+                      type="button"
+                      onClick={() => addTagsHandler(language.name)}
+                    >
+                      {language.name}
+                    </button>
+                  );
+                })}
+              </div>
             </div>
           </div>
           <ul className="mt-4 flex gap-2">

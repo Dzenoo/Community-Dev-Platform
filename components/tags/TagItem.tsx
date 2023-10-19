@@ -11,7 +11,7 @@ const TagItem: React.FC<TagItemPropsTypes> = ({
   return (
     <Card>
       <div className="flex flex-col justify-between gap-4">
-        <TagLink id={id} title={name} />
+        <TagLink _id={id} title={name} />
         <h2 className="section_subtitle_smaller text-white">{description}</h2>
         <p className="section_subtitle text-white">
           <span className="font-bold">{questionsCount}</span> questions

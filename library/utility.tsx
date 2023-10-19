@@ -55,3 +55,14 @@ export function checkFormValidity<T extends any>(condition: T) {
 
   return formIsValid;
 }
+
+export function getQuestionsTags(typeOfQuestions: any) {
+  const questionsValues = typeOfQuestions
+    ?.reduce((acc: any, question: any) => {
+      acc.push(...question.tags);
+      return acc;
+    }, [])
+    .slice(0, 3);
+
+  return questionsValues;
+}
