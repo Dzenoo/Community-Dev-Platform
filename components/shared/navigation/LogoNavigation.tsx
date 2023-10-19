@@ -23,12 +23,12 @@ const LogoNavigation = ({
         </Link>
       </div>
       {session?.user && (
-        <div className="basis-36 hidden lg:visible">
+        <div className="basis-36 hidden lg:flex">
           <InputNavigation />
         </div>
       )}
       {session?.user && (
-        <div className="hidden lg:visible">
+        <div className="hidden lg:flex">
           <ProfileNavigation name={session?.user?.name?.toString()} />
         </div>
       )}

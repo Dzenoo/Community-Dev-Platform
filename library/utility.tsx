@@ -66,3 +66,25 @@ export function getQuestionsTags(typeOfQuestions: any) {
 
   return tags;
 }
+
+// Update search params
+
+export function updateSearchParams<T extends string>(type: T, value: T) {
+  const searchParams = new URLSearchParams(window.location.search);
+  searchParams.set(type, value);
+
+  const newPathname = `${window.location.pathname}?${searchParams.toString()}`;
+
+  return newPathname;
+}
+
+// Delete search params
+
+export function deleteSearchParams<T extends string>(type: T) {
+  const searchParams = new URLSearchParams(window.location.search);
+  searchParams.delete(type);
+
+  const newPathname = `${window.location.pathname}?${searchParams.toString()}`;
+
+  return newPathname;
+}
