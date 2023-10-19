@@ -1,8 +1,10 @@
 import CommunityList from "@/components/community/CommunityList";
 import CommunityTopBar from "@/components/community/CommunityTopBar";
-import { CommunityUsers } from "@/constants";
+import { fetchUsers } from "@/library/actions/user.actions";
 
-const CommunityPage = () => {
+const CommunityPage = async () => {
+  const CommunityUsers: any = await fetchUsers("/community");
+
   return (
     <div>
       <CommunityTopBar />

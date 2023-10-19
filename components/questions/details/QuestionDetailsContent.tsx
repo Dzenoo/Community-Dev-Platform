@@ -73,8 +73,8 @@ const QuestionDetailsContent: React.FC<QuestionItemPropsTypes> = ({
           })}
         </div>
         <div className="mt-12 flex gap-4">
-          {tags?.map((tag) => (
-            <Tags key={tag._id} _id={tag._id} title={tag.title} />
+          {tags?.map((tag, ind) => (
+            <Tags key={ind} _id={tag} title={tag} />
           ))}
         </div>
         <div className="mt-12">

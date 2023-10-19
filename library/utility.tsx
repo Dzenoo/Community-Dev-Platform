@@ -57,12 +57,12 @@ export function checkFormValidity<T extends any>(condition: T) {
 }
 
 export function getQuestionsTags(typeOfQuestions: any) {
-  const questionsValues = typeOfQuestions
-    ?.reduce((acc: any, question: any) => {
-      acc.push(...question.tags);
-      return acc;
-    }, [])
-    .slice(0, 3);
+  const questionsValues = typeOfQuestions?.reduce((acc: any, question: any) => {
+    acc.push(question.tags);
+    return acc;
+  }, []);
 
-  return questionsValues;
+  const tags = questionsValues?.flat();
+
+  return tags;
 }

@@ -3,7 +3,7 @@ import mongoose, { Schema, Document } from "mongoose";
 export interface QuestionTypes extends Document {
   id: string;
   title: string;
-  tags: { title: string }[];
+  tags: string[];
   user: mongoose.Types.ObjectId; // Reference to the User who asked the question
   upvotes: mongoose.Types.ObjectId[];
   downvotes: mongoose.Types.ObjectId[];
@@ -19,14 +19,7 @@ const QuestionSchema: Schema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    tags: [
-      {
-        title: {
-          type: String,
-          required: true,
-        },
-      },
-    ],
+    tags: [{ type: String, required: true }],
     user: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,

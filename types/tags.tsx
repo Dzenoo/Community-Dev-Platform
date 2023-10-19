@@ -11,6 +11,5 @@ export interface TagListPropsTypes {
 export interface TagItemPropsTypes {
   id: string;
   name: string;
-  questionsCount: number;
   description: string;
 }

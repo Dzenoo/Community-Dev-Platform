@@ -14,7 +14,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 const AskQuestionForm = () => {
-  const [tags, setTags] = useState<{ title: string }[]>([]);
+  const [tags, setTags] = useState<string[]>([]);
   const { data: session } = useSession();
   const { formState, inputChangeHandler } = useForm({
     title: {
@@ -43,11 +43,15 @@ const AskQuestionForm = () => {
   );
 
   function addTagsHandler(tagValue: string) {
-    if (tags.find((t) => t.title === tagValue)) {
+    if (tags.find((tag) => tag === tagValue)) {
       alert("Tag already exists");
     } else {
-      setTags((prevTags) => [...prevTags, { title: tagValue }]);
+      setTags((prevTags) => [...prevTags, tagValue]);
     }
+  }
+
+  function removeTagsHandler(tagValue: string) {
+    setTags((prevTags) => prevTags.filter((tag) => tag !== tagValue));
   }
 
   async function submitHandler(e: React.FormEvent<HTMLFormElement>) {
@@ -167,8 +171,12 @@ const AskQuestionForm = () => {
           </div>
           <ul className="mt-4 flex gap-2">
             {tags?.map((tag) => (
-              <li key={tag.title} className="tags">
-                {tag.title}
+              <li
+                key={tag}
+                className="tags"
+                onClick={() => removeTagsHandler(tag)}
+              >
+                {tag}
               </li>
             ))}
           </ul>

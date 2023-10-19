@@ -9,8 +9,7 @@ import Link from "next/link";
 import LinkButton from "@/components/shared/ui/elements/link";
 import Button from "../ui/elements/button";
 
-const SidebarNavigation = () => {
-  const [sidebarIsOpen, setSidebarIsOpen] = useState<boolean>(false);
+const SidebarNavigation = ({ sidebarIsOpen }: { sidebarIsOpen: boolean }) => {
   const { data: session } = useSession();
   const [sidebarClassName, setSidebarClassName] = useState<string>("sidebar");
   const pathname = usePathname();
@@ -72,7 +71,8 @@ const SidebarNavigation = () => {
           </Link>
         )}
         {session?.user && (
-          <Link href={`/profile/u2/collections`}>
+          // @ts-ignore
+          <Link href={`/profile/${session.user.id}/collections`}>
             <li
               className={`sidebar_link section_subtitle_smaller ${
                 pathname === `/profile/u2/collections` && "bg-[#004ee7]"

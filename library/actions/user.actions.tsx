@@ -50,12 +50,30 @@ export async function signupUser<
   }
 }
 
+export async function fetchUsers(path: string) {
+  try {
+    connectToDb();
+
+    const users = await User.find({}).select("username name biography");
+
+    if (!users) return;
+
+    revalidatePath(path);
+
+    return users;
+  } catch (error) {
+    console.log(error);
+    throw new Error("Fetching users failed");
+  }
+}
+
 export async function fetchUser<Uid extends string>(userId: Uid) {
   try {
     connectToDb();
 
     const user = await User.findById(userId)
       .populate({ path: "questions", model: Question })
+      .populate({ path: "savedQuestions", model: Question })
       .select("-password");
 
     if (!user) return;

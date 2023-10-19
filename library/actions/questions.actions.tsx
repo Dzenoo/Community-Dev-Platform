@@ -8,7 +8,7 @@ import { revalidatePath } from "next/cache";
 
 export async function postQuestion(
   title: string,
-  tags: { title: string }[],
+  tags: string[],
   userId: string,
   description: string,
   language: string,
@@ -286,4 +286,19 @@ export async function downvoteAnswer<Aid extends string, Uid extends string>(
   path: string
 ): Promise<void> {
   await voteAnswer(answerId, userId, "downvotes", path);
+}
+
+export async function fetchQuestionByTag(tag: string | undefined) {
+  try {
+    await connectToDb();
+
+    const questions = await Question.find({ tags: { $in: tag } }).populate(
+      "user",
+      "username"
+    );
+
+    return questions;
+  } catch (error) {
+    console.log(error);
+  }
 }

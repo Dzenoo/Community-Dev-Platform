@@ -1,8 +1,10 @@
 import QuestionList from "@/components/questions/QuestionList";
-import { QuestionsData, TagsData } from "@/constants";
+import { TagsData } from "@/constants";
+import { fetchQuestionByTag } from "@/library/actions/questions.actions";
 
-const TagsDetailsPage = ({ params }: { params: { tagId: string } }) => {
-  const tag = TagsData.find((tag) => tag.id === params.tagId);
+const TagsDetailsPage = async ({ params }: { params: { tagId: string } }) => {
+  const tag = TagsData.find((tag) => tag.name === params.tagId);
+  const questions = await fetchQuestionByTag(tag?.name);
 
   return (
     <section>
@@ -13,7 +15,8 @@ const TagsDetailsPage = ({ params }: { params: { tagId: string } }) => {
         </h2>
       </div>
       <div className="mt-12">
-        <QuestionList questions={QuestionsData} />
+        {/* @ts-ignore */}
+        <QuestionList questions={questions} />
       </div>
     </section>
   );

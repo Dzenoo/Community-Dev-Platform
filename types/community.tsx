@@ -1,14 +1,15 @@
-import { TagsPropsTypes } from "./tags";
+// import { TagsPropsTypes } from "./tags";
 
 export interface CommunityListPropsTypes {
   community: CommunityItemPropsTypes[];
 }
 
 export interface CommunityItemPropsTypes {
-  id: string | number;
-  image: string;
+  _id?: string | number;
+  // image: string;
   username: string;
+  biography: string;
   name: string;
-  reputation: number;
-  tags: TagsPropsTypes[];
+  // reputation: number;
+  // tags: TagsPropsTypes[];
 }

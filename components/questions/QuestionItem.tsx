@@ -32,8 +32,8 @@ const QuestionItem: React.FC<QuestionItemPropsTypes> = ({
                 {title}
               </Link>
               <div className="mt-4 flex gap-4 items-stretch flex-wrap">
-                {tags?.map((tag) => (
-                  <Tags key={tag._id} _id={tag._id} title={tag.title} />
+                {tags?.map((tag, ind) => (
+                  <Tags key={ind} _id={tag} title={tag} />
                 ))}
               </div>
             </div>

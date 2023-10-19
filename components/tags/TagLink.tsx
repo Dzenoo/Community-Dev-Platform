@@ -5,7 +5,7 @@ const TagLink: React.FC<TagsPropsTypes> = ({ _id, title, shouldTruncate }) => {
   return (
     <Link href={`/tags/${_id}`} className="tags">
       {shouldTruncate
-        ? title.length > 7
+        ? title?.length > 7
           ? `${title.slice(0, 7)}...`
           : title
         : title}

@@ -4,10 +4,7 @@ import { QuestionAnswerPropsTypes } from "./answer";
 export interface QuestionItemPropsTypes {
   _id: string;
   title: string;
-  tags: {
-    _id?: string;
-    title: string;
-  }[];
+  tags: string[];
   user: {
     _id: string;
     username: string;

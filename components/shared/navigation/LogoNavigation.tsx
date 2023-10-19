@@ -2,9 +2,15 @@
 import Link from "next/link";
 import InputNavigation from "@/components/shared/ui/navigation/input-navigation";
 import ProfileNavigation from "@/components/shared/ui/navigation/profile-navigation";
+import Image from "next/image";
 import { useSession } from "next-auth/react";
+import { SetStateAction } from "react";
 
-const LogoNavigation = () => {
+const LogoNavigation = ({
+  setSidebarIsOpen,
+}: {
+  setSidebarIsOpen: React.Dispatch<SetStateAction<boolean>>;
+}) => {
   const { data: session } = useSession();
 
   return (
@@ -17,15 +23,26 @@ const LogoNavigation = () => {
         </Link>
       </div>
       {session?.user && (
-        <div className="basis-36 hidden lg:block">
+        <div className="basis-36 hidden lg:visible">
           <InputNavigation />
         </div>
       )}
       {session?.user && (
-        <div className="hidden lg:block">
+        <div className="hidden lg:visible">
           <ProfileNavigation name={session?.user?.name?.toString()} />
         </div>
       )}
+      <button
+        onClick={() => setSidebarIsOpen((prevState) => !prevState)}
+        className="visible lg:hidden"
+      >
+        <Image
+          src={"/assets/graphics/btn.png"}
+          alt="btn"
+          width={30}
+          height={30}
+        />
+      </button>
     </header>
   );
 };
