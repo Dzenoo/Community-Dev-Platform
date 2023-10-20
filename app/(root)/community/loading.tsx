@@ -1,8 +1,8 @@
 export default function Loading() {
   return (
     <section className="flex flex-col gap-8">
-      <div className="h-4 bg-gray-300 dark:bg-gray-600 rounded w-30"></div>
-      <div className="grid grid-cols-3 gap-4">
+      <div className="h-16 bg-gray-300 dark:bg-gray-600 rounded w-30"></div>
+      <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         <div className="flex flex-col justify-center items-center gap-4 bg-white h-40 dark:bg-gray-800 p-4 rounded-lg shadow-lg animate-pulse">
           <div className="h-36 bg-gray-300 dark:bg-gray-600 rounded-full w-36"></div>
           <div className="flex flex-col gap-4">

@@ -2,8 +2,6 @@ import EditProfileForm from "@/components/profile/edit-profile/EditProfileForm";
 import { fetchUser } from "@/library/actions/user.actions";
 
 const EditPage = async ({ params }: { params: { profileId: string } }) => {
-  await new Promise((resolve) => setTimeout(resolve, 3000));
-
   const user = await fetchUser(params.profileId);
   if (!user) return null;
 
