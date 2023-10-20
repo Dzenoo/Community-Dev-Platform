@@ -1,12 +1,28 @@
+"use client";
 import Link from "next/link";
 import Card from "@/components/shared/ui/elements/card";
 import { ProfileAsnwersDataItemPropsTypes } from "@/types/profile";
+import { usePathname } from "next/navigation";
+import { deleteAnswer } from "@/library/actions/answers.actions";
 
 const ProfileAnswerItem: React.FC<ProfileAsnwersDataItemPropsTypes> = ({
+  _id,
   title,
   question,
   description,
 }) => {
+  const pathname = usePathname();
+
+  async function deleteAnserConfirm() {
+    const confirm = window.confirm(
+      "Are you sure you want to delete this answer?"
+    );
+
+    if (confirm) {
+      await deleteAnswer(_id, pathname);
+    }
+  }
+
   return (
     <Card>
       <div className="flex flex-col justify-between gap-8 w-full overflow-hidden">
@@ -27,7 +43,12 @@ const ProfileAnswerItem: React.FC<ProfileAsnwersDataItemPropsTypes> = ({
             </div>
           </div>
           <div>
-            <button className="text-red-400 text-xl">X</button>
+            <button
+              className="text-red-400 text-xl"
+              onClick={deleteAnserConfirm}
+            >
+              X
+            </button>
           </div>
         </div>
       </div>

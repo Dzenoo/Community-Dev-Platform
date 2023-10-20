@@ -73,7 +73,11 @@ export async function fetchUser<Uid extends string>(userId: Uid) {
 
     const user = await User.findById(userId)
       .populate({ path: "questions", model: Question })
-      .populate({ path: "savedQuestions", model: Question })
+      .populate({
+        path: "savedQuestions",
+        model: Question,
+        populate: { path: "user", select: "username name" },
+      })
       .select("-password");
 
     if (!user) return;

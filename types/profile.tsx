@@ -20,7 +20,7 @@ export interface ProfileAnswersDataListPropsTypes {
 }
 
 export interface ProfileAsnwersDataItemPropsTypes {
-  _id?: string | number;
+  _id: string | number;
   question: any;
   title: string;
   description: string;

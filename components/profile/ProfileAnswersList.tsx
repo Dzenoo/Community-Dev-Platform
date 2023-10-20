@@ -16,6 +16,7 @@ const ProfileAnswersList: React.FC<ProfileAnswersDataListPropsTypes> = ({
         profileAnswers.map((answers) => (
           <ProfileAnswerItem
             key={answers._id}
+            _id={answers._id}
             question={answers.question._id}
             title={answers.question.title}
             description={answers.question.description}
