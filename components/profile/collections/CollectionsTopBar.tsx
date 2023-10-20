@@ -1,25 +1,28 @@
-import Input from "@/components/shared/ui/elements/input";
-import { ProgrammingLanguagesData } from "@/constants";
+"use client";
+import { useRouter } from "next/navigation";
+import { updateSearchParams } from "@/library/utility";
+import { ChangeEvent } from "react";
 
 const CollectionsTopBar = () => {
+  const router = useRouter();
+
+  function handleUpdateSearchParams(title: string, value: string) {
+    const newPathname = updateSearchParams(title, value.toLowerCase());
+    router.push(newPathname);
+  }
+
   return (
     <section className="flex justify-between items-end gap-6 flex-wrap">
       <div className="grow">
         <h2 className="section_title text-white mb-4">Saved Questions</h2>
-        <Input
-          id={"search-questions"}
-          label={"Search Questions"}
+        <input
+          id={"search-collections"}
+          className="input w-full"
           placeholder="Search Questions"
+          onChange={(e: ChangeEvent<HTMLInputElement>) =>
+            handleUpdateSearchParams("search", e.target.value)
+          }
         />
-      </div>
-      <div className="mb-2">
-        <select className="select">
-          {ProgrammingLanguagesData.map((language) => (
-            <option key={language.id} value={language.value}>
-              {language.name}
-            </option>
-          ))}
-        </select>
       </div>
     </section>
   );
