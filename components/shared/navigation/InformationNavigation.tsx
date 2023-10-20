@@ -51,7 +51,7 @@ const InformationNavigation = async () => {
         <h2 className="section_title_smaller text-white">Popular Tags</h2>
         <ul className="grid grid-cols-2 gap-4">
           {topQuestionstags.length === 0
-            ? questionstags?.map((question: any, ind: number) => (
+            ? questionstags.map((question: any, ind: number) => (
                 <Tags
                   _id={question}
                   key={ind}

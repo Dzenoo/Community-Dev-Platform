@@ -58,7 +58,14 @@ export function checkFormValidity<T extends any>(condition: T) {
 
 export function getQuestionsTags(typeOfQuestions: any) {
   const questionsValues = typeOfQuestions?.reduce((acc: any, question: any) => {
-    acc.push(question.tags);
+    // Prevent duplicates tags
+
+    if (!acc.includes(question.tags)) {
+      acc.push(question.tags);
+    } else {
+      return acc;
+    }
+
     return acc;
   }, []);
 
