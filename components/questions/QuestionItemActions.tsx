@@ -1,5 +1,5 @@
 "use client";
-import Image from "next/image";
+// import Image from "next/image";
 import { deleteQuestion } from "@/library/actions/questions.actions";
 import { useSession } from "next-auth/react";
 import { usePathname } from "next/navigation";
@@ -30,7 +30,7 @@ const QuestionItemActions = ({ id }: { id: string }) => {
             X
           </button>
         </div>
-        <div>
+        {/* <div>
           <button>
             <Image
               src="/assets/graphics/editing.png"
@@ -39,7 +39,7 @@ const QuestionItemActions = ({ id }: { id: string }) => {
               height={20}
             />
           </button>
-        </div>
+        </div> */}
       </div>
     </div>
   );

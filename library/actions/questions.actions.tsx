@@ -36,6 +36,7 @@ export async function postQuestion(
     await question.save();
 
     user.questions.push(question._id);
+    user.bronzeBadges++;
     await user.save();
 
     revalidatePath(path);
@@ -94,8 +95,9 @@ export async function answerOnQuestion<
 
   try {
     const question = await Question.findById(questionId);
+    const user = await User.findById(userId);
 
-    if (!question) return;
+    if (!question || !user) return;
 
     const createdAnswer = await Answer.create({
       user: userId,
@@ -105,7 +107,10 @@ export async function answerOnQuestion<
     });
 
     question.answers.push(createdAnswer._id);
+    user.bronzeBadges++;
+
     await question.save();
+    await user.save();
     await createdAnswer.save();
 
     revalidatePath(path);
@@ -181,8 +186,9 @@ async function voteQuestion<Qid extends string, Uid extends string>(
 
   try {
     const question = await Question.findById(questionId);
+    const user = await User.findById(question?.user);
 
-    if (!question) return;
+    if (!question || !user) return;
 
     if (question[voteType].includes(userId)) {
       question[voteType].pull(userId);
@@ -191,6 +197,16 @@ async function voteQuestion<Qid extends string, Uid extends string>(
       question[voteType].push(userId);
       await question.save();
     }
+
+    if (question.upvotes.length >= 10) {
+      user.bronzeBadges++;
+    } else if (question.upvotes.length >= 25) {
+      user.silverBadges++;
+    } else if (question.upvotes.length >= 40) {
+      user.goldBadges++;
+    }
+
+    await user.save();
 
     revalidatePath(path);
   } catch (error) {
@@ -256,7 +272,9 @@ export async function voteAnswer<Aid extends string, Uid extends string>(
 
   try {
     const answer = await Answer.findById(answerId);
-    if (!answer) return;
+    const user = await User.findById(answer?.user);
+
+    if (!answer || !user) return;
 
     if (answer[voteType].includes(userId)) {
       answer[voteType].pull(userId);
@@ -265,6 +283,16 @@ export async function voteAnswer<Aid extends string, Uid extends string>(
       answer[voteType].push(userId);
       await answer.save();
     }
+
+    if (answer.upvotes.length >= 10) {
+      user.bronzeBadges++;
+    } else if (answer.upvotes.length >= 25) {
+      user.silverBadges++;
+    } else if (answer.upvotes.length >= 40) {
+      user.goldBadges++;
+    }
+
+    await user.save();
 
     revalidatePath(path);
   } catch (error) {
