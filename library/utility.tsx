@@ -1,5 +1,7 @@
 import Image from "next/image";
 import bcrypt from "bcryptjs";
+import { redirect } from "next/navigation";
+import { useSession } from "next-auth/react";
 
 export function generateQuestionActionsData<
   T extends string | undefined,
@@ -90,4 +92,14 @@ export function deleteSearchParams<T extends string>(type: T) {
   const newPathname = `${window.location.pathname}?${searchParams.toString()}`;
 
   return newPathname;
+}
+
+export function notAuthNavigate(path: string) {
+  return redirect(path);
+}
+
+export function getAuth() {
+  const { data, status } = useSession();
+
+  return status;
 }

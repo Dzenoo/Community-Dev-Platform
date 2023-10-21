@@ -27,14 +27,12 @@ export interface ProfileAsnwersDataItemPropsTypes {
 }
 
 export interface ProfilePropsTypes {
-  user: {
-    questions: QuestionItemPropsTypes[];
-    id: string | number;
-    name: string;
-    username: string;
-    location: string;
-    portfolio: string;
-    biography: string;
-    createdAt: Date;
-  };
+  questions: QuestionItemPropsTypes[];
+  id: string | number;
+  name: string;
+  username: string;
+  location: string;
+  portfolio: string;
+  biography: string;
+  createdAt: Date;
 }

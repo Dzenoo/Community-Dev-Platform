@@ -23,7 +23,7 @@ const QuestionDetailsContent: React.FC<QuestionItemPropsTypes> = ({
   const askedQUestion = calculateDate(createdAt);
 
   return (
-    <div className="flex flex-col gap-4 pb-12">
+    <div className="flex flex-col gap-4 pb-12 overflow-hidden">
       <div className="flex justify-end items-end">
         <QuestionDetailsActions
           upvotes={upvotes?.length}
@@ -43,7 +43,9 @@ const QuestionDetailsContent: React.FC<QuestionItemPropsTypes> = ({
           <p className="text-white text-md">| {askedQUestion}</p>
         </div>
         <div>
-          <h2 className="section_title_smaller text-white">{title}</h2>
+          <h2 className="section_title_smaller text-white break-words">
+            {title}
+          </h2>
         </div>
         <div className="flex items-center gap-4 flex-wrap">
           {generateQuestionActionsData(

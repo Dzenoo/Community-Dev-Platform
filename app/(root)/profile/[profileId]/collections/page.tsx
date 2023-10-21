@@ -1,6 +1,9 @@
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import CollectionsTopBar from "@/components/profile/collections/CollectionsTopBar";
 import QuestionList from "@/components/questions/QuestionList";
 import { fetchUser } from "@/library/actions/user.actions";
+import { notAuthNavigate } from "@/library/utility";
+import { getServerSession } from "next-auth";
 
 const CollectionsPage = async ({
   searchParams,
@@ -9,6 +12,7 @@ const CollectionsPage = async ({
   searchParams: { search: string };
   params: { profileId: string };
 }) => {
+  const session = await getServerSession(authOptions);
   const user = await fetchUser(params.profileId);
   const filteredQuestions = user?.savedQuestions?.filter((question: any) => {
     if (searchParams && searchParams.search) {
@@ -23,6 +27,11 @@ const CollectionsPage = async ({
     }
     return false;
   });
+
+  if (!user) return null;
+  if (!session) notAuthNavigate("/");
+  // @ts-ignore
+  if (params.profileId !== session?.user.id) notAuthNavigate("/");
 
   return (
     <>

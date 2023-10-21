@@ -2,13 +2,21 @@ import ProfileAnswersList from "@/components/profile/ProfileAnswersList";
 import ProfileStatistics from "@/components/profile/ProfileStatistics";
 import ProfileTopBar from "@/components/profile/ProfileTopBar";
 import QuestionList from "@/components/questions/QuestionList";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { fetchUserAnswers } from "@/library/actions/questions.actions";
 import { fetchUser } from "@/library/actions/user.actions";
+import { notAuthNavigate } from "@/library/utility";
+import { getServerSession } from "next-auth";
 
 const ProfilePage = async ({ params }: { params: { profileId: string } }) => {
+  const session = await getServerSession(authOptions);
   const user = await fetchUser(params.profileId);
-  if (!user) return null;
   const answers = await fetchUserAnswers(params.profileId);
+
+  if (!user) return null;
+  if (!session) notAuthNavigate("/");
+  // @ts-ignore
+  if (params.profileId !== session?.user.id) notAuthNavigate("/");
 
   const ProfileStatisticsData = [
     {
@@ -33,7 +41,16 @@ const ProfilePage = async ({ params }: { params: { profileId: string } }) => {
 
   return (
     <section className="my-6 flex flex-col gap-12">
-      <ProfileTopBar user={user} />
+      <ProfileTopBar
+        id={user?._id}
+        name={user?.name}
+        username={user?.username}
+        questions={user?.questions}
+        location={user?.location}
+        portfolio={user?.portfolio}
+        biography={user?.biography}
+        createdAt={user?.createdAt}
+      />
       <ProfileStatistics profileStatistics={ProfileStatisticsData} />
       <div>
         <div>

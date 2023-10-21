@@ -1,7 +1,6 @@
 export interface TagsPropsTypes {
   _id?: string;
   title: string;
-  shouldTruncate?: boolean;
 }
 
 export interface TagListPropsTypes {
