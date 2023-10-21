@@ -139,7 +139,7 @@ export async function fetchUserAnswers<Uid extends string>(
   }
 }
 
-// Edit questions actions
+// Delete questions actions
 
 export async function deleteQuestion<Qid extends string, Uid extends string>(
   questionId: Qid,

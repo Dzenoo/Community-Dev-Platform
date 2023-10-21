@@ -10,6 +10,7 @@ import {
   VALIDATOR_MINLENGTH,
   VALIDATOR_REQUIRE,
 } from "@/library/validators/validators";
+import { ToastContainer, toast } from "react-toastify";
 import { ChangeEvent } from "react";
 
 const QuestionAnswerForm = ({ questionId }: { questionId: string }) => {
@@ -26,12 +27,17 @@ const QuestionAnswerForm = ({ questionId }: { questionId: string }) => {
   });
 
   const formIsValid = checkFormValidity(
-    formState.inputs.description.value === "" ||
+    !formState.inputs.description.isValid ||
       formState.inputs.language.value === ""
   );
 
   async function onAnswerSubmitHandler(e: ChangeEvent<HTMLFormElement>) {
     e.preventDefault();
+
+    if (!session) {
+      toast.error("You must be logged in to answer a question.");
+      return;
+    }
 
     if (formIsValid) {
       await answerOnQuestion(
@@ -43,12 +49,13 @@ const QuestionAnswerForm = ({ questionId }: { questionId: string }) => {
         `/questions/${questionId}`
       );
     } else {
-      alert("Please fill all fields.");
+      toast.error("Please fill all fields.");
     }
   }
 
   return (
     <form className="flex flex-col gap-2" onSubmit={onAnswerSubmitHandler}>
+      <ToastContainer />
       <div className="flex justify-between gap-4 max-md:flex-wrap">
         <h2 className="section_title text-white">Answer</h2>
         <div className="flex gap-4 max-md:basis-full">

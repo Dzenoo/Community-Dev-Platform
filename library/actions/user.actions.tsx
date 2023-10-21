@@ -126,6 +126,14 @@ export async function editProfile<
 
     if (!name || !username || !biography || !location) return;
 
+    if (
+      user.username === username &&
+      user.name === name &&
+      user.biography === biography &&
+      user.location === location
+    )
+      return;
+
     user.name = name;
     user.username = username;
     user.biography = biography;

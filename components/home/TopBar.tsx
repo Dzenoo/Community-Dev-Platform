@@ -16,9 +16,9 @@ const TopBar = () => {
     <section className="flex justify-between items-end gap-6 flex-wrap">
       <div className="grow">
         <input
-          id={"search-tags"}
+          id={"search-questions"}
           className="input w-full"
-          placeholder="Search Tags"
+          placeholder="Search Questions"
           onChange={(e: ChangeEvent<HTMLInputElement>) =>
             handleUpdateSearchParams("search", e.target.value)
           }

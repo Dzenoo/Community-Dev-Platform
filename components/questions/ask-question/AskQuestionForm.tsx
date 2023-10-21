@@ -11,6 +11,7 @@ import {
 } from "@/library/validators/validators";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
 import { useSession } from "next-auth/react";
 
 const AskQuestionForm = () => {
@@ -44,7 +45,7 @@ const AskQuestionForm = () => {
 
   function addTagsHandler(tagValue: string) {
     if (tags.find((tag) => tag === tagValue)) {
-      alert("Tag already exists");
+      toast.warning("Tag already exists");
     } else {
       setTags((prevTags) => [...prevTags, tagValue]);
     }
@@ -56,6 +57,17 @@ const AskQuestionForm = () => {
 
   async function submitHandler(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+
+    if (!isFormValid) {
+      toast.error("Please fill the fields");
+      return;
+    }
+
+    // @ts-ignore
+    if (!session?.user?.id) {
+      toast.error("Please login to ask the question");
+      return;
+    }
 
     await postQuestion(
       formState.inputs.title.value,
@@ -84,6 +96,7 @@ const AskQuestionForm = () => {
       onSubmit={submitHandler}
       onKeyDown={disableFormSubmitOnEnter}
     >
+      <ToastContainer />
       <div className="my-12 flex flex-col gap-12">
         <div>
           <Input

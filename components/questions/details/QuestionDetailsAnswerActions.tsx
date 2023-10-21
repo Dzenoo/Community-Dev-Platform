@@ -1,6 +1,7 @@
 "use client";
 import { QuestionDetailsActionsContentPropsTypes } from "@/types/questions";
 import QuestionDetailsActionsData from "./QuestionDetailsActionsData";
+import { ToastContainer, toast } from "react-toastify";
 import { useSession } from "next-auth/react";
 import { usePathname } from "next/navigation";
 import {
@@ -16,17 +17,28 @@ const QuestionDetailsAnswerActions: React.FC<
 
   return (
     <div id={id} className="flex items-center gap-2">
+      <ToastContainer />
       <QuestionDetailsActionsData
         icon="/assets/graphics/down-arrow.png"
-        // @ts-ignore
-        onClick={() => upvoteAnswer(id, session?.user?.id, pathname)}
+        onClick={() => {
+          if (!session) {
+            toast.error("You must be logged in to vote an answer.");
+          }
+          // @ts-ignore
+          upvoteAnswer(id, session?.user?.id, pathname);
+        }}
         type="vote"
         data={upvotes}
       />
       <QuestionDetailsActionsData
         icon="/assets/graphics/down-arrow.png"
-        // @ts-ignore
-        onClick={() => downvoteAnswer(id, session?.user?.id, pathname)}
+        onClick={() => {
+          if (!session) {
+            toast.error("You must be logged in to vote an answer.");
+          }
+          // @ts-ignore
+          downvoteAnswer(id, session?.user?.id, pathname);
+        }}
         type="downvote"
         data={downvotes}
       />

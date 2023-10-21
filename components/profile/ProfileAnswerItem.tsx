@@ -3,6 +3,7 @@ import Link from "next/link";
 import Card from "@/components/shared/ui/elements/card";
 import { ProfileAsnwersDataItemPropsTypes } from "@/types/profile";
 import { usePathname } from "next/navigation";
+import { ToastContainer, toast } from "react-toastify";
 import { deleteAnswer } from "@/library/actions/answers.actions";
 
 const ProfileAnswerItem: React.FC<ProfileAsnwersDataItemPropsTypes> = ({
@@ -18,6 +19,11 @@ const ProfileAnswerItem: React.FC<ProfileAsnwersDataItemPropsTypes> = ({
       "Are you sure you want to delete this answer?"
     );
 
+    if (!_id) {
+      toast.error("You must be logged in to delete an answer.");
+      return;
+    }
+
     if (confirm) {
       await deleteAnswer(_id, pathname);
     }
@@ -25,6 +31,7 @@ const ProfileAnswerItem: React.FC<ProfileAsnwersDataItemPropsTypes> = ({
 
   return (
     <Card>
+      <ToastContainer />
       <div className="flex flex-col justify-between gap-8 w-full overflow-hidden">
         <div className="flex justify-between flex-wrap gap-4">
           <div className="flex flex-col justify-between gap-12">
