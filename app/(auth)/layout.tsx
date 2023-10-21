@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import "react-toastify/dist/ReactToastify.css";
 import "../globals.css";
 import AuthProvider from "@/context/AuthProvider";
 

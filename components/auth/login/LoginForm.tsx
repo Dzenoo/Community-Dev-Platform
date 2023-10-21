@@ -10,6 +10,7 @@ import { useRouter } from "next/navigation";
 import { FormEvent } from "react";
 import { signIn } from "next-auth/react";
 import { checkFormValidity } from "@/library/utility";
+import { ToastContainer, toast } from "react-toastify";
 
 const LoginForm = () => {
   const router = useRouter();
@@ -37,7 +38,7 @@ const LoginForm = () => {
       formState.inputs.email.value === "" ||
       formState.inputs.password.value === ""
     ) {
-      return alert("Please fill all fields");
+      toast.error("Please fill all the fields.");
     }
 
     if (isFormValid) {
@@ -56,14 +57,14 @@ const LoginForm = () => {
           router.push("/");
         }
       } catch (error) {
-        console.log(error);
-        alert("Invalid email or password. Please try again.");
+        toast.error("Invalid email or password. Please try again.");
       }
     }
   }
 
   return (
     <form className="mt-10 flex flex-col gap-12" onSubmit={handleSubmit}>
+      <ToastContainer />
       <div className="flex flex-col gap-8">
         <Input
           type="email"

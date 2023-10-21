@@ -1,4 +1,5 @@
 import "../globals.css";
+import "react-toastify/dist/ReactToastify.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import AuthProvider from "@/context/AuthProvider";

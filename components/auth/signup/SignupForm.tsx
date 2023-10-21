@@ -9,6 +9,7 @@ import {
   VALIDATOR_MINLENGTH,
 } from "@/library/validators/validators";
 import { checkFormValidity } from "@/library/utility";
+import { ToastContainer, toast } from "react-toastify";
 
 const SignupForm = () => {
   const router = useRouter();
@@ -47,27 +48,34 @@ const SignupForm = () => {
       formState.inputs.username.value === "" ||
       formState.inputs.password.value === ""
     ) {
-      return alert("Please fill all fields");
+      toast.error("Please fill all fields");
+      return;
     }
 
     if (isFormValid) {
-      const response = await signupUser(
-        formState.inputs.name.value,
-        formState.inputs.email.value,
-        formState.inputs.username.value,
-        formState.inputs.password.value
-      );
+      try {
+        const response = await signupUser(
+          formState.inputs.name.value,
+          formState.inputs.email.value,
+          formState.inputs.username.value,
+          formState.inputs.password.value
+        );
 
-      if (!response) {
-        return alert("User already exist");
-      } else {
-        router.push("/login");
+        if (response) {
+          router.push("/login");
+        } else {
+          throw new Error();
+        }
+      } catch (error) {
+        // @ts-ignore
+        toast.error("User already exist. Please try again.");
       }
     }
   }
 
   return (
     <form className="mt-10 flex flex-col gap-12" onSubmit={onSubmitHandler}>
+      <ToastContainer />
       <div className="flex flex-col gap-6">
         <Input
           type="text"

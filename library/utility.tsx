@@ -57,19 +57,15 @@ export function checkFormValidity<T extends any>(condition: T) {
 }
 
 export function getQuestionsTags(typeOfQuestions: any) {
-  const questionsValues = typeOfQuestions?.reduce((acc: any, question: any) => {
-    // Prevent duplicates tags
+  const tagsSet = new Set(); // Use a Set to store unique tags
 
-    if (!acc.includes(question.tags)) {
-      acc.push(question.tags);
-    } else {
-      return acc;
-    }
+  typeOfQuestions?.forEach((question: any) => {
+    question.tags?.forEach((tag: any) => {
+      tagsSet.add(tag); // Add each tag to the Set
+    });
+  });
 
-    return acc;
-  }, []);
-
-  const tags = questionsValues?.flat();
+  const tags = Array.from(tagsSet); // Convert the Set back to an array
 
   return tags;
 }

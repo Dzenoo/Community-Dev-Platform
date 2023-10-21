@@ -22,12 +22,22 @@ export async function signupUser<
     await connectToDb();
 
     // Check if all fields are filled
-    if (!name || !email || !username || !password) return;
+    if (!name || !email || !username || !password) {
+      return;
+    }
 
     // Chech if user exist and check errors
-    const existingUser = await User.findOne({ email: email });
+    const existingUserEmail = await User.findOne({
+      email: email,
+    });
 
-    if (existingUser) return;
+    const existingUserUsername = await User.findOne({
+      username: username,
+    });
+
+    if (existingUserEmail || existingUserUsername) {
+      return;
+    }
 
     const hashedPassword = await hashPassword(password);
 
@@ -46,7 +56,6 @@ export async function signupUser<
     return createdUser;
   } catch (error) {
     console.log(error);
-    throw new Error("Signup failed");
   }
 }
 
@@ -72,7 +81,11 @@ export async function fetchUser<Uid extends string>(userId: Uid) {
     connectToDb();
 
     const user = await User.findById(userId)
-      .populate({ path: "questions", model: Question })
+      .populate({
+        path: "questions",
+        model: Question,
+        populate: { path: "user", select: "username name" },
+      })
       .populate({
         path: "savedQuestions",
         model: Question,
