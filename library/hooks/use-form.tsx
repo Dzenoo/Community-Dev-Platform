@@ -15,7 +15,6 @@ function reducer(state: ValidatorState, action: ValidatorReducerAction) {
           continue;
         }
       }
-
       return {
         ...state,
         inputs: {

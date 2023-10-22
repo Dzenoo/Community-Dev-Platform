@@ -1,10 +1,10 @@
 import "../globals.css";
 import "react-toastify/dist/ReactToastify.css";
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import AuthProvider from "@/context/AuthProvider";
 import RootLayoutWrapper from "@/components/shared/root/RootLayoutWrapper";
 import InformationNavigation from "@/components/shared/navigation/InformationNavigation";
+import { Inter } from "next/font/google";
+import type { Metadata } from "next";
 
 const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {

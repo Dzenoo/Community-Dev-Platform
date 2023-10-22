@@ -1,5 +1,5 @@
-import { ProfileAnswersDataListPropsTypes } from "@/types/profile";
 import ProfileAnswerItem from "./ProfileAnswerItem";
+import { ProfileAnswersDataListPropsTypes } from "@/types/profile";
 
 const ProfileAnswersList: React.FC<ProfileAnswersDataListPropsTypes> = ({
   profileAnswers,

@@ -1,5 +1,5 @@
-import { TagsPropsTypes } from "@/types/tags";
 import Link from "next/link";
+import { TagsPropsTypes } from "@/types/tags";
 
 const TagLink: React.FC<TagsPropsTypes> = ({ _id, title }) => {
   return (

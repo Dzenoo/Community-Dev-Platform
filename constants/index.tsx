@@ -165,76 +165,6 @@ export const QuestionsData = [
   },
 ];
 
-// export const TagsData = [
-//   {
-//     id: "t1",
-//     name: "javascript",
-//     questionsCount: 20,
-//     description:
-//       "JavaScript is a popular programming language used for web development.",
-//   },
-//   {
-//     id: "t2",
-//     name: "python",
-//     questionsCount: 12,
-//     description:
-//       "Python is a versatile and easy-to-learn programming language.",
-//   },
-//   {
-//     id: "t3",
-//     name: "react",
-//     questionsCount: 35,
-//     description: "React is a JavaScript library for building user interfaces.",
-//   },
-//   {
-//     id: "t4",
-//     name: "java",
-//     questionsCount: 26,
-//     description:
-//       "Java is a widely-used, platform-independent programming language.",
-//   },
-//   {
-//     id: "t5",
-//     name: "c++",
-//     questionsCount: 29,
-//     description:
-//       "C++ is an extension of the C programming language with object-oriented features.",
-//   },
-//   {
-//     id: "t6",
-//     name: "html",
-//     questionsCount: 26,
-//     description: "HTML is the standard markup language for creating web pages.",
-//   },
-//   {
-//     id: "t7",
-//     name: "css",
-//     questionsCount: 18,
-//     description:
-//       "CSS is used for styling web pages and making them visually appealing.",
-//   },
-//   {
-//     id: "t8",
-//     name: "node.js",
-//     questionsCount: 16,
-//     description:
-//       "Node.js is a runtime environment for server-side JavaScript applications.",
-//   },
-//   {
-//     id: "t9",
-//     name: "ruby-on-rails",
-//     questionsCount: 12,
-//     description:
-//       "Ruby on Rails is a web application framework written in Ruby.",
-//   },
-//   {
-//     id: "t10",
-//     name: "php",
-//     questionsCount: 16,
-//     description: "PHP is a server-side scripting language for web development.",
-//   },
-// ];
-
 export const CommunityUsers = [
   {
     id: 1,
@@ -332,13 +262,12 @@ export const TagsData = [
     id: "8",
     name: "Swift",
     description:
-      "Swift is a general-purpose, multi-paradigm, compiled programming language developed by Apple Inc. and the open-source community.",
+      "Swift is a general-purpose, multi-paradigm, compiled programming language",
   },
   {
     id: "9",
     name: "Go",
-    description:
-      "Go is a statically typed, compiled programming language designed at Google by Robert Griesemer, Rob Pike, and Ken Thompson.",
+    description: "Go is a statically typed, compiled programming language",
   },
   {
     id: "10",
@@ -349,12 +278,12 @@ export const TagsData = [
     id: "11",
     name: "TypeScript",
     description:
-      "TypeScript is a programming language developed and maintained by Microsoft. It is a strict syntactical superset of JavaScript and adds optional static typing to the language.",
+      "TypeScript is a programming language developed and maintained by Microsoft.",
   },
   {
     id: "12",
     name: "SQL",
     description:
-      "SQL is a domain-specific language used in programming and designed for managing data held in a relational database management system, or for stream processing in a relational data stream management system.",
+      "SQL is a domain-specific language used in programming and designed for managing data",
   },
 ];

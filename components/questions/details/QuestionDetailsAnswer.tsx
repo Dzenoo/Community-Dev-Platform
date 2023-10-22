@@ -1,7 +1,7 @@
-import { QuestionAnswerPropsTypes } from "@/types/answer";
 import Image from "next/image";
 import QuestionDetailsAnswerActions from "./QuestionDetailsAnswerActions";
 import QuestionDetailsCode from "./QuestionDetailsCode";
+import { QuestionAnswerPropsTypes } from "@/types/answer";
 
 const QuestionDetailsAnswer: React.FC<QuestionAnswerPropsTypes> = ({
   user,

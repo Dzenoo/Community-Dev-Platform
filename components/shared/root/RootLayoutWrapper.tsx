@@ -1,7 +1,7 @@
 "use client";
-import { ReactNode, useState } from "react";
 import LogoNavigation from "../navigation/LogoNavigation";
 import SidebarNavigation from "../navigation/SidebarNavigation";
+import { ReactNode, useState } from "react";
 
 const RootLayoutWrapper = ({
   children,

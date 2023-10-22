@@ -1,6 +1,6 @@
 "use client";
-import { QuestionDetailsActionsDataPropsTypes } from "@/types/questions";
 import Image from "next/image";
+import { QuestionDetailsActionsDataPropsTypes } from "@/types/questions";
 
 const QuestionDetailsActionsData: React.FC<
   QuestionDetailsActionsDataPropsTypes

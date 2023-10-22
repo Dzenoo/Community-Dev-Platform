@@ -1,11 +1,11 @@
-import { calculateDate, generateQuestionActionsData } from "@/library/utility";
-import { QuestionItemPropsTypes } from "@/types/questions";
 import QuestionDetailsActions from "./QuestionDetailsActions";
 import QuestionDetailsCode from "./QuestionDetailsCode";
 import QuestionDetailsAnswer from "./QuestionDetailsAnswer";
 import QuestionAnswerForm from "./QuestionAnswerForm";
 import Tags from "@/components/tags/TagLink";
 import Image from "next/image";
+import { calculateDate, generateQuestionActionsData } from "@/library/utility";
+import { QuestionItemPropsTypes } from "@/types/questions";
 
 const QuestionDetailsContent: React.FC<QuestionItemPropsTypes> = ({
   _id,

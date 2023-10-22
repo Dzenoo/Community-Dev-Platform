@@ -1,7 +1,7 @@
-import { Metadata } from "next";
 import "react-toastify/dist/ReactToastify.css";
 import "../globals.css";
 import AuthProvider from "@/context/AuthProvider";
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Community Dev",

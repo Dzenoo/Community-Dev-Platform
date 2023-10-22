@@ -1,8 +1,8 @@
-import { connectToDb } from "@/library/mongoose";
-import { comparePassword } from "@/library/utility";
 import User from "@/library/models/user";
 import NextAuth from "next-auth/next";
 import CredentialProvider from "next-auth/providers/credentials";
+import { connectToDb } from "@/library/mongoose";
+import { comparePassword } from "@/library/utility";
 
 export const authOptions: any = {
   secret: process.env.NEXT_AUTH_SECRET,

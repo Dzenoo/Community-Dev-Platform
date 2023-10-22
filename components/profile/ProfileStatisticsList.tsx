@@ -1,5 +1,5 @@
-import { ProfileListPropsTypes } from "@/types/profile";
 import ProfileStatisticsItem from "./ProfileStatisticsItem";
+import { ProfileListPropsTypes } from "@/types/profile";
 
 const ProfileStatisticsList: React.FC<ProfileListPropsTypes> = ({
   profileStatistics,

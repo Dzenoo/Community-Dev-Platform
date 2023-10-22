@@ -52,20 +52,10 @@ const InformationNavigation = async () => {
         <ul className="grid grid-cols-2 gap-4">
           {topQuestionstags.length === 0
             ? questionstags.map((question: any, ind: number) => (
-                <Tags
-                  _id={question}
-                  key={ind}
-                  title={question}
-                  shouldTruncate={true}
-                />
+                <Tags _id={question} key={ind} title={question} />
               ))
             : topQuestionstags.map((question: any, ind: number) => (
-                <Tags
-                  _id={question}
-                  key={ind}
-                  title={question}
-                  shouldTruncate={true}
-                />
+                <Tags _id={question} key={ind} title={question} />
               ))}
         </ul>
       </div>

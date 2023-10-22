@@ -1,8 +1,8 @@
 "use client";
+import LinkButton from "@/components/shared/ui/elements/link";
 import { useRouter } from "next/navigation";
 import { updateSearchParams } from "@/library/utility";
 import { ChangeEvent } from "react";
-import LinkButton from "@/components/shared/ui/elements/link";
 
 const TopBar = () => {
   const router = useRouter();

@@ -1,8 +1,8 @@
 "use client";
+import Button from "@/components/shared/ui/elements/button";
 import { useRouter } from "next/navigation";
 import { FilterButtonsData } from "@/constants";
 import { updateSearchParams } from "@/library/utility";
-import Button from "@/components/shared/ui/elements/button";
 
 const FilterBar = ({ filter }: { filter: string }) => {
   const router = useRouter();

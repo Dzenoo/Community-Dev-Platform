@@ -1,5 +1,5 @@
-import { TagListPropsTypes } from "@/types/tags";
 import TagItem from "./TagItem";
+import { TagListPropsTypes } from "@/types/tags";
 
 const TagList: React.FC<TagListPropsTypes> = ({ tags }) => {
   return (

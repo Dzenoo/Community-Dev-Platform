@@ -1,5 +1,5 @@
-import { CommunityListPropsTypes } from "@/types/community";
 import CommunityItem from "./CommunityItem";
+import { CommunityListPropsTypes } from "@/types/community";
 
 const CommunityList: React.FC<CommunityListPropsTypes> = ({ community }) => {
   return (

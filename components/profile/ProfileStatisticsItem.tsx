@@ -1,6 +1,6 @@
-import { ProfileItemPropsTypes } from "@/types/profile";
 import Image from "next/image";
 import Card from "@/components/shared/ui/elements/card";
+import { ProfileItemPropsTypes } from "@/types/profile";
 
 const ProfileStatisticsItem: React.FC<ProfileItemPropsTypes> = ({
   path,

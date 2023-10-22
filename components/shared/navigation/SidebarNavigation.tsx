@@ -1,13 +1,13 @@
 "use client";
+import Image from "next/image";
+import Link from "next/link";
+import LinkButton from "@/components/shared/ui/elements/link";
+import Button from "../ui/elements/button";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { SidebarNavigationData } from "@/constants";
 import { SidebarNavigationDataTypes } from "@/types/sidebar-navigation";
 import { signOut, useSession } from "next-auth/react";
-import Image from "next/image";
-import Link from "next/link";
-import LinkButton from "@/components/shared/ui/elements/link";
-import Button from "../ui/elements/button";
 
 const SidebarNavigation = ({ sidebarIsOpen }: { sidebarIsOpen: boolean }) => {
   const { data: session } = useSession();

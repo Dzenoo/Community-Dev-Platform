@@ -1,10 +1,10 @@
 import Link from "next/link";
 import Card from "@/components/shared/ui/elements/card";
 import Tags from "@/components/tags/TagLink";
+import Image from "next/image";
 import QuestionItemActions from "./QuestionItemActions";
 import { QuestionItemPropsTypes } from "@/types/questions";
 import { calculateDate, generateQuestionActionsData } from "@/library/utility";
-import Image from "next/image";
 
 const QuestionItem: React.FC<QuestionItemPropsTypes> = ({
   _id,

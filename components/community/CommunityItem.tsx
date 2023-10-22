@@ -1,5 +1,5 @@
-import { CommunityItemPropsTypes } from "@/types/community";
 import Card from "@/components/shared/ui/elements/card";
+import { CommunityItemPropsTypes } from "@/types/community";
 
 const CommunityItem: React.FC<CommunityItemPropsTypes> = ({
   name,
