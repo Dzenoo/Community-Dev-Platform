@@ -44,16 +44,24 @@ export const InformationTagsNavigationData = [
 
 export const FilterButtonsData = [
   {
+    id: "b0",
+    title: "All",
+    filter: "",
+  },
+  {
     id: "b1",
     title: "Recommended",
+    filter: "recommended",
   },
   {
     id: "b2",
     title: "Newest",
+    filter: "newest",
   },
   {
     id: "b3",
     title: "Frequent",
+    filter: "frequent",
   },
 ];
 
