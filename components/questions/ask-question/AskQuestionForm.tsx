@@ -115,7 +115,7 @@ const AskQuestionForm = () => {
         <div>
           <div className="mb-4">
             <select
-              className="select"
+              className="select card_animation"
               onChange={(e: any) =>
                 inputChangeHandler("language", e.target.value, [
                   VALIDATOR_REQUIRE(),

@@ -57,7 +57,7 @@ export async function fetchQuestions() {
   }
 }
 
-export async function fetchQuestionById(id: string) {
+export async function fetchQuestionById<Id extends string>(id: Id) {
   try {
     connectToDb();
 
@@ -316,7 +316,9 @@ export async function downvoteAnswer<Aid extends string, Uid extends string>(
   await voteAnswer(answerId, userId, "downvotes", path);
 }
 
-export async function fetchQuestionByTag(tag: string | undefined) {
+export async function fetchQuestionByTag<Tag extends string | undefined>(
+  tag: Tag
+) {
   try {
     await connectToDb();
 

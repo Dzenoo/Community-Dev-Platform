@@ -12,7 +12,7 @@ const LoginPage = () => {
   }
 
   return (
-    <section className="flex justify-center items-center h-screen overflow-hidden">
+    <section className="flex justify-center items-center p-3">
       <LoginCard />
     </section>
   );

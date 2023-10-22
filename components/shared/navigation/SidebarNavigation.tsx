@@ -35,7 +35,7 @@ const SidebarNavigation = ({ sidebarIsOpen }: { sidebarIsOpen: boolean }) => {
       <ul className="flex flex-col gap-2">
         {SidebarNavigationData.map((link: SidebarNavigationDataTypes) => {
           return (
-            <Link key={link.id} href={link.href}>
+            <Link key={link.id} href={link.href} className="card_animation">
               <li
                 className={`sidebar_link section_subtitle_smaller ${
                   link.href === pathname && "bg-[#004ee7]"
@@ -53,8 +53,11 @@ const SidebarNavigation = ({ sidebarIsOpen }: { sidebarIsOpen: boolean }) => {
           );
         })}
         {session?.user && (
-          // @ts-ignore
-          <Link href={`/profile/${session.user.id}`}>
+          <Link
+            // @ts-ignore
+            href={`/profile/${session.user.id}`}
+            className="card_animation"
+          >
             <li
               className={`sidebar_link section_subtitle_smaller ${
                 pathname === "/profile/u2" && "bg-[#004ee7]"
@@ -71,8 +74,11 @@ const SidebarNavigation = ({ sidebarIsOpen }: { sidebarIsOpen: boolean }) => {
           </Link>
         )}
         {session?.user && (
-          // @ts-ignore
-          <Link href={`/profile/${session.user.id}/collections`}>
+          <Link
+            // @ts-ignore
+            href={`/profile/${session.user.id}/collections`}
+            className="card_animation"
+          >
             <li
               className={`sidebar_link section_subtitle_smaller ${
                 pathname === `/profile/u2/collections` && "bg-[#004ee7]"
@@ -89,7 +95,7 @@ const SidebarNavigation = ({ sidebarIsOpen }: { sidebarIsOpen: boolean }) => {
           </Link>
         )}
         {session?.user && (
-          <Link href={`/ask-question`}>
+          <Link href={`/ask-question`} className="card_animation">
             <li
               className={`sidebar_link section_subtitle_smaller ${
                 pathname === "/ask-question" && "bg-[#004ee7]"
@@ -106,7 +112,7 @@ const SidebarNavigation = ({ sidebarIsOpen }: { sidebarIsOpen: boolean }) => {
           </Link>
         )}
       </ul>
-      <div className="pb-12 flex flex-col gap-2">
+      <div className="pb-12 flex flex-col gap-2 card_animation">
         {!session?.user && <LinkButton href="/signup">Signup</LinkButton>}
         {!session?.user && <LinkButton href="/login">Login</LinkButton>}
         {session?.user && (

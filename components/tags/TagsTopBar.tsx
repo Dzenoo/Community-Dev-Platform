@@ -13,7 +13,7 @@ const TagsTopBar = () => {
   }
 
   return (
-    <section className="flex justify-between items-end gap-6 flex-wrap">
+    <section className="flex justify-between card_animation items-end gap-6 flex-wrap">
       <div className="grow">
         <input
           id={"search-tags"}

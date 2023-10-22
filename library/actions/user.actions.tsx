@@ -59,7 +59,7 @@ export async function signupUser<
   }
 }
 
-export async function fetchUsers(path: string) {
+export async function fetchUsers<Path extends string>(path: Path) {
   try {
     connectToDb();
 

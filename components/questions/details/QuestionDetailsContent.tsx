@@ -24,7 +24,7 @@ const QuestionDetailsContent: React.FC<QuestionItemPropsTypes> = ({
 
   return (
     <div className="flex flex-col gap-4 pb-12 overflow-hidden">
-      <div className="flex justify-end items-end">
+      <div className="flex justify-end items-end max-md:mb-8">
         <QuestionDetailsActions
           upvotes={upvotes?.length}
           downvotes={downvotes?.length}
@@ -74,7 +74,7 @@ const QuestionDetailsContent: React.FC<QuestionItemPropsTypes> = ({
             }
           })}
         </div>
-        <div className="mt-12 flex gap-4">
+        <div className="mt-12 flex gap-4 max-md:flex-wrap">
           {tags?.map((tag, ind) => (
             <Tags key={ind} _id={tag} title={tag} />
           ))}
@@ -83,7 +83,7 @@ const QuestionDetailsContent: React.FC<QuestionItemPropsTypes> = ({
           <h2 className="section_title text-white">
             Answers ({answers?.length})
           </h2>
-          <div className="px-6 py-12 flex break-words flex-col gap-12">
+          <div className="px-6 py-12 flex break-words flex-col gap-12 max-md:px-3">
             {answers?.length === 0 ? (
               <p className="section_title_smaller text-white text-center">
                 No answers yet

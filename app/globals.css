@@ -2,13 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* :root {
-  --blue-color: #004ee7;
-  --gray-color: #adadad;
-  --black-color: #121212;
-  --black-grayish-color: #222222;
-} */
-
 body {
   background-color: #121212;
 }
@@ -24,7 +17,7 @@ body {
 }
 
 .section {
-  @apply px-4 h-full overflow-y-scroll;
+  @apply px-3 md:px-4 h-full overflow-y-scroll;
 }
 
 .section_title {
@@ -41,6 +34,10 @@ body {
 
 .section_subtitle_smaller {
   @apply text-lg font-light;
+}
+
+.card_animation {
+  animation: card_animation_open 0.7s ease;
 }
 
 .sidebar {
@@ -102,7 +99,7 @@ body {
 }
 
 .form_flex {
-  @apply flex items-stretch gap-2;
+  @apply flex items-stretch gap-2 max-md:flex-wrap max-md:w-full;
 }
 
 .form_flex_col {
@@ -158,5 +155,16 @@ body {
   }
   100% {
     opacity: 2;
+  }
+}
+
+@keyframes card_animation_open {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 2;
+    transform: translateY(0px);
   }
 }

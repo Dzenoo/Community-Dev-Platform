@@ -12,7 +12,7 @@ const SignupPage = () => {
   }
 
   return (
-    <section className="py-12 flex justify-center items-center h-screen overflow-hidden">
+    <section className="py-12 flex justify-center items-center max-md:px-4">
       <SignupCard />
     </section>
   );

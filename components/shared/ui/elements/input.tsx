@@ -17,7 +17,9 @@ const Input: React.FC<InputPropsTypes> = ({
       <textarea
         id={id}
         placeholder={placeholder || `Enter ${label}`}
-        className={`textarea ${!isValid && "border-2 border-red-400"}`}
+        className={`textarea card_animation ${
+          !isValid && "border-2 border-red-400"
+        }`}
         onChange={onChange}
         defaultValue={defaultValue}
       />
@@ -26,14 +28,16 @@ const Input: React.FC<InputPropsTypes> = ({
         type={type}
         id={id}
         placeholder={placeholder || `Enter ${label}`}
-        className={`input  ${!isValid && "border-2 border-red-400"}`}
+        className={`input card_animation ${
+          !isValid && "border-2 border-red-400"
+        }`}
         onChange={onChange}
         defaultValue={defaultValue}
       />
     );
 
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-2 max-md:basis-full">
       <label htmlFor={id} className="label">
         {label}
       </label>

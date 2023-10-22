@@ -21,7 +21,9 @@ const QuestionDetailsAnswer: React.FC<QuestionAnswerPropsTypes> = ({
             width={40}
             height={40}
           />
-          <h2 className="section_subtitle text-white">{user?.username}</h2>
+          <h2 className="section_subtitle text-white font-bold">
+            {user?.username}
+          </h2>
         </div>
         <div className="">
           <QuestionDetailsAnswerActions

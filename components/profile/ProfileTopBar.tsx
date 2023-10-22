@@ -15,7 +15,7 @@ const ProfileTopBar: React.FC<ProfilePropsTypes> = ({
   const joinedDate = calculateDate(createdAt);
 
   return (
-    <div className="flex justify-between items-start gap-12 max-md:flex-wrap">
+    <div className="flex justify-between items-start card_animation gap-12 max-md:flex-wrap">
       <div className="flex gap-6 items-center max-md:flex-wrap">
         <div>
           <img src="/assets/images/profile.png" alt="user" />
