@@ -1,7 +1,6 @@
 "use client";
 import Link from "next/link";
-import InputNavigation from "@/components/shared/ui/navigation/input-navigation";
-import ProfileNavigation from "@/components/shared/ui/navigation/profile-navigation";
+import ProfileNavigation from "@/components/shared/navigation/ProfileNavigation";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
 import { SetStateAction } from "react";
@@ -22,11 +21,6 @@ const LogoNavigation = ({
           </h2>
         </Link>
       </div>
-      {session?.user && (
-        <div className="basis-36 hidden lg:flex">
-          <InputNavigation />
-        </div>
-      )}
       {session?.user && (
         <div className="hidden lg:flex">
           <ProfileNavigation name={session?.user?.name?.toString()} />

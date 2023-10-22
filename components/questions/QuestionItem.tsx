@@ -22,7 +22,7 @@ const QuestionItem: React.FC<QuestionItemPropsTypes> = ({
   return (
     <Card>
       <div className="flex flex-col justify-between gap-8 w-full overflow-hidden">
-        <div className="flex justify-between">
+        <div className="flex justify-between flex-wrap">
           <div className="flex flex-col justify-between gap-12">
             <div>
               <Link

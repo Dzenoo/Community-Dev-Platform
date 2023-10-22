@@ -43,15 +43,6 @@ body {
   @apply text-lg font-light;
 }
 
-.input_navigation {
-  @apply py-2 w-[40em] pl-12 border bg-[#121212] rounded-md border-none text-white transition-all;
-}
-
-.input_navigation_result_box {
-  @apply z-40 w-full h-60 overflow-y-scroll rounded-b-md bg-white absolute transition-opacity;
-  animation: input_navigation_animation 0.7s ease;
-}
-
 .sidebar {
   @apply px-4 py-8 shadow-md basis-[440px] sticky left-0 top-0 h-screen bg-[#222222] flex flex-col justify-between;
 }
