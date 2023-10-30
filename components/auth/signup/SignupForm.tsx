@@ -74,7 +74,7 @@ const SignupForm = () => {
   }
 
   return (
-    <form className="mt-10 flex flex-col gap-12" onSubmit={onSubmitHandler}>
+    <form className="flex flex-col gap-9" onSubmit={onSubmitHandler}>
       <ToastContainer />
       <div className="flex flex-col gap-6">
         <Input

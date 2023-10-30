@@ -19,7 +19,6 @@ const LoginForm = () => {
       value: "",
       isValid: true,
     },
-
     password: {
       value: "",
       isValid: true,
@@ -63,7 +62,7 @@ const LoginForm = () => {
   }
 
   return (
-    <form className="mt-10 flex flex-col gap-12" onSubmit={handleSubmit}>
+    <form className="flex flex-col gap-9" onSubmit={handleSubmit}>
       <ToastContainer />
       <div className="flex flex-col gap-8">
         <Input

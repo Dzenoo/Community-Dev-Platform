@@ -1,7 +1,7 @@
 "use client";
+import { ChangeEvent } from "react";
 import { useRouter } from "next/navigation";
 import { updateSearchParams } from "@/library/utility";
-import { ChangeEvent } from "react";
 
 const CommunityTopBar = () => {
   const router = useRouter();
