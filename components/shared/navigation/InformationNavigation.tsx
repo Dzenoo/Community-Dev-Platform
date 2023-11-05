@@ -7,11 +7,7 @@ const InformationNavigation = async () => {
   const questions = await fetchQuestions();
   const topQuestions = questions
     ?.reduce((acc, question) => {
-      if (
-        question.upvotes.length > 3 &&
-        question.answers.length > 3 &&
-        question.views > 3
-      ) {
+      if (question.upvotes.length > 3 && question.answers.length > 3) {
         acc.push(question);
       }
       return acc;

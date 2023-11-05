@@ -2,7 +2,7 @@
 import Button from "@/components/shared/ui/elements/button";
 import { useRouter } from "next/navigation";
 import { FilterButtonsData } from "@/constants";
-import { updateSearchParams } from "@/library/utility";
+import { deleteSearchParams, updateSearchParams } from "@/library/utility";
 
 const FilterBar = ({ filter }: { filter: string }) => {
   const router = useRouter();
@@ -10,6 +10,11 @@ const FilterBar = ({ filter }: { filter: string }) => {
   function handleUpdateSearchParams(title: string, value: string) {
     const newPathname = updateSearchParams(title, value.toLowerCase());
     router.push(newPathname);
+
+    if (value === "") {
+      const newPathname = deleteSearchParams(title);
+      router.push(newPathname);
+    }
   }
 
   return (

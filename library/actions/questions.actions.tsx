@@ -151,6 +151,7 @@ export async function deleteQuestion<Qid extends string, Uid extends string>(
   try {
     const question = await Question.findById(questionId);
     const user = await User.findById(userId);
+    const usersQuestions = await User.find({ savedQuestions: questionId });
 
     if (!question || !user) return;
 
@@ -164,7 +165,18 @@ export async function deleteQuestion<Qid extends string, Uid extends string>(
     }
 
     user.questions.pull(questionId);
+
+    if (user.bronzeBadges > 0) {
+      user.bronzeBadges--;
+    }
     await user.save();
+
+    if (usersQuestions.length > 0) {
+      usersQuestions.forEach(async (user) => {
+        user.savedQuestions.pull(questionId);
+        await user.save();
+      });
+    }
 
     await Question.findByIdAndDelete(questionId);
 

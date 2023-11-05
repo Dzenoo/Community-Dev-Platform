@@ -12,7 +12,7 @@ import { usePathname } from "next/navigation";
 
 const QuestionDetailsActions: React.FC<
   QuestionDetailsActionsContentPropsTypes
-> = ({ id, upvotes, downvotes }) => {
+> = ({ id, upvotes, downvotes, isUserCollections }) => {
   const { data: session } = useSession();
   const pathname = usePathname();
 
@@ -46,7 +46,11 @@ const QuestionDetailsActions: React.FC<
         data={downvotes}
       />
       <QuestionDetailsActionsData
-        icon="/assets/graphics/heart.png"
+        icon={`${
+          isUserCollections
+            ? "/assets/graphics/heartFill.png"
+            : "/assets/graphics/heart.png"
+        }`}
         onClick={() => {
           if (!session) {
             toast.error("You must be logged in to save a question.");

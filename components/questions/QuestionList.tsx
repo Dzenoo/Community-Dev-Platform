@@ -26,7 +26,6 @@ const QuestionList: React.FC<QuestionListPropsTypes> = ({
               tags={data.tags}
               user={data.user}
               answers={data.answers}
-              views={data.views}
               createdAt={data.createdAt}
             />
           </li>

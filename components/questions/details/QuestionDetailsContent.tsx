@@ -6,21 +6,28 @@ import Tags from "@/components/tags/TagLink";
 import Image from "next/image";
 import { calculateDate, generateQuestionActionsData } from "@/library/utility";
 import { QuestionItemPropsTypes } from "@/types/questions";
+import { fetchUser } from "@/library/actions/user.actions";
 
-const QuestionDetailsContent: React.FC<QuestionItemPropsTypes> = ({
+const QuestionDetailsContent: React.FC<QuestionItemPropsTypes> = async ({
   _id,
   user,
+  userId,
   title,
   description,
   answers,
   upvotes,
   downvotes,
   language,
-  views,
   tags,
   createdAt,
 }) => {
   const askedQUestion = calculateDate(createdAt);
+  // @ts-ignore
+  const userData = await fetchUser(userId);
+  const userQuestions = userData?.savedQuestions.map(
+    (question: QuestionItemPropsTypes) => question._id.toString()
+  );
+  const isUserQuestions = userQuestions?.includes(_id.toString());
 
   return (
     <div className="flex flex-col gap-4 pb-12 overflow-hidden">
@@ -28,7 +35,8 @@ const QuestionDetailsContent: React.FC<QuestionItemPropsTypes> = ({
         <QuestionDetailsActions
           upvotes={upvotes?.length}
           downvotes={downvotes?.length}
-          id={_id}
+          isUserCollections={isUserQuestions}
+          id={_id.toString()}
         />
       </div>
       <div className="flex flex-col gap-4">
@@ -53,7 +61,6 @@ const QuestionDetailsContent: React.FC<QuestionItemPropsTypes> = ({
             answers?.length,
             "Answers"
           )}
-          {generateQuestionActionsData("", views?.length, "Views")}
         </div>
         <div className="mt-6 break-words">
           {description?.split(/```/)?.map((section, index) => {
@@ -104,7 +111,7 @@ const QuestionDetailsContent: React.FC<QuestionItemPropsTypes> = ({
           </div>
         </div>
         <div className="mt-6">
-          <QuestionAnswerForm questionId={_id} />
+          <QuestionAnswerForm questionId={_id.toString()} />
         </div>
       </div>
     </div>

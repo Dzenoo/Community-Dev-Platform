@@ -10,7 +10,6 @@ export interface QuestionTypes extends Document {
   answers: mongoose.Types.ObjectId[]; // References to Answer documents
   description: string;
   language: string;
-  views: mongoose.Types.ObjectId[];
 }
 
 const QuestionSchema: Schema = new mongoose.Schema(
@@ -23,26 +22,26 @@ const QuestionSchema: Schema = new mongoose.Schema(
     user: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
-      ref: "User", // Reference to the User schema
+      ref: "User",
     },
     upvotes: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "User", // Reference to the User schema
+        ref: "User",
         default: [],
       },
     ],
     downvotes: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "User", // Reference to the User schema
+        ref: "User",
         default: [],
       },
     ],
     answers: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Answer", // Reference to the Answer schema
+        ref: "Answer",
         default: [],
       },
     ],
@@ -54,13 +53,6 @@ const QuestionSchema: Schema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    views: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User", // Reference to the Answer schema
-        default: [],
-      },
-    ],
   },
   { timestamps: true }
 );

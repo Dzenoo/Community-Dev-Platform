@@ -1,7 +1,7 @@
 "use client";
 import LinkButton from "@/components/shared/ui/elements/link";
 import { useRouter } from "next/navigation";
-import { updateSearchParams } from "@/library/utility";
+import { deleteSearchParams, updateSearchParams } from "@/library/utility";
 import { ChangeEvent } from "react";
 
 const TopBar = () => {
@@ -10,6 +10,11 @@ const TopBar = () => {
   function handleUpdateSearchParams(title: string, value: string) {
     const newPathname = updateSearchParams(title, value.toLowerCase());
     router.push(newPathname);
+
+    if (value === "") {
+      const newPathname = deleteSearchParams(title);
+      router.push(newPathname);
+    }
   }
 
   return (

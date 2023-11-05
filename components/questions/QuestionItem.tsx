@@ -14,7 +14,6 @@ const QuestionItem: React.FC<QuestionItemPropsTypes> = ({
   showActions,
   upvotes,
   answers,
-  views,
   createdAt,
 }) => {
   const askedQUestion = calculateDate(createdAt);
@@ -61,7 +60,7 @@ const QuestionItem: React.FC<QuestionItemPropsTypes> = ({
             answers?.length,
             "Answers"
           )}
-          {generateQuestionActionsData("", views?.length, "Views")}
+          {generateQuestionActionsData("", tags?.length, "Tags")}
         </div>
       </div>
     </Card>

@@ -9,13 +9,13 @@ export interface QuestionItemPropsTypes {
     _id: string;
     username: string;
   };
+  userId?: string;
   upvotes: string[];
   downvotes: string[];
   answers: QuestionAnswerPropsTypes[];
   description?: string;
   showActions?: boolean;
   language?: string;
-  views: string[];
   createdAt: Date;
 }
 
@@ -28,6 +28,7 @@ export interface QuestionDetailsActionsContentPropsTypes {
   id: string;
   upvotes: number;
   downvotes: number;
+  isUserCollections: boolean;
 }
 
 export interface QuestionDetailsCodeComponentPropsTypes {
