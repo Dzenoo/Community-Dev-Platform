@@ -2,6 +2,7 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import QuestionDetailsContent from "@/components/questions/details/QuestionDetailsContent";
 import { fetchQuestionById } from "@/library/actions/questions.actions";
 import { getServerSession } from "next-auth";
+import { notFound } from "next/navigation";
 
 const QuestionDetails = async ({
   params,
@@ -10,6 +11,8 @@ const QuestionDetails = async ({
 }) => {
   const session = await getServerSession(authOptions);
   const question = await fetchQuestionById(params.questionId);
+
+  if (!params.questionId || !question) notFound();
 
   return (
     <section className="section">

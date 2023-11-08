@@ -7,13 +7,14 @@ import { fetchUserAnswers } from "@/library/actions/questions.actions";
 import { fetchUser } from "@/library/actions/user.actions";
 import { notAuthNavigate } from "@/library/utility";
 import { getServerSession } from "next-auth";
+import { notFound } from "next/navigation";
 
 const ProfilePage = async ({ params }: { params: { profileId: string } }) => {
   const session = await getServerSession(authOptions);
   const user = await fetchUser(params.profileId);
   const answers = await fetchUserAnswers(params.profileId);
 
-  if (!user) return null;
+  if (!params.profileId || !user) notFound();
   if (!session) notAuthNavigate("/");
   // @ts-ignore
   if (params.profileId !== session?.user.id) notAuthNavigate("/");
