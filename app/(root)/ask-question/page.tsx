@@ -10,7 +10,9 @@ const AskQuestionPage = async () => {
   return (
     <section className="mb-12">
       <div>
-        <h2 className="section_title text-white">Ask A Question</h2>
+        <h2 className="section_title text-black dark:text-white">
+          Ask A Question
+        </h2>
       </div>
       <AskQuestionForm />
     </section>

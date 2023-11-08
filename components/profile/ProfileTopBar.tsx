@@ -22,7 +22,9 @@ const ProfileTopBar: React.FC<ProfilePropsTypes> = ({
         </div>
         <div className="flex flex-col gap-4 justify-between">
           <div className="flex flex-col gap-2">
-            <h2 className="section_title text-white font-bold">{name}</h2>
+            <h2 className="section_title text-black dark:text-white font-bold">
+              {name}
+            </h2>
             <p className="section_subtitle text-gray-400 font-bold">
               @{username}
             </p>
@@ -43,7 +45,7 @@ const ProfileTopBar: React.FC<ProfilePropsTypes> = ({
                 width={20}
                 height={20}
               />
-              <h2 className="section_subtitle_smaller text-white">
+              <h2 className="section_subtitle_smaller text-black dark:text-white">
                 {location}
               </h2>
             </div>
@@ -54,13 +56,15 @@ const ProfileTopBar: React.FC<ProfilePropsTypes> = ({
                 width={20}
                 height={20}
               />
-              <h2 className="section_subtitle_smaller text-white">
+              <h2 className="section_subtitle_smaller text-black dark:text-white">
                 {joinedDate}
               </h2>
             </div>
           </div>
           <div>
-            <p className="section_subtitle_smaller text-white">{biography}</p>
+            <p className="section_subtitle_smaller text-black dark:text-white">
+              {biography}
+            </p>
           </div>
         </div>
       </div>

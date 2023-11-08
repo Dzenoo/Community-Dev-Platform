@@ -11,7 +11,7 @@ const QuestionList: React.FC<QuestionListPropsTypes> = ({
   return (
     <ul className="pb-12 flex flex-col gap-2">
       {questions?.length === 0 ? (
-        <p className="section_subtitle text-white text-center">
+        <p className="section_subtitle text-black dark:text-white text-center">
           No Questions Yet
         </p>
       ) : (

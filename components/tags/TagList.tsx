@@ -5,7 +5,7 @@ const TagList: React.FC<TagListPropsTypes> = ({ tags }) => {
   return (
     <ul className="py-12 grid grid-cols-1 gap-3 lg:grid-cols-2 xl:grid-cols-3">
       {tags.length === 0 ? (
-        <p className="section_subtitle_smaller text-white text-center">
+        <p className="section_subtitle_smaller text-black dark:text-white text-center">
           No Tags Founded
         </p>
       ) : (

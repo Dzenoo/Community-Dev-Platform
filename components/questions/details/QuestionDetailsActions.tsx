@@ -9,18 +9,24 @@ import {
 import { useSession } from "next-auth/react";
 import { ToastContainer, toast } from "react-toastify";
 import { usePathname } from "next/navigation";
+import { useTheme } from "next-themes";
 
 const QuestionDetailsActions: React.FC<
   QuestionDetailsActionsContentPropsTypes
 > = ({ id, upvotes, downvotes, isUserCollections }) => {
   const { data: session } = useSession();
+  const { theme } = useTheme();
   const pathname = usePathname();
 
   return (
     <div id={id} className="flex items-center gap-2">
       <ToastContainer />
       <QuestionDetailsActionsData
-        icon="/assets/graphics/down-arrow.png"
+        icon={
+          theme === "dark"
+            ? "/assets/graphics/down-arrow.png"
+            : "/assets/graphics/dark/down-arrow.png"
+        }
         onClick={() => {
           if (!session) {
             toast.error("You must be logged in to vote a question.");
@@ -33,7 +39,11 @@ const QuestionDetailsActions: React.FC<
         data={upvotes}
       />
       <QuestionDetailsActionsData
-        icon="/assets/graphics/down-arrow.png"
+        icon={
+          theme === "dark"
+            ? "/assets/graphics/down-arrow.png"
+            : "/assets/graphics/dark/down-arrow.png"
+        }
         onClick={() => {
           if (!session) {
             toast.error("You must be logged in to vote a question.");
@@ -48,8 +58,10 @@ const QuestionDetailsActions: React.FC<
       <QuestionDetailsActionsData
         icon={`${
           isUserCollections
-            ? "/assets/graphics/heartFill.png"
-            : "/assets/graphics/heart.png"
+            ? theme === "light"
+              ? "/assets/graphics/dark/like.png"
+              : "/assets/graphics/heartFill.png"
+            : "/assets/graphics/dark/like-toggle.png"
         }`}
         onClick={() => {
           if (!session) {

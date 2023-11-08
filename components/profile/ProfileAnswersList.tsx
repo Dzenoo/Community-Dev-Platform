@@ -9,7 +9,7 @@ const ProfileAnswersList: React.FC<ProfileAnswersDataListPropsTypes> = ({
   return (
     <div className="flex flex-col gap-2">
       {profileAnswers.length === 0 ? (
-        <p className="section_subtitle text-white text-center">
+        <p className="section_subtitle text-black dark:text-white text-center">
           No Answers Yet
         </p>
       ) : (

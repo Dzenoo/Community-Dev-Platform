@@ -26,7 +26,7 @@ const QuestionItem: React.FC<QuestionItemPropsTypes> = ({
             <div>
               <Link
                 href={`/${_id}`}
-                className="section_title_smaller text-white"
+                className="section_title_smaller text-black  dark:text-white"
               >
                 {title}
               </Link>
@@ -43,8 +43,12 @@ const QuestionItem: React.FC<QuestionItemPropsTypes> = ({
                 width={40}
                 height={40}
               />
-              <h2 className="section_subtitle text-white">{user?.username}</h2>
-              <p className="text-white text-xs">| {askedQUestion}</p>
+              <h2 className="section_subtitle text-black dark:text-white">
+                {user?.username}
+              </h2>
+              <p className="text-black dark:text-white text-md">
+                | {askedQUestion}
+              </p>
             </div>
           </div>
           {showActions && <QuestionItemActions id={_id} />}

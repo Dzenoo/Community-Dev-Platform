@@ -7,7 +7,9 @@ const TagItem: React.FC<TagItemPropsTypes> = ({ id, name, description }) => {
     <Card>
       <div className="flex flex-col justify-between gap-4">
         <TagLink _id={id} title={name} />
-        <h2 className="section_subtitle_smaller text-white">{description}</h2>
+        <h2 className="section_subtitle_smaller text-black dark:text-white">
+          {description}
+        </h2>
       </div>
     </Card>
   );

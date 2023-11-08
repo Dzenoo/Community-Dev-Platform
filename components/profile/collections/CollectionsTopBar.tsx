@@ -14,7 +14,9 @@ const CollectionsTopBar = () => {
   return (
     <section className="flex justify-between items-end gap-6 flex-wrap">
       <div className="grow">
-        <h2 className="section_title text-white mb-4">Saved Questions</h2>
+        <h2 className="section_title text-black dark:text-white mb-4">
+          Saved Questions
+        </h2>
         <input
           id={"search-collections"}
           className="input w-full"

@@ -28,7 +28,7 @@ export interface QuestionDetailsActionsContentPropsTypes {
   id: string;
   upvotes: number;
   downvotes: number;
-  isUserCollections: boolean;
+  isUserCollections?: boolean;
 }
 
 export interface QuestionDetailsCodeComponentPropsTypes {

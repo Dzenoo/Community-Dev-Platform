@@ -12,7 +12,9 @@ export function generateQuestionActionsData<
     <div className="question_item_actions">
       {icon && <Image src={icon} alt={type} width={20} height={20} />}
       <span className="question_item_actions_span">{data}</span>
-      <p className="section_subtitle_smaller text-white">{type}</p>
+      <p className="section_subtitle_smaller text-black dark:text-white">
+        {type}
+      </p>
     </div>
   );
 }

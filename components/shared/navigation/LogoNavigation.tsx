@@ -4,6 +4,7 @@ import ProfileNavigation from "@/components/shared/navigation/ProfileNavigation"
 import Image from "next/image";
 import { useSession } from "next-auth/react";
 import { SetStateAction } from "react";
+import ThemeToggle from "../ui/func/ThemeToggle";
 
 const LogoNavigation = ({
   setSidebarIsOpen,
@@ -13,17 +14,20 @@ const LogoNavigation = ({
   const { data: session } = useSession();
 
   return (
-    <header className="z-40 py-2 px-6 shadow-md flex justify-between items-center bg-[#222222]">
+    <header className="z-40 py-2 px-6 shadow-md flex justify-between items-center bg-[#fff] dark:bg-[#222222] dark:text-white">
       <div>
         <Link href="/">
-          <h2 className="text-2xl font-bold text-white">
+          <h2 className="text-2xl font-bold text-black dark:text-white">
             Community<span className="text-[#004ee7]">Dev</span>
           </h2>
         </Link>
       </div>
       {session?.user && (
-        <div className="hidden lg:flex">
-          <ProfileNavigation name={session?.user?.name?.toString()} />
+        <div className="flex gap-6 items-center">
+          <ThemeToggle />
+          <div className="hidden lg:flex">
+            <ProfileNavigation name={session?.user?.name?.toString()} />
+          </div>
         </div>
       )}
       <button

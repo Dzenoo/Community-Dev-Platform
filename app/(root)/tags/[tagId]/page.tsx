@@ -9,7 +9,7 @@ const TagsDetailsPage = async ({ params }: { params: { tagId: string } }) => {
   return (
     <section>
       <div>
-        <h2 className="section_title text-white">
+        <h2 className="section_title text-black dark:text-white">
           {tag?.name.charAt(0).toUpperCase()}
           {tag?.name.slice(1)}
         </h2>

@@ -15,7 +15,7 @@ const TagsPage = ({
 
   return (
     <section>
-      <h2 className="section_title text-white mb-6">Tags</h2>
+      <h2 className="section_title text-black dark:text-white mb-6">Tags</h2>
       <TagsTopBar />
       <TagList tags={filteredTags || TagsData} />
     </section>

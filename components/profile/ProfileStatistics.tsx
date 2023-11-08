@@ -7,7 +7,9 @@ const ProfileStatistics: React.FC<ProfileStatisticsPropsTypes> = ({
   return (
     <section>
       <div>
-        <h2 className="section_title_smaller text-white">Statistics</h2>
+        <h2 className="section_title_smaller text-black dark:text-white">
+          Statistics
+        </h2>
       </div>
       <div>
         <ProfileStatisticsList profileStatistics={profileStatistics} />

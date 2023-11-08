@@ -16,7 +16,9 @@ const EditPage = async ({ params }: { params: { profileId: string } }) => {
   return (
     <section className="mb-12">
       <div>
-        <h2 className="section_title text-white">Edit Profile</h2>
+        <h2 className="section_title text-black dark:text-white">
+          Edit Profile
+        </h2>
       </div>
       <EditProfileForm
         userId={user?._id}

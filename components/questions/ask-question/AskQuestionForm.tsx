@@ -38,8 +38,9 @@ const AskQuestionForm = () => {
   const router = useRouter();
 
   const isFormValid = checkFormValidity(
-    formState.inputs.title.value === "" ||
-      formState.inputs.description.value === "" ||
+    !formState.inputs.title.isValid ||
+      !formState.inputs.description.isValid ||
+      !formState.inputs.tag.isValid ||
       tags.length === 0
   );
 
@@ -173,7 +174,10 @@ const AskQuestionForm = () => {
                       key={language.id}
                       className="button_tags"
                       type="button"
-                      onClick={() => addTagsHandler(language.name)}
+                      onClick={() => {
+                        formState.inputs.tag.value = "";
+                        addTagsHandler(language.name);
+                      }}
                     >
                       {language.name}
                     </button>

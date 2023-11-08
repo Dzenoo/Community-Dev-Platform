@@ -47,26 +47,26 @@ const QuestionDetailsContent: React.FC<QuestionItemPropsTypes> = async ({
             width={40}
             height={40}
           />
-          <h2 className="section_subtitle text-white">{user?.username}</h2>
-          <p className="text-white text-md">| {askedQUestion}</p>
+          <h2 className="section_subtitle text-black dark:text-white">
+            {user?.username}
+          </h2>
+          <p className="text-black dark:text-white text-md">
+            | {askedQUestion}
+          </p>
         </div>
         <div>
-          <h2 className="section_title_smaller text-white break-words">
+          <h2 className="section_title_smaller text-black dark:text-white break-words">
             {title}
           </h2>
-        </div>
-        <div className="flex items-center gap-4 flex-wrap">
-          {generateQuestionActionsData(
-            "/assets/graphics/comment.png",
-            answers?.length,
-            "Answers"
-          )}
         </div>
         <div className="mt-6 break-words">
           {description?.split(/```/)?.map((section, index) => {
             if (index % 2 === 0) {
               return (
-                <p className="section_subtitle text-white" key={index}>
+                <p
+                  className="section_subtitle text-black dark:text-white"
+                  key={index}
+                >
                   {section}
                 </p>
               );
@@ -87,12 +87,12 @@ const QuestionDetailsContent: React.FC<QuestionItemPropsTypes> = async ({
           ))}
         </div>
         <div className="mt-12">
-          <h2 className="section_title text-white">
+          <h2 className="section_title text-black dark:text-white">
             Answers ({answers?.length})
           </h2>
           <div className="px-6 py-12 flex break-words flex-col gap-12 max-md:px-3">
             {answers?.length === 0 ? (
-              <p className="section_title_smaller text-white text-center">
+              <p className="section_title_smaller text-black dark:text-white text-center">
                 No answers yet
               </p>
             ) : (

@@ -21,7 +21,7 @@ const QuestionDetailsAnswer: React.FC<QuestionAnswerPropsTypes> = ({
             width={40}
             height={40}
           />
-          <h2 className="section_subtitle text-white font-bold">
+          <h2 className="section_subtitle text-black dark:text-white font-bold">
             {user?.username}
           </h2>
         </div>
@@ -37,7 +37,10 @@ const QuestionDetailsAnswer: React.FC<QuestionAnswerPropsTypes> = ({
         {description?.split(/```/)?.map((section, index) => {
           if (index % 2 === 0) {
             return (
-              <p className="section_subtitle text-white" key={index}>
+              <p
+                className="section_subtitle text-black dark:text-white"
+                key={index}
+              >
                 {section}
               </p>
             );

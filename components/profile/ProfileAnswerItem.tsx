@@ -38,13 +38,13 @@ const ProfileAnswerItem: React.FC<ProfileAsnwersDataItemPropsTypes> = ({
             <div>
               <Link
                 href={`/${question}`}
-                className="section_title_smaller text-white"
+                className="section_title_smaller text-black dark:text-white"
               >
                 {title}
               </Link>
             </div>
             <div>
-              <p className="section_subtitle_smaller text-white truncate">
+              <p className="section_subtitle_smaller text-black dark:text-white truncate">
                 {description}
               </p>
             </div>

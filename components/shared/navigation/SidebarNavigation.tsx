@@ -5,14 +5,14 @@ import LinkButton from "@/components/shared/ui/elements/link";
 import Button from "../ui/elements/button";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { SidebarNavigationData } from "@/constants";
-import { SidebarNavigationDataTypes } from "@/types/sidebar-navigation";
 import { signOut, useSession } from "next-auth/react";
+import { useTheme } from "next-themes";
 
 const SidebarNavigation = ({ sidebarIsOpen }: { sidebarIsOpen: boolean }) => {
   const { data: session } = useSession();
-  const [sidebarClassName, setSidebarClassName] = useState<string>("sidebar");
   const pathname = usePathname();
+  const { theme } = useTheme();
+  const [sidebarClassName, setSidebarClassName] = useState<string>("sidebar");
 
   function handleResize() {
     if (window.innerWidth > 1024) {
@@ -33,25 +33,66 @@ const SidebarNavigation = ({ sidebarIsOpen }: { sidebarIsOpen: boolean }) => {
   return (
     <div className={sidebarClassName}>
       <ul className="flex flex-col gap-2">
-        {SidebarNavigationData.map((link: SidebarNavigationDataTypes) => {
-          return (
-            <Link key={link.id} href={link.href} className="card_animation">
-              <li
-                className={`sidebar_link section_subtitle_smaller ${
-                  link.href === pathname && "bg-[#004ee7]"
-                }`}
-              >
-                <Image
-                  src={link.icon}
-                  alt={link.title}
-                  width={20}
-                  height={20}
-                />
-                {link.title}
-              </li>
-            </Link>
-          );
-        })}
+        <Link href={`/`} className="card_animation">
+          <li
+            className={`sidebar_link section_subtitle_smaller ${
+              pathname === "/" &&
+              "border border-[#004ee7] text-black dark:text-white"
+            }`}
+          >
+            <Image
+              src={
+                theme === "dark"
+                  ? "/assets/graphics/dashboard.png"
+                  : "/assets/graphics/dark/dashboard.png"
+              }
+              alt="home"
+              width={20}
+              height={20}
+            />
+            Home
+          </li>
+        </Link>
+        <Link href={`/community`} className="card_animation">
+          <li
+            className={`sidebar_link section_subtitle_smaller ${
+              pathname === "/community" &&
+              "border border-[#004ee7] text-black dark:text-white"
+            }`}
+          >
+            <Image
+              src={
+                theme === "dark"
+                  ? "/assets/graphics/community.png"
+                  : "/assets/graphics/dark/community.png"
+              }
+              alt="community"
+              width={20}
+              height={20}
+            />
+            Community
+          </li>
+        </Link>
+        <Link href={`/tags`} className="card_animation">
+          <li
+            className={`sidebar_link section_subtitle_smaller ${
+              pathname === "/tags" &&
+              "border border-[#004ee7] text-black dark:text-white"
+            }`}
+          >
+            <Image
+              src={
+                theme === "dark"
+                  ? "/assets/graphics/price-tag.png"
+                  : "/assets/graphics/dark/price-tag.png"
+              }
+              alt="tag"
+              width={20}
+              height={20}
+            />
+            Tags
+          </li>
+        </Link>
         {session?.user && (
           <Link
             // @ts-ignore
@@ -60,11 +101,17 @@ const SidebarNavigation = ({ sidebarIsOpen }: { sidebarIsOpen: boolean }) => {
           >
             <li
               className={`sidebar_link section_subtitle_smaller ${
-                pathname === "/profile/u2" && "bg-[#004ee7]"
+                // @ts-ignore
+                pathname === `/profile/${session.user.id}` &&
+                "border border-[#004ee7] text-black dark:text-white"
               }`}
             >
               <Image
-                src="/assets/graphics/setting.png"
+                src={
+                  theme === "dark"
+                    ? "/assets/graphics/setting.png"
+                    : "/assets/graphics/dark/setting.png"
+                }
                 alt="setting"
                 width={20}
                 height={20}
@@ -81,11 +128,17 @@ const SidebarNavigation = ({ sidebarIsOpen }: { sidebarIsOpen: boolean }) => {
           >
             <li
               className={`sidebar_link section_subtitle_smaller ${
-                pathname === `/profile/u2/collections` && "bg-[#004ee7]"
+                // @ts-ignore
+                pathname === `/profile/${session.user.id}/collections` &&
+                "border border-[#004ee7] text-black dark:text-white"
               }`}
             >
               <Image
-                src="/assets/graphics/layers.png"
+                src={
+                  theme === "dark"
+                    ? "/assets/graphics/layers.png"
+                    : "/assets/graphics/dark/layers.png"
+                }
                 alt="setting"
                 width={20}
                 height={20}
@@ -98,11 +151,16 @@ const SidebarNavigation = ({ sidebarIsOpen }: { sidebarIsOpen: boolean }) => {
           <Link href={`/ask-question`} className="card_animation">
             <li
               className={`sidebar_link section_subtitle_smaller ${
-                pathname === "/ask-question" && "bg-[#004ee7]"
+                pathname === "/ask-question" &&
+                "border border-[#004ee7] text-black dark:text-white"
               }`}
             >
               <Image
-                src="/assets/graphics/conversation.png"
+                src={
+                  theme === "dark"
+                    ? "/assets/graphics/conversation.png"
+                    : "/assets/graphics/dark/conversation.png"
+                }
                 alt="setting"
                 width={20}
                 height={20}

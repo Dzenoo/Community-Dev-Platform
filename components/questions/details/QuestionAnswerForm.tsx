@@ -18,17 +18,16 @@ const QuestionAnswerForm = ({ questionId }: { questionId: string }) => {
   const { formState, inputChangeHandler } = useForm({
     description: {
       value: "",
-      isValid: true,
+      isValid: false,
     },
     language: {
       value: "",
-      isValid: true,
+      isValid: false,
     },
   });
 
   const formIsValid = checkFormValidity(
-    !formState.inputs.description.isValid ||
-      formState.inputs.language.value === ""
+    !formState.inputs.description.isValid || !formState.inputs.language.isValid
   );
 
   async function onAnswerSubmitHandler(e: ChangeEvent<HTMLFormElement>) {
@@ -57,7 +56,7 @@ const QuestionAnswerForm = ({ questionId }: { questionId: string }) => {
     <form className="flex flex-col gap-2" onSubmit={onAnswerSubmitHandler}>
       <ToastContainer />
       <div className="flex justify-between gap-4 max-md:flex-wrap">
-        <h2 className="section_title text-white">Answer</h2>
+        <h2 className="section_title text-black dark:text-white">Answer</h2>
         <div className="flex gap-4 max-md:basis-full">
           <select
             className="select"
@@ -75,7 +74,7 @@ const QuestionAnswerForm = ({ questionId }: { questionId: string }) => {
           </select>
         </div>
       </div>
-      <div className="my-4">
+      <div>
         <Input
           id="answer"
           label=""
@@ -90,14 +89,16 @@ const QuestionAnswerForm = ({ questionId }: { questionId: string }) => {
           }
         />
       </div>
-      <div className="my-4">
-        <Button
-          variant={formIsValid ? "Normal" : "Danger"}
-          type="submit"
-          disabled={!formIsValid}
-        >
-          Submit
-        </Button>
+      <div className="flex justify-end items-end">
+        <div>
+          <Button
+            variant={formIsValid ? "Normal" : "Danger"}
+            type="submit"
+            disabled={!formIsValid}
+          >
+            Submit
+          </Button>
+        </div>
       </div>
     </form>
   );

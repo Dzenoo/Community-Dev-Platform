@@ -15,7 +15,7 @@ const QuestionDetailsActionsData: React.FC<
         className={`${type === "vote" && "rotate-180"}`}
       />
       <span
-        className={`p-2 px-4 bg-[#004de777] text-white font-bold rounded-md ${
+        className={`p-2 px-4 bg-[#004de7d5] text-white font-bold rounded-md dark:bg-[#004de777] ${
           data === undefined && "hidden"
         }`}
       >

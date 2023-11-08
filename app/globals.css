@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 body {
-  background-color: #121212;
+  @apply bg-white transition-all dark:bg-[#121212] dark:text-white;
 }
 
 ::-webkit-scrollbar {
-  background-color: #121212;
+  background-color: transparent;
   width: 7px;
 }
 
@@ -41,11 +41,11 @@ body {
 }
 
 .sidebar {
-  @apply px-4 py-8 shadow-md basis-[440px] sticky left-0 top-0 h-screen bg-[#222222] flex flex-col justify-between;
+  @apply px-4 py-8 shadow-md basis-[440px] sticky left-0 top-0 h-screen flex flex-col justify-between bg-white dark:bg-[#222222];
 }
 
 .sidebar_mobile_open {
-  @apply z-40 py-8 px-4 h-full shadow-md bg-[#222222] absolute w-[260px] flex flex-col justify-between;
+  @apply z-40 py-8 px-4 h-full shadow-md bg-white dark:bg-[#222222] absolute w-[260px] flex flex-col justify-between;
   animation: sidebar_navigation_animation 0.7s ease;
 }
 
@@ -55,23 +55,23 @@ body {
 }
 
 .sidebar_link {
-  @apply text-white px-8 py-4 flex items-center gap-7 rounded-md transition-all hover:bg-[#004ee7];
+  @apply text-black dark:text-white px-8 py-4 flex items-center gap-7 rounded-md transition-all dark:hover:text-white;
 }
 
 .button_normal {
-  @apply py-2 px-2 w-full bg-[#004ee7] text-white text-lg rounded-md transition-all hover:bg-[#4469c0] hover:border-[#4469c0];
+  @apply py-2 px-2 w-full bg-[#004ee7]  text-white dark:text-white hover:text-white text-lg rounded-md transition-all hover:bg-[#4469c0] hover:border-[#4469c0];
 }
 
 .button_success {
-  @apply py-2 px-2 w-full bg-[#1f9f4c] text-white text-lg rounded-md transition-all hover:bg-[#2b844a] hover:border-[#2b844a];
+  @apply py-2 px-2 w-full bg-[#1f9f4c]  text-black dark:text-white hover:text-white text-lg rounded-md transition-all hover:bg-[#2b844a] hover:border-[#2b844a];
 }
 
 .button_danger {
-  @apply py-2 px-2 w-full bg-[#ff4f4f] text-white text-lg rounded-md transition-all hover:bg-[#b93333] hover:border-[#b93333];
+  @apply py-2 px-2 w-full bg-[#ff4f4f]  text-black dark:text-white hover:text-white text-lg rounded-md transition-all hover:bg-[#b93333] hover:border-[#b93333];
 }
 
 .button_outlined {
-  @apply py-2 px-2 w-full border text-white text-lg rounded-md transition-all hover:bg-[#004ee7] hover:border-[#004ee7];
+  @apply py-2 px-2 w-full border  text-black dark:text-white hover:text-white text-lg rounded-md transition-all hover:bg-[#004ee7] hover:border-[#004ee7];
 }
 
 .link {
@@ -79,15 +79,15 @@ body {
 }
 
 .card {
-  @apply p-6 bg-[#222222] rounded-md shadow-md;
+  @apply p-6 bg-[#fff] rounded-md shadow-md dark:bg-[#222222] dark:text-white;
 }
 
 .input {
-  @apply p-4 rounded-md bg-[#2B2B2B] text-white;
+  @apply p-4 rounded-md bg-[#fff] dark:bg-[#2b2b2b] dark:text-white border border-gray-400;
 }
 
 .textarea {
-  @apply p-4 rounded-md bg-[#2B2B2B] text-white resize-none h-96;
+  @apply p-4 rounded-md bg-[#fff] resize-none h-96 dark:bg-[#2b2b2b] dark:text-white border border-gray-400;
 }
 
 .select {
@@ -95,7 +95,7 @@ body {
 }
 
 .label {
-  @apply section_subtitle_smaller text-white;
+  @apply section_subtitle_smaller text-black  dark:text-white;
 }
 
 .form_flex {
@@ -107,7 +107,7 @@ body {
 }
 
 .tags {
-  @apply p-4 rounded-md bg-[#004de73d] shadow-md text-white w-fit;
+  @apply p-4 rounded-md bg-[#004de7df] shadow-md text-white w-fit dark:bg-[#004de73d] dark:text-white;
 }
 
 .question_item_actions {
@@ -115,7 +115,7 @@ body {
 }
 
 .question_item_actions_span {
-  @apply section_title_smaller text-white;
+  @apply section_title_smaller text-black  dark:bg-[#222222] dark:text-white;
 }
 
 .tags_box {

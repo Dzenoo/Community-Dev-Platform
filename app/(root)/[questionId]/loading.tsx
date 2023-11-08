@@ -30,7 +30,9 @@ export default function Loading() {
             <div className="w-20 h-6 bg-gray-800 p-4 rounded-lg shadow-lg animate-pulse"></div>
           </div>
           <div className="mt-12">
-            <h2 className="section_title text-white">Answers</h2>
+            <h2 className="section_title text-black dark:text-white">
+              Answers
+            </h2>
             <div className="px-6 py-12 flex break-words flex-col gap-12">
               {/* Loading skeleton for answers */}
               <div className="w-full h-16 bg-gray-800 p-4 rounded-lg shadow-lg animate-pulse"></div>

@@ -54,7 +54,7 @@ const ProfilePage = async ({ params }: { params: { profileId: string } }) => {
       <ProfileStatistics profileStatistics={ProfileStatisticsData} />
       <div>
         <div>
-          <h2 className="section_title_smaller text-white mb-4">
+          <h2 className="section_title_smaller text-black dark:text-white mb-4">
             Questions ({user?.questions.length})
           </h2>
           <div className="h-96 overflow-y-scroll">
@@ -62,7 +62,9 @@ const ProfilePage = async ({ params }: { params: { profileId: string } }) => {
           </div>
         </div>
         <div>
-          <h2 className="section_title_smaller text-white my-4">Answers</h2>
+          <h2 className="section_title_smaller text-black dark:text-white my-4">
+            Answers
+          </h2>
           <div className="h-96 overflow-y-scroll">
             <ProfileAnswersList profileAnswers={answers} />
           </div>
