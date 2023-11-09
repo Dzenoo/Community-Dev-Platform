@@ -1,7 +1,7 @@
 "use client";
 import { ChangeEvent } from "react";
 import { useRouter } from "next/navigation";
-import { updateSearchParams } from "@/library/utility";
+import { deleteSearchParams, updateSearchParams } from "@/library/utility";
 
 const CommunityTopBar = () => {
   const router = useRouter();
@@ -9,6 +9,11 @@ const CommunityTopBar = () => {
   function handleUpdateSearchParams(title: string, value: string) {
     const newPathname = updateSearchParams(title, value.toLowerCase());
     router.push(newPathname);
+
+    if (value === "") {
+      const newPathname = deleteSearchParams(title);
+      router.push(newPathname);
+    }
   }
 
   return (

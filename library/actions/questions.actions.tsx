@@ -11,14 +11,13 @@ export async function postQuestion(
   tags: string[],
   userId: string,
   description: string,
-  language: string,
+  language: string | undefined,
   path: string
 ): Promise<void> {
   try {
     connectToDb();
 
-    if (!title || !tags || !description || !language)
-      throw new Error("Please fill fields");
+    if (!title || !tags || !description) throw new Error("Please fill fields");
 
     const user = await User.findById(userId);
 
@@ -31,7 +30,7 @@ export async function postQuestion(
       tags,
       user,
       description,
-      language,
+      language: language || "",
     });
     await question.save();
 
@@ -83,12 +82,12 @@ export async function answerOnQuestion<
   Uid extends string,
   Qid extends string,
   D extends string,
-  L extends string
+  L extends string | undefined
 >(
   userId: Uid,
   questionId: Qid,
   description: D,
-  language: L,
+  language: L | undefined,
   path: string
 ): Promise<void> {
   connectToDb();
@@ -103,7 +102,7 @@ export async function answerOnQuestion<
       user: userId,
       question: questionId,
       description,
-      language,
+      language: language || "",
     });
 
     question.answers.push(createdAnswer._id);

@@ -9,7 +9,7 @@ export interface QuestionTypes extends Document {
   downvotes: mongoose.Types.ObjectId[];
   answers: mongoose.Types.ObjectId[]; // References to Answer documents
   description: string;
-  language: string;
+  language?: string;
 }
 
 const QuestionSchema: Schema = new mongoose.Schema(
@@ -51,7 +51,7 @@ const QuestionSchema: Schema = new mongoose.Schema(
     },
     language: {
       type: String,
-      required: true,
+      default: "",
     },
   },
   { timestamps: true }

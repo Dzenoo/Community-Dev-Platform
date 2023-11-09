@@ -4,7 +4,7 @@ export interface AnswerTypes extends Document {
   user: mongoose.Types.ObjectId;
   question: mongoose.Types.ObjectId;
   description: string;
-  language: string;
+  language?: string;
   upvotes: string[];
   downvotes: string[];
 }
@@ -26,7 +26,7 @@ const AnswerSchema: Schema = new mongoose.Schema({
   },
   language: {
     type: String,
-    required: true,
+    default: "",
   },
   upvotes: [
     {

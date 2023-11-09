@@ -36,6 +36,7 @@ const AskQuestionForm = () => {
     },
   });
   const router = useRouter();
+  const isCode = formState.inputs.description.value.includes("```");
 
   const isFormValid = checkFormValidity(
     !formState.inputs.title.isValid ||
@@ -76,7 +77,7 @@ const AskQuestionForm = () => {
       // @ts-ignore
       session?.user?.id,
       formState.inputs.description.value,
-      formState.inputs.language.value,
+      isCode ? formState.inputs.language.value : "",
       "/"
     );
 
@@ -114,26 +115,29 @@ const AskQuestionForm = () => {
           />
         </div>
         <div>
-          <div className="mb-4">
-            <select
-              className="select card_animation"
-              onChange={(e: any) =>
-                inputChangeHandler("language", e.target.value, [
-                  VALIDATOR_REQUIRE(),
-                ])
-              }
-            >
-              {ProgrammingLanguagesData.map((language) => (
-                <option key={language.id} value={language.value}>
-                  {language.name}
-                </option>
-              ))}
-            </select>
-          </div>
+          {isCode && (
+            <div className="mb-4">
+              <select
+                className="select card_animation"
+                onChange={(e: any) =>
+                  inputChangeHandler("language", e.target.value, [
+                    VALIDATOR_REQUIRE(),
+                  ])
+                }
+              >
+                {ProgrammingLanguagesData.map((language) => (
+                  <option key={language.id} value={language.value}>
+                    {language.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
           <Input
             id="description"
             label="Detailed Explanation"
             helperText="Explore more about problem"
+            placeholder="Write your question here... To add code, let add it between ```"
             type="text"
             elementType="textarea"
             isValid={formState.inputs.description.isValid}

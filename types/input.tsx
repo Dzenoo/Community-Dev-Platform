@@ -9,4 +9,5 @@ export interface InputPropsTypes {
   helperText?: string;
   errorText?: string;
   defaultValue?: string;
+  val?: string;
 }

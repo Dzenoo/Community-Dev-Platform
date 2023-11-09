@@ -11,6 +11,7 @@ const Input: React.FC<InputPropsTypes> = ({
   helperText,
   errorText,
   defaultValue,
+  val,
 }) => {
   const element =
     elementType === "textarea" ? (
@@ -22,6 +23,7 @@ const Input: React.FC<InputPropsTypes> = ({
         }`}
         onChange={onChange}
         defaultValue={defaultValue}
+        value={val}
       />
     ) : (
       <input
@@ -33,6 +35,7 @@ const Input: React.FC<InputPropsTypes> = ({
         }`}
         onChange={onChange}
         defaultValue={defaultValue}
+        value={val}
       />
     );
 

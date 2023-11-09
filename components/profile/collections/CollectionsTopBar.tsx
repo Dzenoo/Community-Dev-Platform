@@ -1,6 +1,6 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { updateSearchParams } from "@/library/utility";
+import { deleteSearchParams, updateSearchParams } from "@/library/utility";
 import { ChangeEvent } from "react";
 
 const CollectionsTopBar = () => {
@@ -9,6 +9,11 @@ const CollectionsTopBar = () => {
   function handleUpdateSearchParams(title: string, value: string) {
     const newPathname = updateSearchParams(title, value.toLowerCase());
     router.push(newPathname);
+
+    if (value === "") {
+      const newPathname = deleteSearchParams(title);
+      router.push(newPathname);
+    }
   }
 
   return (
