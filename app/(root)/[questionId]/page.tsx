@@ -1,18 +1,18 @@
-import QuestionDetailsContent from '@/components/questions/details/QuestionDetailsContent'
-import { authOptions } from '@/app/api/auth/[...nextauth]/route'
-import { fetchQuestionById } from '@/library/actions/questions.actions'
-import { getServerSession } from 'next-auth'
-import { notFound } from 'next/navigation'
+import QuestionDetailsContent from "@/components/questions/details/QuestionDetailsContent";
+import { fetchQuestionById } from "@/library/actions/questions.actions";
+import authOptions from "@/library/auth-options";
+import { getServerSession } from "next-auth";
+import { notFound } from "next/navigation";
 
 const QuestionDetails = async ({
-  params
+  params,
 }: {
-  params: { questionId: string }
+  params: { questionId: string };
 }) => {
-  const session = await getServerSession(authOptions)
-  const question = await fetchQuestionById(params.questionId)
+  const session = await getServerSession(authOptions);
+  const question = await fetchQuestionById(params.questionId);
 
-  if (!params.questionId || !question) notFound()
+  if (!params.questionId || !question) notFound();
 
   return (
     <section className="section">
@@ -33,7 +33,7 @@ const QuestionDetails = async ({
         />
       )}
     </section>
-  )
-}
+  );
+};
 
-export default QuestionDetails
+export default QuestionDetails;

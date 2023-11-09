@@ -1,7 +1,7 @@
 import CollectionsTopBar from "@/components/profile/collections/CollectionsTopBar";
 import QuestionList from "@/components/questions/QuestionList";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { fetchUser } from "@/library/actions/user.actions";
+import authOptions from "@/library/auth-options";
 import { notAuthNavigate } from "@/library/utility";
 import { getServerSession } from "next-auth";
 import { notFound } from "next/navigation";

@@ -1,44 +1,44 @@
-import ProfileAnswersList from '@/components/profile/ProfileAnswersList'
-import ProfileStatistics from '@/components/profile/ProfileStatistics'
-import ProfileTopBar from '@/components/profile/ProfileTopBar'
-import QuestionList from '@/components/questions/QuestionList'
-import { authOptions } from '@/app/api/auth/[...nextauth]/route'
-import { fetchUserAnswers } from '@/library/actions/questions.actions'
-import { fetchUser } from '@/library/actions/user.actions'
-import { notAuthNavigate } from '@/library/utility'
-import { getServerSession } from 'next-auth'
-import { notFound } from 'next/navigation'
+import ProfileAnswersList from "@/components/profile/ProfileAnswersList";
+import ProfileStatistics from "@/components/profile/ProfileStatistics";
+import ProfileTopBar from "@/components/profile/ProfileTopBar";
+import QuestionList from "@/components/questions/QuestionList";
+import { fetchUserAnswers } from "@/library/actions/questions.actions";
+import { fetchUser } from "@/library/actions/user.actions";
+import authOptions from "@/library/auth-options";
+import { notAuthNavigate } from "@/library/utility";
+import { getServerSession } from "next-auth";
+import { notFound } from "next/navigation";
 
 const ProfilePage = async ({ params }: { params: { profileId: string } }) => {
-  const session = await getServerSession(authOptions)
-  const user = await fetchUser(params.profileId)
-  const answers = await fetchUserAnswers(params.profileId)
+  const session = await getServerSession(authOptions);
+  const user = await fetchUser(params.profileId);
+  const answers = await fetchUserAnswers(params.profileId);
 
-  if (!user) notFound()
-  if (!session) notAuthNavigate('/')
+  if (!user) notFound();
+  if (!session) notAuthNavigate("/");
   // @ts-expect-error
-  if (params.profileId !== session?.user.id) notAuthNavigate('/')
+  if (params.profileId !== session?.user.id) notAuthNavigate("/");
 
   const ProfileStatisticsData = [
     {
       id: 1,
-      path: '/assets/images/golden.png',
-      name: 'Gold',
-      quantity: user?.goldBadges
+      path: "/assets/images/golden.png",
+      name: "Gold",
+      quantity: user?.goldBadges,
     },
     {
       id: 2,
-      path: '/assets/images/silver.png',
-      name: 'Silver',
-      quantity: user?.silverBadges
+      path: "/assets/images/silver.png",
+      name: "Silver",
+      quantity: user?.silverBadges,
     },
     {
       id: 3,
-      path: '/assets/images/bronze.png',
-      name: 'Bronze',
-      quantity: user?.bronzeBadges
-    }
-  ]
+      path: "/assets/images/bronze.png",
+      name: "Bronze",
+      quantity: user?.bronzeBadges,
+    },
+  ];
 
   return (
     <section className="my-6 flex flex-col gap-12">
@@ -72,7 +72,7 @@ const ProfilePage = async ({ params }: { params: { profileId: string } }) => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default ProfilePage
+export default ProfilePage;
