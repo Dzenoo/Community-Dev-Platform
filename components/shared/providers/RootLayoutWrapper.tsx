@@ -1,18 +1,18 @@
-'use client'
-import LogoNavigation from '../navigation/LogoNavigation'
-import SidebarNavigation from '../navigation/SidebarNavigation'
-import AuthProvider from '@/context/AuthProvider'
-import { ThemeProvider } from 'next-themes'
-import { type ReactNode, useState } from 'react'
+"use client";
+import LogoNavigation from "../navigation/LogoNavigation";
+import SidebarNavigation from "../navigation/SidebarNavigation";
+import AuthProvider from "@/context/AuthProvider";
+import { ThemeProvider } from "next-themes";
+import { type ReactNode, useState } from "react";
 
 const RootLayoutWrapper = ({
   children,
-  informationComponent
+  informationComponent,
 }: {
-  children: ReactNode
-  informationComponent: any
+  children: ReactNode;
+  informationComponent: any;
 }) => {
-  const [sidebarIsOpen, setSidebarIsOpen] = useState<boolean>(false)
+  const [sidebarIsOpen, setSidebarIsOpen] = useState<boolean>(false);
 
   return (
     <>
@@ -24,7 +24,7 @@ const RootLayoutWrapper = ({
               sidebarIsOpen={sidebarIsOpen}
               setSidebarIsOpen={setSidebarIsOpen}
             />
-            <section className="relative p-4 grow basis-full h-screen overflow-y-scroll md:p-8">
+            <section className="relative p-4 py-16 grow basis-full h-screen overflow-y-scroll md:p-8">
               {children}
             </section>
             <div>{informationComponent}</div>
@@ -32,7 +32,7 @@ const RootLayoutWrapper = ({
         </ThemeProvider>
       </AuthProvider>
     </>
-  )
-}
+  );
+};
 
-export default RootLayoutWrapper
+export default RootLayoutWrapper;
