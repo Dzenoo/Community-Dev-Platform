@@ -1,4 +1,3 @@
-import Image from "next/image";
 import bcrypt from "bcryptjs";
 import { redirect } from "next/navigation";
 
