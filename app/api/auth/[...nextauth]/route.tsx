@@ -3,8 +3,9 @@ import NextAuth from "next-auth/next";
 import CredentialProvider from "next-auth/providers/credentials";
 import { connectToDb } from "@/library/mongoose";
 import { comparePassword } from "@/library/utility";
+import { NextAuthOptions } from "next-auth";
 
-export const authOptions: any = {
+export const authOptions: NextAuthOptions = {
   secret: process.env.NEXT_AUTH_SECRET,
   session: {
     strategy: "jwt",
