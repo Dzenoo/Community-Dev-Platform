@@ -1,6 +1,6 @@
-import Card from "@/components/shared/ui/elements/card";
-import TagLink from "./TagLink";
-import { TagItemPropsTypes } from "@/types/tags";
+import Card from '@/components/shared/ui/elements/card'
+import TagLink from './TagLink'
+import { type TagItemPropsTypes } from '@/types/tags'
 
 const TagItem: React.FC<TagItemPropsTypes> = ({ id, name, description }) => {
   return (
@@ -12,7 +12,7 @@ const TagItem: React.FC<TagItemPropsTypes> = ({ id, name, description }) => {
         </h2>
       </div>
     </Card>
-  );
-};
+  )
+}
 
-export default TagItem;
+export default TagItem

@@ -1,4 +1,4 @@
-export default function Loading() {
+export default function Loading () {
   return (
     <section className="flex flex-col gap-8">
       <div className="bg-white flex dark:bg-gray-800 gap-4 p-4 rounded-lg shadow-lg animate-pulse">
@@ -32,5 +32,5 @@ export default function Loading() {
         </div>
       </div>
     </section>
-  );
+  )
 }

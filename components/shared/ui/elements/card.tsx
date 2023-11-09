@@ -1,7 +1,7 @@
-import { ReactNode } from "react";
+import { type ReactNode } from 'react'
 
 const Card = ({ children }: { children: ReactNode }) => {
-  return <div className="card card_animation">{children}</div>;
-};
+  return <div className="card card_animation">{children}</div>
+}
 
-export default Card;
+export default Card

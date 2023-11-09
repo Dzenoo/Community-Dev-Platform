@@ -1,6 +1,6 @@
-import Card from "@/components/shared/ui/elements/card";
-import SignupForm from "./SignupForm";
-import Link from "next/link";
+import Card from '@/components/shared/ui/elements/card'
+import SignupForm from './SignupForm'
+import Link from 'next/link'
 
 const SignupCard = () => {
   return (
@@ -14,14 +14,14 @@ const SignupCard = () => {
       <SignupForm />
       <div>
         <h2 className="mt-4 section_subtitle text-black dark:text-white text-center">
-          Already have an account?{" "}
+          Already have an account?{' '}
           <Link href="/login" className="font-bold">
             Login Here
           </Link>
         </h2>
       </div>
     </Card>
-  );
-};
+  )
+}
 
-export default SignupCard;
+export default SignupCard

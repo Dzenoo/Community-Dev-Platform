@@ -1,8 +1,8 @@
-import ProfileStatisticsItem from "./ProfileStatisticsItem";
-import { ProfileListPropsTypes } from "@/types/profile";
+import ProfileStatisticsItem from './ProfileStatisticsItem'
+import { type ProfileListPropsTypes } from '@/types/profile'
 
 const ProfileStatisticsList: React.FC<ProfileListPropsTypes> = ({
-  profileStatistics,
+  profileStatistics
 }) => {
   return (
     <div className="my-4 grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
@@ -10,7 +10,7 @@ const ProfileStatisticsList: React.FC<ProfileListPropsTypes> = ({
         <ProfileStatisticsItem key={statistics.id} {...statistics} />
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default ProfileStatisticsList;
+export default ProfileStatisticsList

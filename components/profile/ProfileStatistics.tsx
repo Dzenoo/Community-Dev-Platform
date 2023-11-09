@@ -1,8 +1,8 @@
-import ProfileStatisticsList from "./ProfileStatisticsList";
-import { ProfileStatisticsPropsTypes } from "@/types/profile";
+import ProfileStatisticsList from './ProfileStatisticsList'
+import { type ProfileStatisticsPropsTypes } from '@/types/profile'
 
 const ProfileStatistics: React.FC<ProfileStatisticsPropsTypes> = ({
-  profileStatistics,
+  profileStatistics
 }) => {
   return (
     <section>
@@ -15,7 +15,7 @@ const ProfileStatistics: React.FC<ProfileStatisticsPropsTypes> = ({
         <ProfileStatisticsList profileStatistics={profileStatistics} />
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default ProfileStatistics;
+export default ProfileStatistics

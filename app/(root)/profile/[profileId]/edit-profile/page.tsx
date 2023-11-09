@@ -1,17 +1,18 @@
-import EditProfileForm from "@/components/profile/edit-profile/EditProfileForm";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
-import { fetchUser } from "@/library/actions/user.actions";
-import { notAuthNavigate } from "@/library/utility";
-import { getServerSession } from "next-auth";
+import EditProfileForm from '@/components/profile/edit-profile/EditProfileForm'
+import { authOptions } from '@/app/api/auth/[...nextauth]/route'
+import { fetchUser } from '@/library/actions/user.actions'
+import { notAuthNavigate } from '@/library/utility'
+import { getServerSession } from 'next-auth'
+import { notFound } from 'next/navigation'
 
 const EditPage = async ({ params }: { params: { profileId: string } }) => {
-  const session = await getServerSession(authOptions);
-  const user = await fetchUser(params.profileId);
+  const session = await getServerSession(authOptions)
+  const user = await fetchUser(params.profileId)
 
-  if (!user) return null;
-  if (!session) notAuthNavigate("/");
-  // @ts-ignore
-  if (params.profileId !== session?.user.id) notAuthNavigate("/");
+  if (!user) notFound()
+  if (!session) notAuthNavigate('/')
+  // @ts-expect-error
+  if (params.profileId !== session?.user.id) notAuthNavigate('/')
 
   return (
     <section className="mb-12">
@@ -28,7 +29,7 @@ const EditPage = async ({ params }: { params: { profileId: string } }) => {
         biography={user?.biography}
       />
     </section>
-  );
-};
+  )
+}
 
-export default EditPage;
+export default EditPage

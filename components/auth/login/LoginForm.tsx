@@ -7,7 +7,7 @@ import {
   VALIDATOR_MINLENGTH,
 } from "@/library/validators/validators";
 import { useRouter } from "next/navigation";
-import { FormEvent } from "react";
+import { type FormEvent } from "react";
 import { signIn } from "next-auth/react";
 import { checkFormValidity } from "@/library/utility";
 import { ToastContainer, toast } from "react-toastify";
@@ -72,9 +72,9 @@ const LoginForm = () => {
           placeholder="Enter Email"
           isValid={formState.inputs.email.isValid}
           errorText="Please enter a valid email"
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            inputChangeHandler("email", e.target.value, [VALIDATOR_EMAIL()])
-          }
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+            inputChangeHandler("email", e.target.value, [VALIDATOR_EMAIL()]);
+          }}
         />
         <Input
           type="password"
@@ -83,11 +83,11 @@ const LoginForm = () => {
           placeholder="Enter Password"
           isValid={formState.inputs.password.isValid}
           errorText="Please enter a valid password"
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
             inputChangeHandler("password", e.target.value, [
               VALIDATOR_MINLENGTH(3),
-            ])
-          }
+            ]);
+          }}
         />
       </div>
       <Button

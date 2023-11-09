@@ -1,5 +1,4 @@
 "use server";
-
 import { connectToDb } from "../mongoose";
 import Question from "../models/question";
 import User from "../models/user";
@@ -138,8 +137,6 @@ export async function fetchUserAnswers<Uid extends string>(
   }
 }
 
-// Delete questions actions
-
 export async function deleteQuestion<Qid extends string, Uid extends string>(
   questionId: Qid,
   userId: Uid,
@@ -184,8 +181,6 @@ export async function deleteQuestion<Qid extends string, Uid extends string>(
     console.log(error);
   }
 }
-
-// Create action to upvote and downvote questions
 
 async function voteQuestion<Qid extends string, Uid extends string>(
   questionId: Qid,
@@ -233,8 +228,6 @@ export async function upvoteQuestion<Qid extends string, Uid extends string>(
   await voteQuestion(questionId, userId, "upvotes", path);
 }
 
-// Downvote question action
-
 export async function downvoteQuestion<Qid extends string, Uid extends string>(
   questionId: Qid,
   userId: Uid,
@@ -242,8 +235,6 @@ export async function downvoteQuestion<Qid extends string, Uid extends string>(
 ): Promise<void> {
   await voteQuestion(questionId, userId, "downvotes", path);
 }
-
-// Save to collection action
 
 export async function saveToCollection<Qid extends string, Uid extends string>(
   questionId: Qid,
@@ -270,8 +261,6 @@ export async function saveToCollection<Qid extends string, Uid extends string>(
     console.log(error);
   }
 }
-
-// Vote Answer action
 
 export async function voteAnswer<Aid extends string, Uid extends string>(
   answerId: Aid,

@@ -1,8 +1,8 @@
 import mongoose, { Schema, Document } from "mongoose";
 
 export interface AnswerTypes extends Document {
-  user: mongoose.Types.ObjectId;
-  question: mongoose.Types.ObjectId;
+  user: string;
+  question: string;
   description: string;
   language?: string;
   upvotes: string[];

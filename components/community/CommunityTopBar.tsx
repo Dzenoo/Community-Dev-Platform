@@ -1,5 +1,5 @@
 "use client";
-import { ChangeEvent } from "react";
+import { type ChangeEvent } from "react";
 import { useRouter } from "next/navigation";
 import { deleteSearchParams, updateSearchParams } from "@/library/utility";
 
@@ -26,9 +26,9 @@ const CommunityTopBar = () => {
           id={"search-community"}
           className="input w-full"
           placeholder="Search Community"
-          onChange={(e: ChangeEvent<HTMLInputElement>) =>
-            handleUpdateSearchParams("search", e.target.value)
-          }
+          onChange={(e: ChangeEvent<HTMLInputElement>) => {
+            handleUpdateSearchParams("search", e.target.value);
+          }}
         />
       </div>
     </section>

@@ -1,8 +1,8 @@
-import Link from "next/link";
-import LinkButton from "@/components/shared/ui/elements/link";
-import { ProfilePropsTypes } from "@/types/profile";
-import { calculateDate } from "@/library/utility";
-import { ImageDate, ImageLocation } from "./ProfileImages";
+import Link from 'next/link'
+import LinkButton from '@/components/shared/ui/elements/link'
+import { type ProfilePropsTypes } from '@/types/profile'
+import { calculateDate } from '@/library/utility'
+import { ImageDate, ImageLocation } from './ProfileImages'
 
 const ProfileTopBar: React.FC<ProfilePropsTypes> = ({
   name,
@@ -10,9 +10,9 @@ const ProfileTopBar: React.FC<ProfilePropsTypes> = ({
   location,
   biography,
   createdAt,
-  id,
+  id
 }) => {
-  const joinedDate = calculateDate(createdAt);
+  const joinedDate = calculateDate(createdAt)
 
   return (
     <div className="flex justify-between items-start card_animation gap-12 max-md:flex-wrap">
@@ -32,7 +32,7 @@ const ProfileTopBar: React.FC<ProfilePropsTypes> = ({
           <div className="my-6 flex gap-8 items-center max-md:flex-wrap">
             <div>
               <Link
-                href={"/profile/portfolio"}
+                href={'/profile/portfolio'}
                 className="section_subtitle_smaller text-blue-700"
               >
                 Portfolio
@@ -64,7 +64,7 @@ const ProfileTopBar: React.FC<ProfilePropsTypes> = ({
         </LinkButton>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ProfileTopBar;
+export default ProfileTopBar

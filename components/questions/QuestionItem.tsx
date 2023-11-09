@@ -1,10 +1,10 @@
-import Link from "next/link";
-import Card from "@/components/shared/ui/elements/card";
-import Tags from "@/components/tags/TagLink";
-import Image from "next/image";
-import QuestionItemActions from "./QuestionItemActions";
-import { QuestionItemPropsTypes } from "@/types/questions";
-import { calculateDate, generateQuestionActionsData } from "@/library/utility";
+import Link from 'next/link'
+import Card from '@/components/shared/ui/elements/card'
+import Tags from '@/components/tags/TagLink'
+import Image from 'next/image'
+import QuestionItemActions from './QuestionItemActions'
+import { type QuestionItemPropsTypes } from '@/types/questions'
+import { calculateDate, generateQuestionActionsData } from '@/library/utility'
 
 const QuestionItem: React.FC<QuestionItemPropsTypes> = ({
   _id,
@@ -14,9 +14,9 @@ const QuestionItem: React.FC<QuestionItemPropsTypes> = ({
   showActions,
   upvotes,
   answers,
-  createdAt,
+  createdAt
 }) => {
-  const askedQUestion = calculateDate(createdAt);
+  const askedQUestion = calculateDate(createdAt)
 
   return (
     <Card>
@@ -54,21 +54,13 @@ const QuestionItem: React.FC<QuestionItemPropsTypes> = ({
           {showActions && <QuestionItemActions id={_id} />}
         </div>
         <div className="flex items-center gap-8 justify-between flex-wrap max-md:justify-center">
-          {generateQuestionActionsData(
-            "/assets/graphics/heart.png",
-            upvotes?.length,
-            "Votes"
-          )}
-          {generateQuestionActionsData(
-            "/assets/graphics/comment.png",
-            answers?.length,
-            "Answers"
-          )}
-          {generateQuestionActionsData("", tags?.length, "Tags")}
+          {generateQuestionActionsData(upvotes?.length, 'Votes')}
+          {generateQuestionActionsData(answers?.length, 'Answers')}
+          {generateQuestionActionsData(tags?.length, 'Tags')}
         </div>
       </div>
     </Card>
-  );
-};
+  )
+}
 
-export default QuestionItem;
+export default QuestionItem

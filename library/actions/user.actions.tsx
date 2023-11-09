@@ -17,16 +17,13 @@ export async function signupUser<
   username: Username,
   password: Password
 ): Promise<any> {
-  // Connect to database and create a new user
   try {
     await connectToDb();
 
-    // Check if all fields are filled
     if (!name || !email || !username || !password) {
       return;
     }
 
-    // Chech if user exist and check errors
     const existingUserEmail = await User.findOne({
       email: email,
     });
@@ -98,11 +95,8 @@ export async function fetchUser<Uid extends string>(userId: Uid) {
     return user;
   } catch (error) {
     console.log(error);
-    throw new Error("Fetching user failed");
   }
 }
-
-// Function for editing profile
 
 export async function editProfile<
   Name extends string,

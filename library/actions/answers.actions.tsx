@@ -13,6 +13,9 @@ export async function deleteAnswer(
 
   try {
     const answer = await Answer.findById(answerId);
+
+    if (!answer) return;
+
     await Question.updateOne(
       {
         _id: answer?.question,

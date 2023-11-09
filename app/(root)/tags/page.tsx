@@ -1,17 +1,17 @@
-import TagList from "@/components/tags/TagList";
-import TagsTopBar from "@/components/tags/TagsTopBar";
-import { TagsData } from "@/constants";
+import TagList from '@/components/tags/TagList'
+import TagsTopBar from '@/components/tags/TagsTopBar'
+import { TagsData } from '@/constants'
 
 const TagsPage = ({
-  searchParams: { search = "", filter = "" } = {},
+  searchParams: { search = '', filter = '' } = {}
 }: {
-  searchParams?: { search?: string; filter?: string };
+  searchParams?: { search?: string, filter?: string }
 } = {}) => {
   const filteredTags = TagsData?.filter(
-    ({ name = "" }) =>
+    ({ name = '' }) =>
       name.toLowerCase().includes(search.toLowerCase()) &&
       name.toLowerCase().includes(filter.toLowerCase())
-  );
+  )
 
   return (
     <section>
@@ -19,7 +19,7 @@ const TagsPage = ({
       <TagsTopBar />
       <TagList tags={filteredTags || TagsData} />
     </section>
-  );
-};
+  )
+}
 
-export default TagsPage;
+export default TagsPage

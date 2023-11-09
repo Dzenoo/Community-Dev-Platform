@@ -4,10 +4,10 @@ export interface QuestionTypes extends Document {
   id: string;
   title: string;
   tags: string[];
-  user: mongoose.Types.ObjectId; // Reference to the User who asked the question
-  upvotes: mongoose.Types.ObjectId[];
-  downvotes: mongoose.Types.ObjectId[];
-  answers: mongoose.Types.ObjectId[]; // References to Answer documents
+  user: string;
+  upvotes: string[];
+  downvotes: string[];
+  answers: string[];
   description: string;
   language?: string;
 }

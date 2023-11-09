@@ -1,62 +1,62 @@
-import User from "@/library/models/user";
-import NextAuth from "next-auth/next";
-import CredentialProvider from "next-auth/providers/credentials";
-import { connectToDb } from "@/library/mongoose";
-import { comparePassword } from "@/library/utility";
+import User from '@/library/models/user'
+import NextAuth from 'next-auth/next'
+import CredentialProvider from 'next-auth/providers/credentials'
+import { connectToDb } from '@/library/mongoose'
+import { comparePassword } from '@/library/utility'
 
 export const authOptions: any = {
   secret: process.env.NEXT_AUTH_SECRET,
   session: {
-    strategy: "jwt",
+    strategy: 'jwt'
   },
   providers: [
     CredentialProvider({
-      name: "Credentials",
+      name: 'Credentials',
       credentials: {
         email: {},
-        password: {},
+        password: {}
       },
       authorize: async (credentials): Promise<any> => {
         try {
-          await connectToDb();
+          await connectToDb()
 
-          const user = await User.findOne({ email: credentials?.email });
+          const user = await User.findOne({ email: credentials?.email })
 
           if (!user) {
-            throw new Error("No user found!");
+            throw new Error('No user found!')
           }
 
           const isValid = await comparePassword(
             credentials?.password,
             user.password
-          );
+          )
 
           if (!isValid) {
-            throw new Error("Invalid password! Try again!");
+            throw new Error('Invalid password! Try again!')
           }
 
           return {
             id: user._id.toString(),
             name: user.name,
-            email: user.email,
-          };
+            email: user.email
+          }
         } catch (error) {
-          console.log("Error checking");
-          return null;
+          console.log('Error checking')
+          return null
         }
-      },
-    }),
+      }
+    })
   ],
   callbacks: {
-    async session({ session }: { session: any }) {
-      const sessionUser = await User.findOne({ email: session.user.email });
-      session.user.id = sessionUser._id.toString();
+    async session ({ session }: { session: any }) {
+      const sessionUser = await User.findOne({ email: session.user.email })
+      session.user.id = sessionUser._id.toString()
 
-      return session;
-    },
-  },
-};
+      return session
+    }
+  }
+}
 
-const handler = NextAuth(authOptions);
+const handler = NextAuth(authOptions)
 
-export { handler as GET, handler as POST };
+export { handler as GET, handler as POST }

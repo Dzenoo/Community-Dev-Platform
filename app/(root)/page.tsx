@@ -1,52 +1,52 @@
-import TopBar from "@/components/home/TopBar";
-import FilterBar from "@/components/home/FilterBar";
-import QuestionList from "@/components/questions/QuestionList";
-import { fetchQuestions } from "@/library/actions/questions.actions";
+import TopBar from '@/components/home/TopBar'
+import FilterBar from '@/components/home/FilterBar'
+import QuestionList from '@/components/questions/QuestionList'
+import { fetchQuestions } from '@/library/actions/questions.actions'
 
-export default async function Home({
-  searchParams: { search = "", filter = "" } = {},
+export default async function Home ({
+  searchParams: { search = '', filter = '' } = {}
 }: {
   searchParams?: {
-    search?: string;
-    filter?: string;
-  };
+    search?: string
+    filter?: string
+  }
 } = {}) {
-  const questions: any = await fetchQuestions();
-  let filteredQuestions = questions;
+  const questions: any = await fetchQuestions()
+  let filteredQuestions = questions
 
   if (search) {
-    const searchLower = search.toLowerCase();
+    const searchLower = search.toLowerCase()
     filteredQuestions = questions.filter((question: any) => {
-      const titleLower = question.title.toLowerCase();
-      const descriptionLower = question.description.toLowerCase();
+      const titleLower = question.title.toLowerCase()
+      const descriptionLower = question.description.toLowerCase()
       return (
         titleLower.includes(searchLower) ||
         descriptionLower.includes(searchLower)
-      );
-    });
+      )
+    })
   } else {
-    if (filter === "newest") {
+    if (filter === 'newest') {
       filteredQuestions = questions.slice().sort((a: any, b: any) => {
         return (
           new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-        );
-      });
-    } else if (filter === "frequent") {
+        )
+      })
+    } else if (filter === 'frequent') {
       filteredQuestions = questions.slice().sort((a: any, b: any) => {
         return (
           b.upvotes.length -
           b.downvotes.length -
           (a.upvotes.length - a.downvotes.length)
-        );
-      });
-    } else if (filter === "recommended") {
+        )
+      })
+    } else if (filter === 'recommended') {
       filteredQuestions = questions.slice().sort((a: any, b: any) => {
         return (
           b.answers.length -
           b.upvotes.length -
           (a.answers.length - a.upvotes.length)
-        );
-      });
+        )
+      })
     }
   }
   return (
@@ -55,5 +55,5 @@ export default async function Home({
       <FilterBar filter={filter} />
       <QuestionList questions={filteredQuestions} showActions={false} />
     </main>
-  );
+  )
 }

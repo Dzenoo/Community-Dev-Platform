@@ -1,7 +1,7 @@
-import Image from "next/image";
-import QuestionDetailsAnswerActions from "./QuestionDetailsAnswerActions";
-import QuestionDetailsCode from "./QuestionDetailsCode";
-import { QuestionAnswerPropsTypes } from "@/types/answer";
+import Image from 'next/image'
+import QuestionDetailsAnswerActions from './QuestionDetailsAnswerActions'
+import QuestionDetailsCode from './QuestionDetailsCode'
+import { type QuestionAnswerPropsTypes } from '@/types/answer'
 
 const QuestionDetailsAnswer: React.FC<QuestionAnswerPropsTypes> = ({
   user,
@@ -9,7 +9,7 @@ const QuestionDetailsAnswer: React.FC<QuestionAnswerPropsTypes> = ({
   language,
   _id,
   upvotes,
-  downvotes,
+  downvotes
 }) => {
   return (
     <div className="my-4 flex flex-col gap-4">
@@ -43,7 +43,7 @@ const QuestionDetailsAnswer: React.FC<QuestionAnswerPropsTypes> = ({
               >
                 {section}
               </p>
-            );
+            )
           } else {
             return (
               <QuestionDetailsCode
@@ -51,12 +51,12 @@ const QuestionDetailsAnswer: React.FC<QuestionAnswerPropsTypes> = ({
                 language={language}
                 key={index}
               />
-            );
+            )
           }
         })}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default QuestionDetailsAnswer;
+export default QuestionDetailsAnswer

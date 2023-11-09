@@ -1,4 +1,4 @@
-export default function Loading() {
+export default function Loading () {
   return (
     <section className="flex flex-col gap-8">
       <div className="flex items-center gap-4 flex-wrap">
@@ -70,5 +70,5 @@ export default function Loading() {
         </div>
       </div>
     </section>
-  );
+  )
 }

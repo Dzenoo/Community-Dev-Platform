@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from 'next/image'
 
 const ProfileNavigation = ({ name }: { name: string | undefined }) => {
   return (
@@ -11,7 +11,7 @@ const ProfileNavigation = ({ name }: { name: string | undefined }) => {
         height={40}
       />
     </div>
-  );
-};
+  )
+}
 
-export default ProfileNavigation;
+export default ProfileNavigation

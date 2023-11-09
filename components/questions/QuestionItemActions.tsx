@@ -1,27 +1,27 @@
-"use client";
+'use client'
 // import Image from "next/image";
-import { deleteQuestion } from "@/library/actions/questions.actions";
-import { useSession } from "next-auth/react";
-import { ToastContainer, toast } from "react-toastify";
-import { usePathname } from "next/navigation";
+import { deleteQuestion } from '@/library/actions/questions.actions'
+import { useSession } from 'next-auth/react'
+import { ToastContainer, toast } from 'react-toastify'
+import { usePathname } from 'next/navigation'
 
 const QuestionItemActions = ({ id }: { id: string }) => {
-  const { data: session } = useSession();
-  const pathname = usePathname();
+  const { data: session } = useSession()
+  const pathname = usePathname()
 
-  async function deleteQuestionConfirm() {
+  async function deleteQuestionConfirm () {
     const confirm = window.confirm(
-      "Are you sure you want to delete this question?"
-    );
+      'Are you sure you want to delete this question?'
+    )
 
     if (!session) {
-      toast.error("You must be logged in to delete a question.");
-      return;
+      toast.error('You must be logged in to delete a question.')
+      return
     }
 
     if (confirm) {
-      // @ts-ignore
-      await deleteQuestion(id, session?.user.id, pathname);
+      // @ts-expect-error
+      await deleteQuestion(id, session?.user.id, pathname)
     }
   }
 
@@ -49,7 +49,7 @@ const QuestionItemActions = ({ id }: { id: string }) => {
         </div> */}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default QuestionItemActions;
+export default QuestionItemActions

@@ -1,16 +1,13 @@
 import Image from "next/image";
 import bcrypt from "bcryptjs";
 import { redirect } from "next/navigation";
-import { useSession } from "next-auth/react";
 
-export function generateQuestionActionsData<
-  T extends string | undefined,
-  Q extends number,
-  Y extends string
->(icon: T | undefined, data: Q, type: Y): React.ReactNode {
+export function generateQuestionActionsData<T extends number, Q extends string>(
+  data: T,
+  type: Q
+): React.ReactNode {
   return (
     <div className="question_item_actions">
-      {icon && <Image src={icon} alt={type} width={20} height={20} />}
       <span className="question_item_actions_span">{data}</span>
       <p className="section_subtitle_smaller text-black dark:text-white">
         {type}
@@ -19,13 +16,9 @@ export function generateQuestionActionsData<
   );
 }
 
-// Create function for hashing password and comparing password with bcrypt
-
 export function hashPassword<T extends string>(password: T) {
   return bcrypt.hash(password, 12);
 }
-
-// Create function for comparing password with bcrypt
 
 export async function comparePassword<T extends string>(
   password: T,
@@ -33,8 +26,6 @@ export async function comparePassword<T extends string>(
 ) {
   return await bcrypt.compare(password, hashedPassword);
 }
-
-// Create function to calculate date when user joined based on createdAt date
 
 export function calculateDate(date: Date) {
   const createdAt = new Date(date);
@@ -45,8 +36,6 @@ export function calculateDate(date: Date) {
     day: "numeric",
   });
 }
-
-// Crate function that checks form validity
 
 export function checkFormValidity<T extends any>(condition: T) {
   let formIsValid;
@@ -61,20 +50,18 @@ export function checkFormValidity<T extends any>(condition: T) {
 }
 
 export function getQuestionsTags(typeOfQuestions: any) {
-  const tagsSet = new Set(); // Use a Set to store unique tags
+  const tagsSet = new Set();
 
   typeOfQuestions?.forEach((question: any) => {
     question.tags?.forEach((tag: any) => {
-      tagsSet.add(tag); // Add each tag to the Set
+      tagsSet.add(tag);
     });
   });
 
-  const tags = Array.from(tagsSet); // Convert the Set back to an array
+  const tags = Array.from(tagsSet);
 
   return tags;
 }
-
-// Update search params
 
 export function updateSearchParams<T extends string>(type: T, value: T) {
   const searchParams = new URLSearchParams(window.location.search);
@@ -84,8 +71,6 @@ export function updateSearchParams<T extends string>(type: T, value: T) {
 
   return newPathname;
 }
-
-// Delete search params
 
 export function deleteSearchParams<T extends string>(type: T) {
   const searchParams = new URLSearchParams(window.location.search);
@@ -98,10 +83,4 @@ export function deleteSearchParams<T extends string>(type: T) {
 
 export function notAuthNavigate(path: string) {
   return redirect(path);
-}
-
-export function getAuth() {
-  const { data, status } = useSession();
-
-  return status;
 }

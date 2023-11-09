@@ -1,5 +1,5 @@
 import Card from "@/components/shared/ui/elements/card";
-import { CommunityItemPropsTypes } from "@/types/community";
+import { type CommunityItemPropsTypes } from "@/types/community";
 
 const CommunityItem: React.FC<CommunityItemPropsTypes> = ({
   name,
@@ -20,9 +20,6 @@ const CommunityItem: React.FC<CommunityItemPropsTypes> = ({
           <p className="section_subtitle_smaller text-black dark:text-white">
             {biography}
           </p>
-          {/* {tags.map((tag) => (
-            <TagLink key={tag.id} {...tag} />
-          ))} */}
         </div>
       </div>
     </Card>

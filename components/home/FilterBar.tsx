@@ -1,19 +1,19 @@
-"use client";
-import Button from "@/components/shared/ui/elements/button";
-import { useRouter } from "next/navigation";
-import { FilterButtonsData } from "@/constants";
-import { deleteSearchParams, updateSearchParams } from "@/library/utility";
+'use client'
+import Button from '@/components/shared/ui/elements/button'
+import { useRouter } from 'next/navigation'
+import { FilterButtonsData } from '@/constants'
+import { deleteSearchParams, updateSearchParams } from '@/library/utility'
 
 const FilterBar = ({ filter }: { filter: string }) => {
-  const router = useRouter();
+  const router = useRouter()
 
-  function handleUpdateSearchParams(title: string, value: string) {
-    const newPathname = updateSearchParams(title, value.toLowerCase());
-    router.push(newPathname);
+  function handleUpdateSearchParams (title: string, value: string) {
+    const newPathname = updateSearchParams(title, value.toLowerCase())
+    router.push(newPathname)
 
-    if (value === "") {
-      const newPathname = deleteSearchParams(title);
-      router.push(newPathname);
+    if (value === '') {
+      const newPathname = deleteSearchParams(title)
+      router.push(newPathname)
     }
   }
 
@@ -23,15 +23,15 @@ const FilterBar = ({ filter }: { filter: string }) => {
         {FilterButtonsData.map((button) => (
           <Button
             key={button.id}
-            variant={filter === button.filter ? "Normal" : "Outlined"}
-            onClick={() => handleUpdateSearchParams("filter", button.filter)}
+            variant={filter === button.filter ? 'Normal' : 'Outlined'}
+            onClick={() => { handleUpdateSearchParams('filter', button.filter) }}
           >
             {button.title}
           </Button>
         ))}
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default FilterBar;
+export default FilterBar

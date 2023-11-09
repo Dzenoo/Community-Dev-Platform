@@ -1,21 +1,23 @@
-import QuestionItem from "@/components/questions/QuestionItem";
+import QuestionItem from '@/components/questions/QuestionItem'
 import {
-  QuestionItemPropsTypes,
-  QuestionListPropsTypes,
-} from "@/types/questions";
+  type QuestionItemPropsTypes,
+  type QuestionListPropsTypes
+} from '@/types/questions'
 
 const QuestionList: React.FC<QuestionListPropsTypes> = ({
   questions,
-  showActions,
+  showActions
 }) => {
   return (
     <ul className="pb-12 flex flex-col gap-2">
-      {questions?.length === 0 ? (
+      {questions?.length === 0
+        ? (
         <p className="section_subtitle text-black dark:text-white text-center">
           No Questions Yet
         </p>
-      ) : (
-        questions?.map((data: QuestionItemPropsTypes) => (
+          )
+        : (
+            questions?.map((data: QuestionItemPropsTypes) => (
           <li key={data._id}>
             <QuestionItem
               _id={data._id}
@@ -29,10 +31,10 @@ const QuestionList: React.FC<QuestionListPropsTypes> = ({
               createdAt={data.createdAt}
             />
           </li>
-        ))
-      )}
+            ))
+          )}
     </ul>
-  );
-};
+  )
+}
 
-export default QuestionList;
+export default QuestionList

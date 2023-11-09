@@ -1,4 +1,4 @@
-import { ButtonPropsTypes, ButtonVariant } from "@/types/button";
+import { type ButtonPropsTypes, ButtonVariant } from "@/types/button";
 
 const variantClassNames = {
   [ButtonVariant.Normal]: "button_normal",

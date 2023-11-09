@@ -1,11 +1,11 @@
-import Image from "next/image";
-import Card from "@/components/shared/ui/elements/card";
-import { ProfileItemPropsTypes } from "@/types/profile";
+import Image from 'next/image'
+import Card from '@/components/shared/ui/elements/card'
+import { type ProfileItemPropsTypes } from '@/types/profile'
 
 const ProfileStatisticsItem: React.FC<ProfileItemPropsTypes> = ({
   path,
   name,
-  quantity,
+  quantity
 }) => {
   return (
     <Card>
@@ -21,7 +21,7 @@ const ProfileStatisticsItem: React.FC<ProfileItemPropsTypes> = ({
         </div>
       </div>
     </Card>
-  );
-};
+  )
+}
 
-export default ProfileStatisticsItem;
+export default ProfileStatisticsItem
