@@ -118,6 +118,18 @@ export async function editProfile<
 
     if (!user) return;
 
+    const existingUserWithName = await User.findOne({ name });
+    const existingUserWithUsername = await User.findOne({ username });
+
+    if (
+      (existingUserWithName &&
+        existingUserWithName._id.toString() !== userId) ||
+      (existingUserWithUsername &&
+        existingUserWithUsername._id.toString() !== userId)
+    ) {
+      return;
+    }
+
     if (!name || !username || !biography || !location) return;
 
     if (

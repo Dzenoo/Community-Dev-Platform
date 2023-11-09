@@ -1,71 +1,71 @@
-'use client'
-import Button from '@/components/shared/ui/elements/button'
-import Input from '@/components/shared/ui/elements/input'
-import { editProfile } from '@/library/actions/user.actions'
-import { useForm } from '@/library/hooks/use-form'
-import { checkFormValidity } from '@/library/utility'
-import { VALIDATOR_REQUIRE } from '@/library/validators/validators'
-import { useRouter } from 'next/navigation'
-import { ToastContainer, toast } from 'react-toastify'
+"use client";
+import Button from "@/components/shared/ui/elements/button";
+import Input from "@/components/shared/ui/elements/input";
+import { editProfile } from "@/library/actions/user.actions";
+import { useForm } from "@/library/hooks/use-form";
+import { checkFormValidity } from "@/library/utility";
+import { VALIDATOR_REQUIRE } from "@/library/validators/validators";
+import { useRouter } from "next/navigation";
+import { ToastContainer, toast } from "react-toastify";
 
 const EditProfileForm = ({
   userId,
   name,
   username,
   location,
-  biography
+  biography,
 }: {
-  userId: string
-  name: string
-  username: string
-  location: string
-  biography: string
+  userId: string;
+  name: string;
+  username: string;
+  location: string;
+  biography: string;
 }) => {
   const { formState, inputChangeHandler } = useForm({
     name: {
       value: name,
-      isValid: true
+      isValid: true,
     },
     username: {
       value: username,
-      isValid: true
+      isValid: true,
     },
     location: {
       value: location,
-      isValid: true
+      isValid: true,
     },
     biography: {
       value: biography,
-      isValid: true
-    }
-  })
-  const router = useRouter()
+      isValid: true,
+    },
+  });
+  const router = useRouter();
 
   const changedInputs =
     formState.inputs.name.value === name &&
     formState.inputs.username.value === username &&
     formState.inputs.location.value === location &&
-    formState.inputs.biography.value === biography
+    formState.inputs.biography.value === biography;
 
   const formInputs =
     formState.inputs.name.isValid &&
     formState.inputs.username.isValid &&
     formState.inputs.location.isValid &&
-    formState.inputs.biography.isValid
+    formState.inputs.biography.isValid;
 
-  const isDisabled = checkFormValidity(!changedInputs && formInputs)
+  const isDisabled = checkFormValidity(!changedInputs && formInputs);
 
-  async function submitHandler (e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault()
+  async function submitHandler(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
 
     if (isDisabled) {
-      toast.error('Please fill the fields')
-      return
+      toast.error("Please fill the fields");
+      return;
     }
 
     if (!userId) {
-      toast.error('Please login to edit the profile')
-      return
+      toast.error("Please login to edit the profile");
+      return;
     }
 
     try {
@@ -76,15 +76,15 @@ const EditProfileForm = ({
         formState.inputs.biography.value,
         formState.inputs.location.value,
         `/profile/${userId}`
-      )
+      );
 
       if (!response) {
-        throw new Error()
+        throw new Error();
       } else {
-        router.push(`/profile/${userId}`)
+        router.push(`/profile/${userId}`);
       }
     } catch (error) {
-      toast.error('Internal Server Error')
+      toast.error("Internal Server Error");
     }
   }
 
@@ -99,8 +99,9 @@ const EditProfileForm = ({
             defaultValue={name}
             isValid={formState.inputs.name.isValid}
             errorText="Please enter a valid name"
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => { inputChangeHandler('name', e.target.value, [VALIDATOR_REQUIRE()]) }
-            }
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+              inputChangeHandler("name", e.target.value, [VALIDATOR_REQUIRE()]);
+            }}
           />
         </div>
         <div>
@@ -111,11 +112,10 @@ const EditProfileForm = ({
             isValid={formState.inputs.username.isValid}
             errorText="Please enter a valid username"
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-              inputChangeHandler('username', e.target.value, [
-                VALIDATOR_REQUIRE()
-              ])
-            }
-            }
+              inputChangeHandler("username", e.target.value, [
+                VALIDATOR_REQUIRE(),
+              ]);
+            }}
           />
         </div>
         <div>
@@ -126,11 +126,10 @@ const EditProfileForm = ({
             isValid={formState.inputs.location.isValid}
             errorText="Please enter a valid location"
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-              inputChangeHandler('location', e.target.value, [
-                VALIDATOR_REQUIRE()
-              ])
-            }
-            }
+              inputChangeHandler("location", e.target.value, [
+                VALIDATOR_REQUIRE(),
+              ]);
+            }}
           />
         </div>
         <div>
@@ -142,18 +141,17 @@ const EditProfileForm = ({
             isValid={formState.inputs.biography.isValid}
             errorText="Please enter a valid biography"
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-              inputChangeHandler('biography', e.target.value, [
-                VALIDATOR_REQUIRE()
-              ])
-            }
-            }
+              inputChangeHandler("biography", e.target.value, [
+                VALIDATOR_REQUIRE(),
+              ]);
+            }}
           />
         </div>
       </div>
       <div className="flex justify-end items-end">
         <div className="max-w-2xl">
           <Button
-            variant={isDisabled ? 'Danger' : 'Normal'}
+            variant={isDisabled ? "Danger" : "Normal"}
             type="submit"
             disabled={isDisabled}
           >
@@ -162,7 +160,7 @@ const EditProfileForm = ({
         </div>
       </div>
     </form>
-  )
-}
+  );
+};
 
-export default EditProfileForm
+export default EditProfileForm;
