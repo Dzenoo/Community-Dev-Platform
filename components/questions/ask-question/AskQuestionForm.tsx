@@ -41,7 +41,6 @@ const AskQuestionForm = () => {
   const isFormValid = checkFormValidity(
     !formState.inputs.title.isValid ||
       !formState.inputs.description.isValid ||
-      !formState.inputs.tag.isValid ||
       tags.length === 0
   );
 

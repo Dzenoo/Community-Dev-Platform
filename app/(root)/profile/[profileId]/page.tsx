@@ -1,10 +1,10 @@
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import ProfileAnswersList from "@/components/profile/ProfileAnswersList";
 import ProfileStatistics from "@/components/profile/ProfileStatistics";
 import ProfileTopBar from "@/components/profile/ProfileTopBar";
 import QuestionList from "@/components/questions/QuestionList";
 import { fetchUserAnswers } from "@/library/actions/questions.actions";
 import { fetchUser } from "@/library/actions/user.actions";
-import authOptions from "@/library/auth-options";
 import { notAuthNavigate } from "@/library/utility";
 import { getServerSession } from "next-auth";
 import { notFound } from "next/navigation";

@@ -1,5 +1,5 @@
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import AskQuestionForm from "@/components/questions/ask-question/AskQuestionForm";
-import authOptions from "@/library/auth-options";
 import { notAuthNavigate } from "@/library/utility";
 import { getServerSession } from "next-auth";
 
