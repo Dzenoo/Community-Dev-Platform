@@ -4,10 +4,10 @@ import QuestionList from "@/components/questions/QuestionList";
 import { fetchQuestions } from "@/library/actions/questions.actions";
 
 export default async function Home({
-  searchParams = { search: "", filter: "" },
+  searchParams,
 }: {
-  searchParams?: { search: string; filter: string };
-} = {}) {
+  searchParams: { search: string; filter: string };
+}) {
   const questions: any = await fetchQuestions();
   let filteredQuestions = questions;
 
