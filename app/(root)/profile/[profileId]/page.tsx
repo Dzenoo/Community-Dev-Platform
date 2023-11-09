@@ -16,7 +16,7 @@ const ProfilePage = async ({ params }: { params: { profileId: string } }) => {
 
   if (!user) notFound();
   if (!session) notAuthNavigate("/");
-  // @ts-expect-error
+  // @ts-ignore
   if (params.profileId !== session?.user.id) notAuthNavigate("/");
 
   const ProfileStatisticsData = [

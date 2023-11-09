@@ -110,13 +110,13 @@ const SidebarNavigation = ({
         </Link>
         {session?.user && (
           <Link
-            // @ts-expect-error
+            // @ts-ignore
             href={`/profile/${session.user.id}`}
             className="card_animation"
           >
             <li
               className={`sidebar_link section_subtitle_smaller ${
-                // @ts-expect-error
+                // @ts-ignore
                 pathname === `/profile/${session.user.id}` &&
                 "border border-[#004ee7] text-black dark:text-white"
               }`}
@@ -138,13 +138,13 @@ const SidebarNavigation = ({
         )}
         {session?.user && (
           <Link
-            // @ts-expect-error
+            // @ts-ignore
             href={`/profile/${session.user.id}/collections`}
             className="card_animation"
           >
             <li
               className={`sidebar_link section_subtitle_smaller ${
-                // @ts-expect-error
+                // @ts-ignore
                 pathname === `/profile/${session.user.id}/collections` &&
                 "border border-[#004ee7] text-black dark:text-white"
               }`}

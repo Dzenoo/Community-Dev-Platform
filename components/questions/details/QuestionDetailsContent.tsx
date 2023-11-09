@@ -1,12 +1,12 @@
-import QuestionDetailsActions from './QuestionDetailsActions'
-import QuestionDetailsCode from './QuestionDetailsCode'
-import QuestionDetailsAnswer from './QuestionDetailsAnswer'
-import QuestionAnswerForm from './QuestionAnswerForm'
-import Tags from '@/components/tags/TagLink'
-import Image from 'next/image'
-import { calculateDate } from '@/library/utility'
-import { type QuestionItemPropsTypes } from '@/types/questions'
-import { fetchUser } from '@/library/actions/user.actions'
+import QuestionDetailsActions from "./QuestionDetailsActions";
+import QuestionDetailsCode from "./QuestionDetailsCode";
+import QuestionDetailsAnswer from "./QuestionDetailsAnswer";
+import QuestionAnswerForm from "./QuestionAnswerForm";
+import Tags from "@/components/tags/TagLink";
+import Image from "next/image";
+import { calculateDate } from "@/library/utility";
+import { type QuestionItemPropsTypes } from "@/types/questions";
+import { fetchUser } from "@/library/actions/user.actions";
 
 const QuestionDetailsContent: React.FC<QuestionItemPropsTypes> = async ({
   _id,
@@ -19,15 +19,15 @@ const QuestionDetailsContent: React.FC<QuestionItemPropsTypes> = async ({
   downvotes,
   language,
   tags,
-  createdAt
+  createdAt,
 }) => {
-  const askedQUestion = calculateDate(createdAt)
-  // @ts-expect-error
-  const userData = await fetchUser(userId)
+  const askedQUestion = calculateDate(createdAt);
+  // @ts-ignore
+  const userData = await fetchUser(userId);
   const userQuestions = userData?.savedQuestions.map(
     (question: QuestionItemPropsTypes) => question._id.toString()
-  )
-  const isUserQuestions = userQuestions?.includes(_id.toString())
+  );
+  const isUserQuestions = userQuestions?.includes(_id.toString());
 
   return (
     <div className="flex flex-col gap-4 pb-12 overflow-hidden">
@@ -69,7 +69,7 @@ const QuestionDetailsContent: React.FC<QuestionItemPropsTypes> = async ({
                 >
                   {section}
                 </p>
-              )
+              );
             } else {
               return (
                 <QuestionDetailsCode
@@ -77,7 +77,7 @@ const QuestionDetailsContent: React.FC<QuestionItemPropsTypes> = async ({
                   language={language}
                   key={index}
                 />
-              )
+              );
             }
           })}
         </div>
@@ -91,14 +91,12 @@ const QuestionDetailsContent: React.FC<QuestionItemPropsTypes> = async ({
             Answers ({answers?.length})
           </h2>
           <div className="px-6 py-12 flex break-words flex-col gap-12 max-md:px-3">
-            {answers?.length === 0
-              ? (
+            {answers?.length === 0 ? (
               <p className="section_title_smaller text-black dark:text-white text-center">
                 No answers yet
               </p>
-                )
-              : (
-                  answers?.map((answer) => (
+            ) : (
+              answers?.map((answer) => (
                 <QuestionDetailsAnswer
                   key={answer._id}
                   _id={answer._id}
@@ -108,8 +106,8 @@ const QuestionDetailsContent: React.FC<QuestionItemPropsTypes> = async ({
                   upvotes={answer.upvotes}
                   downvotes={answer.downvotes}
                 />
-                  ))
-                )}
+              ))
+            )}
           </div>
         </div>
         <div className="mt-6">
@@ -117,7 +115,7 @@ const QuestionDetailsContent: React.FC<QuestionItemPropsTypes> = async ({
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default QuestionDetailsContent
+export default QuestionDetailsContent;

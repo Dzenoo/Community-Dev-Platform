@@ -1,60 +1,60 @@
-'use client'
-import Button from '@/components/shared/ui/elements/button'
-import Input from '@/components/shared/ui/elements/input'
-import { ProgrammingLanguagesData } from '@/constants'
-import { answerOnQuestion } from '@/library/actions/questions.actions'
-import { useForm } from '@/library/hooks/use-form'
-import { useSession } from 'next-auth/react'
-import { checkFormValidity } from '@/library/utility'
+"use client";
+import Button from "@/components/shared/ui/elements/button";
+import Input from "@/components/shared/ui/elements/input";
+import { ProgrammingLanguagesData } from "@/constants";
+import { answerOnQuestion } from "@/library/actions/questions.actions";
+import { useForm } from "@/library/hooks/use-form";
+import { useSession } from "next-auth/react";
+import { checkFormValidity } from "@/library/utility";
 import {
   VALIDATOR_MINLENGTH,
-  VALIDATOR_REQUIRE
-} from '@/library/validators/validators'
-import { ToastContainer, toast } from 'react-toastify'
-import { type ChangeEvent } from 'react'
+  VALIDATOR_REQUIRE,
+} from "@/library/validators/validators";
+import { ToastContainer, toast } from "react-toastify";
+import { type ChangeEvent } from "react";
 
 const QuestionAnswerForm = ({ questionId }: { questionId: string }) => {
-  const { data: session } = useSession()
+  const { data: session } = useSession();
   const { formState, inputChangeHandler } = useForm({
     description: {
-      value: '',
-      isValid: false
+      value: "",
+      isValid: false,
     },
     language: {
-      value: '',
-      isValid: false
-    }
-  })
+      value: "",
+      isValid: false,
+    },
+  });
 
-  const isLang = formState.inputs.description.value.includes('```')
+  const isLang = formState.inputs.description.value.includes("```");
 
   const formIsValid = checkFormValidity(
     !formState.inputs.description.isValid ||
       (isLang && !formState.inputs.language.isValid)
-  )
+  );
 
-  async function onAnswerSubmitHandler (e: ChangeEvent<HTMLFormElement>) {
-    e.preventDefault()
+  async function onAnswerSubmitHandler(e: ChangeEvent<HTMLFormElement>) {
+    e.preventDefault();
 
     if (!session) {
-      toast.error('You must be logged in to answer a question.')
-      return
+      toast.error("You must be logged in to answer a question.");
+      return;
     }
 
     if (formIsValid) {
       await answerOnQuestion(
-        // @ts-expect-error
+        // @ts-ignore
         session.user.id,
         questionId,
         formState.inputs.description.value,
-        isLang ? formState.inputs.language.value : '',
+        isLang ? formState.inputs.language.value : "",
         `/questions/${questionId}`
-      )
-      formState.inputs.description.value = ''
-      formState.inputs.description.isValid = false
-      isLang && (formState.inputs.language.value = '')
+      );
+      formState.inputs.description.value = "";
+      formState.inputs.description.isValid = false;
+      isLang && (formState.inputs.language.value = "");
     } else {
-      toast.error('Please fill all fields.')
+      toast.error("Please fill all fields.");
     }
   }
 
@@ -69,11 +69,10 @@ const QuestionAnswerForm = ({ questionId }: { questionId: string }) => {
               className="select"
               value={formState?.inputs.language?.value}
               onChange={(e) => {
-                inputChangeHandler('language', e.target.value, [
-                  VALIDATOR_REQUIRE()
-                ])
-              }
-              }
+                inputChangeHandler("language", e.target.value, [
+                  VALIDATOR_REQUIRE(),
+                ]);
+              }}
             >
               {ProgrammingLanguagesData.map((language) => (
                 <option key={language.id} value={language.value}>
@@ -94,17 +93,16 @@ const QuestionAnswerForm = ({ questionId }: { questionId: string }) => {
           // errorText="Please enter a valid answer."
           placeholder="Enter Answer Here. For adding code, insert it between (```)."
           onChange={(e: ChangeEvent<HTMLTextAreaElement>) => {
-            inputChangeHandler('description', e.target.value, [
-              VALIDATOR_MINLENGTH(40)
-            ])
-          }
-          }
+            inputChangeHandler("description", e.target.value, [
+              VALIDATOR_MINLENGTH(40),
+            ]);
+          }}
         />
       </div>
       <div className="flex justify-end items-end">
         <div>
           <Button
-            variant={formIsValid ? 'Normal' : 'Danger'}
+            variant={formIsValid ? "Normal" : "Danger"}
             type="submit"
             disabled={!formIsValid}
           >
@@ -113,7 +111,7 @@ const QuestionAnswerForm = ({ questionId }: { questionId: string }) => {
         </div>
       </div>
     </form>
-  )
-}
+  );
+};
 
-export default QuestionAnswerForm
+export default QuestionAnswerForm;

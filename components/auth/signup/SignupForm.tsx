@@ -1,55 +1,55 @@
-'use client'
-import Button from '@/components/shared/ui/elements/button'
-import Input from '@/components/shared/ui/elements/input'
-import { signupUser } from '@/library/actions/user.actions'
-import { useForm } from '@/library/hooks/use-form'
-import { useRouter } from 'next/navigation'
+"use client";
+import Button from "@/components/shared/ui/elements/button";
+import Input from "@/components/shared/ui/elements/input";
+import { signupUser } from "@/library/actions/user.actions";
+import { useForm } from "@/library/hooks/use-form";
+import { useRouter } from "next/navigation";
 import {
   VALIDATOR_EMAIL,
-  VALIDATOR_MINLENGTH
-} from '@/library/validators/validators'
-import { checkFormValidity } from '@/library/utility'
-import { ToastContainer, toast } from 'react-toastify'
+  VALIDATOR_MINLENGTH,
+} from "@/library/validators/validators";
+import { checkFormValidity } from "@/library/utility";
+import { ToastContainer, toast } from "react-toastify";
 
 const SignupForm = () => {
-  const router = useRouter()
+  const router = useRouter();
   const { formState, inputChangeHandler } = useForm({
     name: {
-      value: '',
-      isValid: true
+      value: "",
+      isValid: true,
     },
     email: {
-      value: '',
-      isValid: true
+      value: "",
+      isValid: true,
     },
     username: {
-      value: '',
-      isValid: true
+      value: "",
+      isValid: true,
     },
     password: {
-      value: '',
-      isValid: true
-    }
-  })
+      value: "",
+      isValid: true,
+    },
+  });
 
   const isFormValid = checkFormValidity(
-    formState.inputs.name.value === '' ||
-      formState.inputs.email.value === '' ||
-      formState.inputs.username.value === '' ||
-      formState.inputs.password.value === ''
-  )
+    formState.inputs.name.value === "" ||
+      formState.inputs.email.value === "" ||
+      formState.inputs.username.value === "" ||
+      formState.inputs.password.value === ""
+  );
 
-  async function onSubmitHandler (event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault()
+  async function onSubmitHandler(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
 
     if (
-      formState.inputs.name.value === '' ||
-      formState.inputs.email.value === '' ||
-      formState.inputs.username.value === '' ||
-      formState.inputs.password.value === ''
+      formState.inputs.name.value === "" ||
+      formState.inputs.email.value === "" ||
+      formState.inputs.username.value === "" ||
+      formState.inputs.password.value === ""
     ) {
-      toast.error('Please fill all fields')
-      return
+      toast.error("Please fill all fields");
+      return;
     }
 
     if (isFormValid) {
@@ -59,16 +59,16 @@ const SignupForm = () => {
           formState.inputs.email.value,
           formState.inputs.username.value,
           formState.inputs.password.value
-        )
+        );
 
         if (response) {
-          router.push('/login')
+          router.push("/login");
         } else {
-          throw new Error()
+          throw new Error();
         }
       } catch (error) {
-        // @ts-expect-error
-        toast.error('User already exist. Please try again.')
+        // @ts-ignore
+        toast.error("User already exist. Please try again.");
       }
     }
   }
@@ -84,8 +84,11 @@ const SignupForm = () => {
           placeholder="Enter Name"
           isValid={formState.inputs.name.isValid}
           errorText="Please enter a valid name"
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => { inputChangeHandler('name', e.target.value, [VALIDATOR_MINLENGTH(3)]) }
-          }
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+            inputChangeHandler("name", e.target.value, [
+              VALIDATOR_MINLENGTH(3),
+            ]);
+          }}
         />
         <div className="form_flex">
           <Input
@@ -95,8 +98,9 @@ const SignupForm = () => {
             placeholder="Enter Email"
             isValid={formState.inputs.email.isValid}
             errorText="Please enter a valid email"
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => { inputChangeHandler('email', e.target.value, [VALIDATOR_EMAIL()]) }
-            }
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+              inputChangeHandler("email", e.target.value, [VALIDATOR_EMAIL()]);
+            }}
           />
           <Input
             type="text"
@@ -106,11 +110,10 @@ const SignupForm = () => {
             isValid={formState.inputs.username.isValid}
             errorText="Please enter a valid username"
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-              inputChangeHandler('username', e.target.value, [
-                VALIDATOR_MINLENGTH(3)
-              ])
-            }
-            }
+              inputChangeHandler("username", e.target.value, [
+                VALIDATOR_MINLENGTH(3),
+              ]);
+            }}
           />
         </div>
         <Input
@@ -121,22 +124,21 @@ const SignupForm = () => {
           isValid={formState.inputs.password.isValid}
           errorText="Please enter a valid password"
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            inputChangeHandler('password', e.target.value, [
-              VALIDATOR_MINLENGTH(3)
-            ])
-          }
-          }
+            inputChangeHandler("password", e.target.value, [
+              VALIDATOR_MINLENGTH(3),
+            ]);
+          }}
         />
       </div>
       <Button
-        variant={isFormValid ? 'Normal' : 'Danger'}
+        variant={isFormValid ? "Normal" : "Danger"}
         type="submit"
         disabled={!isFormValid}
       >
         Signup
       </Button>
     </form>
-  )
-}
+  );
+};
 
-export default SignupForm
+export default SignupForm;

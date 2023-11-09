@@ -27,7 +27,7 @@ const QuestionDetails = async ({
           user={question.user}
           answers={question.answers}
           createdAt={question.createdAt}
-          // @ts-expect-error
+          // @ts-ignore
           userId={session?.user?.id}
           showActions={false}
         />
