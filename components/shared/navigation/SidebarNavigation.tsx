@@ -8,13 +8,23 @@ import { usePathname } from "next/navigation";
 import { signOut, useSession } from "next-auth/react";
 import { useTheme } from "next-themes";
 
-const SidebarNavigation = ({ sidebarIsOpen }: { sidebarIsOpen: boolean }) => {
+const SidebarNavigation = ({
+  sidebarIsOpen,
+  setSidebarIsOpen,
+}: {
+  sidebarIsOpen: boolean;
+  setSidebarIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
   const { data: session } = useSession();
   const pathname = usePathname();
   const { theme } = useTheme();
   const [sidebarClassName, setSidebarClassName] = useState<string>("sidebar");
 
-  function handleResize() {
+  function exitSidebar(): void {
+    setSidebarIsOpen(false);
+  }
+
+  function handleResize(): void {
     if (window.innerWidth > 1024) {
       setSidebarClassName("sidebar");
     } else {
@@ -39,6 +49,7 @@ const SidebarNavigation = ({ sidebarIsOpen }: { sidebarIsOpen: boolean }) => {
               pathname === "/" &&
               "border border-[#004ee7] text-black dark:text-white"
             }`}
+            onClick={exitSidebar}
           >
             <Image
               src={
@@ -59,6 +70,7 @@ const SidebarNavigation = ({ sidebarIsOpen }: { sidebarIsOpen: boolean }) => {
               pathname === "/community" &&
               "border border-[#004ee7] text-black dark:text-white"
             }`}
+            onClick={exitSidebar}
           >
             <Image
               src={
@@ -79,6 +91,7 @@ const SidebarNavigation = ({ sidebarIsOpen }: { sidebarIsOpen: boolean }) => {
               pathname === "/tags" &&
               "border border-[#004ee7] text-black dark:text-white"
             }`}
+            onClick={exitSidebar}
           >
             <Image
               src={
@@ -105,6 +118,7 @@ const SidebarNavigation = ({ sidebarIsOpen }: { sidebarIsOpen: boolean }) => {
                 pathname === `/profile/${session.user.id}` &&
                 "border border-[#004ee7] text-black dark:text-white"
               }`}
+              onClick={exitSidebar}
             >
               <Image
                 src={
@@ -132,6 +146,7 @@ const SidebarNavigation = ({ sidebarIsOpen }: { sidebarIsOpen: boolean }) => {
                 pathname === `/profile/${session.user.id}/collections` &&
                 "border border-[#004ee7] text-black dark:text-white"
               }`}
+              onClick={exitSidebar}
             >
               <Image
                 src={
@@ -154,6 +169,7 @@ const SidebarNavigation = ({ sidebarIsOpen }: { sidebarIsOpen: boolean }) => {
                 pathname === "/ask-question" &&
                 "border border-[#004ee7] text-black dark:text-white"
               }`}
+              onClick={exitSidebar}
             >
               <Image
                 src={

@@ -1,8 +1,8 @@
 import Link from "next/link";
 import LinkButton from "@/components/shared/ui/elements/link";
-import Image from "next/image";
 import { ProfilePropsTypes } from "@/types/profile";
 import { calculateDate } from "@/library/utility";
+import { ImageDate, ImageLocation } from "./ProfileImages";
 
 const ProfileTopBar: React.FC<ProfilePropsTypes> = ({
   name,
@@ -39,23 +39,13 @@ const ProfileTopBar: React.FC<ProfilePropsTypes> = ({
               </Link>
             </div>
             <div className="flex items-center gap-2">
-              <Image
-                src="/assets/graphics/location.png"
-                alt="location"
-                width={20}
-                height={20}
-              />
+              <ImageLocation />
               <h2 className="section_subtitle_smaller text-black dark:text-white">
                 {location}
               </h2>
             </div>
             <div className="flex items-center gap-2">
-              <Image
-                src="/assets/graphics/date.png"
-                alt="date"
-                width={20}
-                height={20}
-              />
+              <ImageDate />
               <h2 className="section_subtitle_smaller text-black dark:text-white">
                 {joinedDate}
               </h2>

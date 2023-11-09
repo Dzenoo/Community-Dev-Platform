@@ -20,7 +20,10 @@ const RootLayoutWrapper = ({
         <ThemeProvider attribute="class">
           <LogoNavigation setSidebarIsOpen={setSidebarIsOpen} />
           <main className="flex">
-            <SidebarNavigation sidebarIsOpen={sidebarIsOpen} />
+            <SidebarNavigation
+              sidebarIsOpen={sidebarIsOpen}
+              setSidebarIsOpen={setSidebarIsOpen}
+            />
             <section className="relative p-4 grow basis-full h-screen overflow-y-scroll md:p-8">
               {children}
             </section>

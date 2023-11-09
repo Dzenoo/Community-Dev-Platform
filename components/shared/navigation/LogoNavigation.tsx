@@ -2,9 +2,10 @@
 import Link from "next/link";
 import ProfileNavigation from "@/components/shared/navigation/ProfileNavigation";
 import Image from "next/image";
+import ThemeToggle from "../ui/func/ThemeToggle";
 import { useSession } from "next-auth/react";
 import { SetStateAction } from "react";
-import ThemeToggle from "../ui/func/ThemeToggle";
+import { useTheme } from "next-themes";
 
 const LogoNavigation = ({
   setSidebarIsOpen,
@@ -12,6 +13,7 @@ const LogoNavigation = ({
   setSidebarIsOpen: React.Dispatch<SetStateAction<boolean>>;
 }) => {
   const { data: session } = useSession();
+  const { theme } = useTheme();
 
   return (
     <header className="z-40 py-2 px-6 shadow-md flex justify-between items-center bg-[#fff] dark:bg-[#222222] dark:text-white">
@@ -35,7 +37,11 @@ const LogoNavigation = ({
         className="visible lg:hidden"
       >
         <Image
-          src={"/assets/graphics/btn.png"}
+          src={
+            theme === "dark"
+              ? "/assets/graphics/btn.png"
+              : "/assets/graphics/dark/btn.png"
+          }
           alt="btn"
           width={30}
           height={30}

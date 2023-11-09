@@ -53,7 +53,7 @@ const QuestionItem: React.FC<QuestionItemPropsTypes> = ({
           </div>
           {showActions && <QuestionItemActions id={_id} />}
         </div>
-        <div className="flex items-center gap-8 justify-between flex-wrap">
+        <div className="flex items-center gap-8 justify-between flex-wrap max-md:justify-center">
           {generateQuestionActionsData(
             "/assets/graphics/heart.png",
             upvotes?.length,

@@ -1,13 +1,14 @@
 import mongoose from "mongoose";
 
 const url = process.env.MONGODB_URL!;
+const dbName = process.env.DBNAME!;
 
 export async function connectToDb(): Promise<void> {
   mongoose.set("strictQuery", true);
 
   try {
     await mongoose.connect(url, {
-      dbName: "community-dev-platform",
+      dbName: dbName,
     });
     console.log("Connected to DB!");
   } catch (error) {
