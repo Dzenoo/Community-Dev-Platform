@@ -5,7 +5,7 @@ import { connectToDb } from "@/library/mongoose";
 import { comparePassword } from "@/library/utility";
 import { NextAuthOptions } from "next-auth";
 
-export const authOptions: NextAuthOptions = {
+const authOptions: NextAuthOptions = {
   secret: process.env.NEXT_AUTH_SECRET,
   session: {
     strategy: "jwt",
@@ -60,4 +60,4 @@ export const authOptions: NextAuthOptions = {
 
 const handler = NextAuth(authOptions);
 
-export { handler as GET, handler as POST };
+export { handler as GET, handler as POST, authOptions };
