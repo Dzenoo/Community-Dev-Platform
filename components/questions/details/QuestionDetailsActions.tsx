@@ -17,6 +17,16 @@ const QuestionDetailsActions: React.FC<
   const { data: session } = useSession();
   const { theme } = useTheme();
   const pathname = usePathname();
+  if (!session) return null;
+
+  const isDarkTheme = theme === "dark";
+  const path = isDarkTheme
+    ? isUserCollections
+      ? "/assets/graphics/heartFill.png"
+      : "/assets/graphics/heart.png"
+    : isUserCollections
+    ? "/assets/graphics/dark/like.png"
+    : "/assets/graphics/dark/heart.png";
 
   return (
     <div id={id} className="flex items-center gap-2">
@@ -56,13 +66,7 @@ const QuestionDetailsActions: React.FC<
         data={downvotes}
       />
       <QuestionDetailsActionsData
-        icon={`${
-          isUserCollections
-            ? theme === "light"
-              ? "/assets/graphics/dark/like.png"
-              : "/assets/graphics/heartFill.png"
-            : "/assets/graphics/dark/like-toggle.png"
-        }`}
+        icon={path}
         onClick={() => {
           if (!session) {
             toast.error("You must be logged in to save a question.");

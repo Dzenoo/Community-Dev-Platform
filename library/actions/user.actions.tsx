@@ -60,7 +60,9 @@ export async function fetchUsers<Path extends string>(path: Path) {
   try {
     connectToDb();
 
-    const users = await User.find({}).select("username name biography");
+    const users = await User.find({}).select(
+      "username name email biography goldBadges silverBadges bronzeBadges"
+    );
 
     if (!users) return;
 

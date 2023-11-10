@@ -45,69 +45,75 @@ const SidebarNavigation = ({
   return (
     <div className={sidebarClassName}>
       <ul className="flex flex-col gap-2">
-        <Link href={"/"} className="card_animation">
-          <li
-            className={`sidebar_link section_subtitle_smaller ${
-              pathname === "/" &&
-              "border border-[#004ee7] text-black dark:text-white"
-            }`}
-            onClick={exitSidebar}
-          >
-            <Image
-              src={
-                theme === "dark"
-                  ? "/assets/graphics/dashboard.png"
-                  : "/assets/graphics/dark/dashboard.png"
-              }
-              alt="home"
-              width={20}
-              height={20}
-            />
-            Home
-          </li>
-        </Link>
-        <Link href={"/community"} className="card_animation">
-          <li
-            className={`sidebar_link section_subtitle_smaller ${
-              pathname === "/community" &&
-              "border border-[#004ee7] text-black dark:text-white"
-            }`}
-            onClick={exitSidebar}
-          >
-            <Image
-              src={
-                theme === "dark"
-                  ? "/assets/graphics/community.png"
-                  : "/assets/graphics/dark/community.png"
-              }
-              alt="community"
-              width={20}
-              height={20}
-            />
-            Community
-          </li>
-        </Link>
-        <Link href={"/tags"} className="card_animation">
-          <li
-            className={`sidebar_link section_subtitle_smaller ${
-              pathname === "/tags" &&
-              "border border-[#004ee7] text-black dark:text-white"
-            }`}
-            onClick={exitSidebar}
-          >
-            <Image
-              src={
-                theme === "dark"
-                  ? "/assets/graphics/price-tag.png"
-                  : "/assets/graphics/dark/price-tag.png"
-              }
-              alt="tag"
-              width={20}
-              height={20}
-            />
-            Tags
-          </li>
-        </Link>
+        {session?.user && (
+          <Link href={"/"} className="card_animation">
+            <li
+              className={`sidebar_link section_subtitle_smaller ${
+                pathname === "/" &&
+                "border border-[#004ee7] text-black dark:text-white"
+              }`}
+              onClick={exitSidebar}
+            >
+              <Image
+                src={
+                  theme === "dark"
+                    ? "/assets/graphics/dashboard.png"
+                    : "/assets/graphics/dark/dashboard.png"
+                }
+                alt="home"
+                width={20}
+                height={20}
+              />
+              Home
+            </li>
+          </Link>
+        )}
+        {session?.user && (
+          <Link href={"/community"} className="card_animation">
+            <li
+              className={`sidebar_link section_subtitle_smaller ${
+                pathname === "/community" &&
+                "border border-[#004ee7] text-black dark:text-white"
+              }`}
+              onClick={exitSidebar}
+            >
+              <Image
+                src={
+                  theme === "dark"
+                    ? "/assets/graphics/community.png"
+                    : "/assets/graphics/dark/community.png"
+                }
+                alt="community"
+                width={20}
+                height={20}
+              />
+              Community
+            </li>
+          </Link>
+        )}
+        {session?.user && (
+          <Link href={"/tags"} className="card_animation">
+            <li
+              className={`sidebar_link section_subtitle_smaller ${
+                pathname === "/tags" &&
+                "border border-[#004ee7] text-black dark:text-white"
+              }`}
+              onClick={exitSidebar}
+            >
+              <Image
+                src={
+                  theme === "dark"
+                    ? "/assets/graphics/price-tag.png"
+                    : "/assets/graphics/dark/price-tag.png"
+                }
+                alt="tag"
+                width={20}
+                height={20}
+              />
+              Tags
+            </li>
+          </Link>
+        )}
         {session?.user && (
           <Link
             // @ts-ignore

@@ -1,26 +1,32 @@
-import CommunityList from '@/components/community/CommunityList'
-import CommunityTopBar from '@/components/community/CommunityTopBar'
-import { fetchUsers } from '@/library/actions/user.actions'
+import CommunityList from "@/components/community/CommunityList";
+import CommunityTopBar from "@/components/community/CommunityTopBar";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { fetchUsers } from "@/library/actions/user.actions";
+import { getServerSession } from "next-auth";
+import { notAuthNavigate } from "@/library/utility";
 
 const CommunityPage = async ({
-  searchParams
+  searchParams,
 }: {
-  searchParams: { search: string }
+  searchParams: { search: string };
 }) => {
-  const CommunityUsers: any = await fetchUsers('/community')
+  const CommunityUsers: any = await fetchUsers("/community");
+  const session = await getServerSession(authOptions);
+
+  if (!session) notAuthNavigate("/");
 
   const filteredUsers: any = CommunityUsers?.filter((user: any) => {
     if (searchParams && searchParams.search) {
-      const searchLower = searchParams.search.toLowerCase()
-      const usernameLower = user.username.toLowerCase()
-      const nameLower = user.name.toLowerCase()
+      const searchLower = searchParams.search.toLowerCase();
+      const usernameLower = user.username.toLowerCase();
+      const nameLower = user.name.toLowerCase();
 
       return (
         usernameLower.includes(searchLower) || nameLower.includes(searchLower)
-      )
+      );
     }
-    return false
-  })
+    return false;
+  });
 
   return (
     <div>
@@ -31,7 +37,7 @@ const CommunityPage = async ({
         }
       />
     </div>
-  )
-}
+  );
+};
 
-export default CommunityPage
+export default CommunityPage;

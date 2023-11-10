@@ -26,6 +26,10 @@ const QuestionAnswerForm = ({ questionId }: { questionId: string }) => {
     },
   });
 
+  if (!session) {
+    return null;
+  }
+
   const isLang = formState.inputs.description.value.includes("```");
 
   const formIsValid = checkFormValidity(

@@ -1,16 +1,24 @@
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import TagList from "@/components/tags/TagList";
 import TagsTopBar from "@/components/tags/TagsTopBar";
 import { TagsData } from "@/constants";
+import { notAuthNavigate } from "@/library/utility";
+import { getServerSession } from "next-auth";
 
-const TagsPage = ({
+const TagsPage = async ({
   searchParams,
 }: {
   searchParams: { search: string; filter: string };
 }) => {
+  const { search = "", filter = "" } = searchParams;
+  const session = await getServerSession(authOptions);
+  if (!session) notAuthNavigate("/");
+
   const filteredTags = TagsData?.filter(
     ({ name = "" }) =>
-      name.toLowerCase().includes(searchParams.search.toLowerCase()) &&
-      name.toLowerCase().includes(searchParams.filter.toLowerCase())
+      name &&
+      name.toLowerCase().includes(search.toLowerCase()) &&
+      name.toLowerCase().includes(filter.toLowerCase())
   );
 
   return (

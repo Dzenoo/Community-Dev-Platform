@@ -92,7 +92,7 @@ const QuestionDetailsContent: React.FC<QuestionItemPropsTypes> = async ({
           </h2>
           <div className="px-6 py-12 flex break-words flex-col gap-12 max-md:px-3">
             {answers?.length === 0 ? (
-              <p className="section_title_smaller text-black dark:text-white text-center">
+              <p className="section_subtitle text-black dark:text-white text-center">
                 No answers yet
               </p>
             ) : (

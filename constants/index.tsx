@@ -18,7 +18,6 @@ export const SidebarNavigationData = [
     title: "Tags",
   },
 ];
-
 export const InformationTagsNavigationData = [
   {
     id: "s1",
@@ -41,7 +40,6 @@ export const InformationTagsNavigationData = [
     title: "typescript",
   },
 ];
-
 export const FilterButtonsData = [
   {
     id: "b0",
@@ -64,7 +62,6 @@ export const FilterButtonsData = [
     filter: "frequent",
   },
 ];
-
 export const ProgrammingLanguagesData = [
   { id: 0, name: "Select Language", value: "" },
   { id: 1, name: "JavaScript", value: "javascript" },
