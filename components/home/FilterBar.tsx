@@ -7,7 +7,7 @@ import { deleteSearchParams, updateSearchParams } from "@/library/utility";
 const FilterBar = ({ filter }: { filter: string }) => {
   const router = useRouter();
 
-  function handleUpdateSearchParams(title: string, value: string) {
+  function handleUpdateSearchParams(title: string, value: string): void {
     const newPathname = updateSearchParams(title, value.toLowerCase());
     router.push(newPathname);
 

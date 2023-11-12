@@ -106,7 +106,7 @@ export async function editProfile<
   Biography extends string,
   Location extends string
 >(
-  userId: string,
+  userId: string | number,
   name: Name,
   username: Username,
   biography: Biography,

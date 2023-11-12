@@ -3,6 +3,11 @@ import CollectionsTopBar from "@/components/profile/collections/CollectionsTopBa
 import QuestionList from "@/components/questions/QuestionList";
 import { fetchUser } from "@/library/actions/user.actions";
 import { notAuthNavigate } from "@/library/utility";
+import { type FetchedProfilePropsTypes } from "@/types/profile";
+import {
+  QuestionItemPropsTypes,
+  type QuestionItemPropsTypes as FetchedQuestionsPropsTypes,
+} from "@/types/questions";
 import { getServerSession } from "next-auth";
 import { notFound } from "next/navigation";
 
@@ -14,20 +19,22 @@ const CollectionsPage = async ({
   params: { profileId: string };
 }) => {
   const session = await getServerSession(authOptions);
-  const user = await fetchUser(params.profileId);
-  const filteredQuestions = user?.savedQuestions?.filter((question: any) => {
-    if (searchParams && searchParams.search) {
-      const searchLower = searchParams.search.toLowerCase();
-      const titleLower = question.title.toLowerCase();
-      const descriptionLower = question.description.toLowerCase();
+  const user = (await fetchUser(params.profileId)) as FetchedProfilePropsTypes;
 
-      return (
-        titleLower.includes(searchLower) ||
-        descriptionLower.includes(searchLower)
-      );
-    }
-    return false;
-  });
+  const filteredQuestions: QuestionItemPropsTypes[] =
+    user?.savedQuestions?.filter((question: QuestionItemPropsTypes) => {
+      if (searchParams && searchParams.search) {
+        const searchLower = searchParams.search.toLowerCase();
+        const titleLower = question.title.toLowerCase();
+        const descriptionLower = question.description!.toLowerCase();
+
+        return (
+          titleLower.includes(searchLower) ||
+          descriptionLower.includes(searchLower)
+        );
+      }
+      return false;
+    });
 
   if (!user) notFound();
   if (!session) notAuthNavigate("/");

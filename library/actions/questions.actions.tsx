@@ -4,6 +4,7 @@ import Question from "../models/question";
 import User from "../models/user";
 import Answer from "../models/answer";
 import { revalidatePath } from "next/cache";
+import { FetchedQuestionsPropsTypes } from "@/types/questions";
 
 export async function postQuestion(
   title: string,
@@ -47,7 +48,9 @@ export async function fetchQuestions() {
   try {
     connectToDb();
 
-    const questions = await Question.find({}).populate("user", "username");
+    const questions: FetchedQuestionsPropsTypes[] = await Question.find(
+      {}
+    ).populate("user", "username");
 
     return questions;
   } catch (error) {
@@ -194,7 +197,7 @@ async function voteQuestion<Qid extends string, Uid extends string>(
     const question = await Question.findById(questionId);
     const user = await User.findById(question?.user);
 
-    if (!question || !user) return;
+    if (!question || !user || !userId) return;
 
     if (question[voteType].includes(userId)) {
       question[voteType].pull(userId);
@@ -274,7 +277,7 @@ export async function voteAnswer<Aid extends string, Uid extends string>(
     const answer = await Answer.findById(answerId);
     const user = await User.findById(answer?.user);
 
-    if (!answer || !user) return;
+    if (!answer || !user || !userId) return;
 
     if (answer[voteType].includes(userId)) {
       answer[voteType].pull(userId);

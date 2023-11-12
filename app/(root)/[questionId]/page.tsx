@@ -2,6 +2,7 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import QuestionDetailsContent from "@/components/questions/details/QuestionDetailsContent";
 import { fetchQuestionById } from "@/library/actions/questions.actions";
 import { getServerSession } from "next-auth";
+import { type QuestionItemPropsTypes as FetchedQuestionsPropsTypes } from "@/types/questions";
 import { notFound } from "next/navigation";
 
 const QuestionDetails = async ({
@@ -10,7 +11,9 @@ const QuestionDetails = async ({
   params: { questionId: string };
 }) => {
   const session = await getServerSession(authOptions);
-  const question = await fetchQuestionById(params.questionId);
+  const question = (await fetchQuestionById(
+    params.questionId
+  )) as FetchedQuestionsPropsTypes;
 
   if (!params.questionId || !question) notFound();
 

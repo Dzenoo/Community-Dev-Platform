@@ -1,3 +1,4 @@
+import { TagItemPropsTypes } from "@/types/tags";
 import bcrypt from "bcryptjs";
 import { redirect } from "next/navigation";
 
@@ -36,7 +37,7 @@ export function calculateDate(date: Date) {
   });
 }
 
-export function checkFormValidity<T extends any>(condition: T) {
+export function checkFormValidity<T extends any>(condition: T): boolean {
   let formIsValid;
 
   if (condition) {

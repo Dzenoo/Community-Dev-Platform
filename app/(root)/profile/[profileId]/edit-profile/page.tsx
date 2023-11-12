@@ -2,12 +2,13 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import EditProfileForm from "@/components/profile/edit-profile/EditProfileForm";
 import { fetchUser } from "@/library/actions/user.actions";
 import { notAuthNavigate } from "@/library/utility";
+import { FetchedProfilePropsTypes } from "@/types/profile";
 import { getServerSession } from "next-auth";
 import { notFound } from "next/navigation";
 
 const EditPage = async ({ params }: { params: { profileId: string } }) => {
   const session = await getServerSession(authOptions);
-  const user = await fetchUser(params.profileId);
+  const user = (await fetchUser(params.profileId)) as FetchedProfilePropsTypes;
 
   if (!user) notFound();
   if (!session) notAuthNavigate("/");

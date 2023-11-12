@@ -1,9 +1,7 @@
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import TagList from "@/components/tags/TagList";
 import TagsTopBar from "@/components/tags/TagsTopBar";
 import { TagsData } from "@/constants";
-import { notAuthNavigate } from "@/library/utility";
-import { getServerSession } from "next-auth";
+import { type TagItemPropsTypes } from "@/types/tags";
 
 const TagsPage = async ({
   searchParams,
@@ -11,10 +9,7 @@ const TagsPage = async ({
   searchParams: { search: string; filter: string };
 }) => {
   const { search = "", filter = "" } = searchParams;
-  const session = await getServerSession(authOptions);
-  if (!session) notAuthNavigate("/");
-
-  const filteredTags = TagsData?.filter(
+  const filteredTags: TagItemPropsTypes[] = TagsData.filter(
     ({ name = "" }) =>
       name &&
       name.toLowerCase().includes(search.toLowerCase()) &&

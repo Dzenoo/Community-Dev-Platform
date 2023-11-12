@@ -16,6 +16,7 @@ const QuestionDetailsAnswerActions: React.FC<
   const { data: session } = useSession();
   const { theme } = useTheme();
   const pathname = usePathname();
+  if (!session) return <p>Login to Vote Answer</p>;
 
   return (
     <div id={id} className="flex items-center gap-2">
@@ -29,6 +30,7 @@ const QuestionDetailsAnswerActions: React.FC<
         onClick={() => {
           if (!session) {
             toast.error("You must be logged in to vote an answer.");
+            return;
           }
           // @ts-ignore
           upvoteAnswer(id, session?.user?.id, pathname);
@@ -45,6 +47,7 @@ const QuestionDetailsAnswerActions: React.FC<
         onClick={() => {
           if (!session) {
             toast.error("You must be logged in to vote an answer.");
+            return;
           }
           // @ts-ignore
           downvoteAnswer(id, session?.user?.id, pathname);

@@ -36,3 +36,11 @@ export interface ProfilePropsTypes {
   biography: string;
   createdAt: Date;
 }
+
+export interface FetchedProfilePropsTypes extends ProfilePropsTypes {
+  goldBadges: number;
+  silverBadges: number;
+  bronzeBadges: number;
+  _id: string | number;
+  savedQuestions: QuestionItemPropsTypes[];
+}

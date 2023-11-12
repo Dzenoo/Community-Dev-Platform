@@ -17,10 +17,11 @@ const QuestionDetailsActions: React.FC<
   const { data: session } = useSession();
   const { theme } = useTheme();
   const pathname = usePathname();
-  if (!session) return null;
 
-  const isDarkTheme = theme === "dark";
-  const path = isDarkTheme
+  if (!session) return <p>Login to Vote Question</p>;
+
+  const isDarkTheme: boolean = theme === "dark";
+  const path: string = isDarkTheme
     ? isUserCollections
       ? "/assets/graphics/heartFill.png"
       : "/assets/graphics/heart.png"

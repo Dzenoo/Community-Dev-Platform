@@ -1,18 +1,24 @@
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import ProfileAnswersList from "@/components/profile/ProfileAnswersList";
 import ProfileStatistics from "@/components/profile/ProfileStatistics";
 import ProfileTopBar from "@/components/profile/ProfileTopBar";
 import QuestionList from "@/components/questions/QuestionList";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { fetchUserAnswers } from "@/library/actions/questions.actions";
 import { fetchUser } from "@/library/actions/user.actions";
 import { notAuthNavigate } from "@/library/utility";
+import {
+  type ProfileAsnwersDataItemPropsTypes,
+  type FetchedProfilePropsTypes,
+} from "@/types/profile";
 import { getServerSession } from "next-auth";
 import { notFound } from "next/navigation";
 
 const ProfilePage = async ({ params }: { params: { profileId: string } }) => {
   const session = await getServerSession(authOptions);
-  const user = await fetchUser(params.profileId);
-  const answers = await fetchUserAnswers(params.profileId);
+  const user = (await fetchUser(params.profileId)) as FetchedProfilePropsTypes;
+  const answers = (await fetchUserAnswers(
+    params.profileId
+  )) as ProfileAsnwersDataItemPropsTypes[];
 
   if (!user) notFound();
   if (!session) notAuthNavigate("/");

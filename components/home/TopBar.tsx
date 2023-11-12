@@ -9,7 +9,7 @@ const TopBar = () => {
   const router = useRouter();
   const { data: session } = useSession();
 
-  function handleUpdateSearchParams(title: string, value: string) {
+  function handleUpdateSearchParams(title: string, value: string): void {
     const newPathname = updateSearchParams(title, value.toLowerCase());
     router.push(newPathname);
 

@@ -15,7 +15,7 @@ const EditProfileForm = ({
   location,
   biography,
 }: {
-  userId: string;
+  userId: string | number;
   name: string;
   username: string;
   location: string;

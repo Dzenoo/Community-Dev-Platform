@@ -27,7 +27,7 @@ const QuestionAnswerForm = ({ questionId }: { questionId: string }) => {
   });
 
   if (!session) {
-    return null;
+    return <p className="text-center">Login To Answer</p>;
   }
 
   const isLang = formState.inputs.description.value.includes("```");

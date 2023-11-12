@@ -27,7 +27,7 @@ const QuestionDetailsContent: React.FC<QuestionItemPropsTypes> = async ({
   const userQuestions = userData?.savedQuestions.map(
     (question: QuestionItemPropsTypes) => question._id.toString()
   );
-  const isUserQuestions = userQuestions?.includes(_id.toString());
+  const isUserQuestions: boolean = userQuestions?.includes(_id.toString());
 
   return (
     <div className="flex flex-col gap-4 pb-12 overflow-hidden">

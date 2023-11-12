@@ -1,18 +1,18 @@
-'use client'
-import { useRouter } from 'next/navigation'
-import { deleteSearchParams, updateSearchParams } from '@/library/utility'
-import { type ChangeEvent } from 'react'
+"use client";
+import { useRouter } from "next/navigation";
+import { deleteSearchParams, updateSearchParams } from "@/library/utility";
+import { type ChangeEvent } from "react";
 
 const CollectionsTopBar = () => {
-  const router = useRouter()
+  const router = useRouter();
 
-  function handleUpdateSearchParams (title: string, value: string) {
-    const newPathname = updateSearchParams(title, value.toLowerCase())
-    router.push(newPathname)
+  function handleUpdateSearchParams(title: string, value: string): void {
+    const newPathname = updateSearchParams(title, value.toLowerCase());
+    router.push(newPathname);
 
-    if (value === '') {
-      const newPathname = deleteSearchParams(title)
-      router.push(newPathname)
+    if (value === "") {
+      const newPathname = deleteSearchParams(title);
+      router.push(newPathname);
     }
   }
 
@@ -23,15 +23,16 @@ const CollectionsTopBar = () => {
           Saved Questions
         </h2>
         <input
-          id={'search-collections'}
+          id={"search-collections"}
           className="input w-full"
           placeholder="Search Questions"
-          onChange={(e: ChangeEvent<HTMLInputElement>) => { handleUpdateSearchParams('search', e.target.value) }
-          }
+          onChange={(e: ChangeEvent<HTMLInputElement>) => {
+            handleUpdateSearchParams("search", e.target.value);
+          }}
         />
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default CollectionsTopBar
+export default CollectionsTopBar;

@@ -1,17 +1,18 @@
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import QuestionList from "@/components/questions/QuestionList";
 import { TagsData } from "@/constants";
 import { fetchQuestionByTag } from "@/library/actions/questions.actions";
-import { notAuthNavigate } from "@/library/utility";
-import { getServerSession } from "next-auth";
+import { type QuestionItemPropsTypes as FetchedQuestionsPropsTypes } from "@/types/questions";
+import { type TagItemPropsTypes } from "@/types/tags";
 import { notFound } from "next/navigation";
 
 const TagsDetailsPage = async ({ params }: { params: { tagId: string } }) => {
-  const tag = TagsData.find((tag) => tag.name === params.tagId);
-  const questions = await fetchQuestionByTag(tag?.name);
+  const tag = TagsData.find(
+    (tag: TagItemPropsTypes) => tag.name === params.tagId
+  ) as TagItemPropsTypes;
+  const questions = (await fetchQuestionByTag(
+    tag?.name
+  )) as FetchedQuestionsPropsTypes[];
 
-  const session = await getServerSession(authOptions);
-  if (!session) notAuthNavigate("/");
   !tag && notFound();
 
   return (
@@ -23,7 +24,6 @@ const TagsDetailsPage = async ({ params }: { params: { tagId: string } }) => {
         </h2>
       </div>
       <div className="mt-12">
-        {/* @ts-expect-error */}
         <QuestionList questions={questions} />
       </div>
     </section>

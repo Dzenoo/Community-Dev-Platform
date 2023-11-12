@@ -1,31 +1,31 @@
-'use client'
-import Link from 'next/link'
-import Card from '@/components/shared/ui/elements/card'
-import { type ProfileAsnwersDataItemPropsTypes } from '@/types/profile'
-import { usePathname } from 'next/navigation'
-import { ToastContainer, toast } from 'react-toastify'
-import { deleteAnswer } from '@/library/actions/answers.actions'
+"use client";
+import Link from "next/link";
+import Card from "@/components/shared/ui/elements/card";
+import { type ProfileAsnwersDataItemPropsTypes } from "@/types/profile";
+import { usePathname } from "next/navigation";
+import { ToastContainer, toast } from "react-toastify";
+import { deleteAnswer } from "@/library/actions/answers.actions";
 
 const ProfileAnswerItem: React.FC<ProfileAsnwersDataItemPropsTypes> = ({
   _id,
   title,
   question,
-  description
+  description,
 }) => {
-  const pathname = usePathname()
+  const pathname = usePathname();
 
-  async function deleteAnserConfirm () {
+  async function deleteAnserConfirm() {
     const confirm = window.confirm(
-      'Are you sure you want to delete this answer?'
-    )
+      "Are you sure you want to delete this answer?"
+    );
 
     if (!_id) {
-      toast.error('You must be logged in to delete an answer.')
-      return
+      toast.error("You must be logged in to delete an answer.");
+      return;
     }
 
     if (confirm) {
-      await deleteAnswer(_id, pathname)
+      await deleteAnswer(_id, pathname);
     }
   }
 
@@ -60,7 +60,7 @@ const ProfileAnswerItem: React.FC<ProfileAsnwersDataItemPropsTypes> = ({
         </div>
       </div>
     </Card>
-  )
-}
+  );
+};
 
-export default ProfileAnswerItem
+export default ProfileAnswerItem;
