@@ -1,4 +1,4 @@
-import { type InputPropsTypes } from '@/types/input'
+import { type InputPropsTypes } from "@/types/input";
 
 const Input: React.FC<InputPropsTypes> = ({
   type,
@@ -11,35 +11,33 @@ const Input: React.FC<InputPropsTypes> = ({
   helperText,
   errorText,
   defaultValue,
-  val
+  val,
 }) => {
-  const element =
-    elementType === 'textarea'
-      ? (
+  const element: JSX.Element =
+    elementType === "textarea" ? (
       <textarea
         id={id}
         placeholder={placeholder || `Enter ${label}`}
         className={`textarea card_animation ${
-          !isValid && 'border-2 border-red-400'
+          !isValid && "border-2 border-red-400"
         }`}
         onChange={onChange}
         defaultValue={defaultValue}
         value={val}
       />
-        )
-      : (
+    ) : (
       <input
         type={type}
         id={id}
         placeholder={placeholder || `Enter ${label}`}
         className={`input card_animation ${
-          !isValid && 'border-2 border-red-400'
+          !isValid && "border-2 border-red-400"
         }`}
         onChange={onChange}
         defaultValue={defaultValue}
         value={val}
       />
-        )
+    );
 
   return (
     <div className="flex flex-col gap-2 max-md:basis-full">
@@ -54,7 +52,7 @@ const Input: React.FC<InputPropsTypes> = ({
         <p className="section_subtitle_smaller text-red-400">{errorText}</p>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default Input
+export default Input;

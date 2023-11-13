@@ -1,6 +1,6 @@
-import { TagItemPropsTypes } from "@/types/tags";
-import bcrypt from "bcryptjs";
+import { QuestionItemPropsTypes } from "@/types/questions";
 import { redirect } from "next/navigation";
+import bcrypt from "bcryptjs";
 
 export function generateQuestionActionsData<T extends number, Q extends string>(
   data: T,
@@ -16,18 +16,18 @@ export function generateQuestionActionsData<T extends number, Q extends string>(
   );
 }
 
-export function hashPassword<T extends string>(password: T) {
+export function hashPassword<T extends string>(password: T): Promise<string> {
   return bcrypt.hash(password, 12);
 }
 
 export async function comparePassword<T extends string>(
   password: T,
   hashedPassword: T
-) {
+): Promise<boolean> {
   return await bcrypt.compare(password, hashedPassword);
 }
 
-export function calculateDate(date: Date) {
+export function calculateDate(date: Date): string {
   const createdAt = new Date(date);
 
   return createdAt.toLocaleDateString("en-US", {
@@ -49,7 +49,7 @@ export function checkFormValidity<T extends any>(condition: T): boolean {
   return formIsValid;
 }
 
-export function getQuestionsTags(typeOfQuestions: any) {
+export function getQuestionsTags(typeOfQuestions: QuestionItemPropsTypes[]) {
   const tagsSet = new Set();
 
   typeOfQuestions?.forEach((question: any) => {
@@ -63,7 +63,10 @@ export function getQuestionsTags(typeOfQuestions: any) {
   return tags;
 }
 
-export function updateSearchParams<T extends string>(type: T, value: T) {
+export function updateSearchParams<T extends string>(
+  type: T,
+  value: T
+): string {
   const searchParams = new URLSearchParams(window.location.search);
   searchParams.set(type, value);
 
@@ -72,7 +75,7 @@ export function updateSearchParams<T extends string>(type: T, value: T) {
   return newPathname;
 }
 
-export function deleteSearchParams<T extends string>(type: T) {
+export function deleteSearchParams<T extends string>(type: T): string {
   const searchParams = new URLSearchParams(window.location.search);
   searchParams.delete(type);
 
@@ -81,6 +84,6 @@ export function deleteSearchParams<T extends string>(type: T) {
   return newPathname;
 }
 
-export function notAuthNavigate(path: string) {
+export function notAuthNavigate(path: string): void {
   return redirect(path);
 }

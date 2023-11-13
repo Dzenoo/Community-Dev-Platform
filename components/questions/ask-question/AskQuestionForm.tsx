@@ -13,6 +13,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { useSession } from "next-auth/react";
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 
 const AskQuestionForm = () => {
   const [tags, setTags] = useState<string[]>([]);
@@ -35,16 +36,16 @@ const AskQuestionForm = () => {
       isValid: true,
     },
   });
-  const router = useRouter();
-  const isCode = formState.inputs.description.value.includes("```");
+  const router: AppRouterInstance = useRouter();
+  const isCode: boolean = formState.inputs.description.value.includes("```");
 
-  const isFormValid = checkFormValidity(
+  const isFormValid: boolean = checkFormValidity(
     !formState.inputs.title.isValid ||
       !formState.inputs.description.isValid ||
       tags.length === 0
   );
 
-  function addTagsHandler(tagValue: string) {
+  function addTagsHandler(tagValue: string): void {
     if (tags.find((tag) => tag === tagValue)) {
       toast.warning("Tag already exists");
     } else {
@@ -52,11 +53,13 @@ const AskQuestionForm = () => {
     }
   }
 
-  function removeTagsHandler(tagValue: string) {
+  function removeTagsHandler(tagValue: string): void {
     setTags((prevTags) => prevTags.filter((tag) => tag !== tagValue));
   }
 
-  async function submitHandler(e: React.FormEvent<HTMLFormElement>) {
+  async function submitHandler(
+    e: React.FormEvent<HTMLFormElement>
+  ): Promise<void> {
     e.preventDefault();
 
     if (!isFormValid) {
@@ -85,7 +88,7 @@ const AskQuestionForm = () => {
 
   const disableFormSubmitOnEnter = (
     event: React.KeyboardEvent<HTMLFormElement>
-  ) => {
+  ): void => {
     if (event.key === "Enter") {
       event.preventDefault();
     }

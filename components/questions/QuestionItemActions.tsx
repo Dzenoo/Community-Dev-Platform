@@ -7,9 +7,9 @@ import { usePathname } from "next/navigation";
 
 const QuestionItemActions = ({ id }: { id: string }) => {
   const { data: session } = useSession();
-  const pathname = usePathname();
+  const pathname: string = usePathname();
 
-  async function deleteQuestionConfirm() {
+  async function deleteQuestionConfirm(): Promise<void> {
     const confirm = window.confirm(
       "Are you sure you want to delete this question?"
     );

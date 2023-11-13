@@ -15,7 +15,7 @@ const QuestionDetailsAnswerActions: React.FC<
 > = ({ id, upvotes, downvotes }) => {
   const { data: session } = useSession();
   const { theme } = useTheme();
-  const pathname = usePathname();
+  const pathname: string = usePathname();
   if (!session) return <p>Login to Vote Answer</p>;
 
   return (

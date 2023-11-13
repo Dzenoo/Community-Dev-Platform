@@ -5,6 +5,7 @@ import { editProfile } from "@/library/actions/user.actions";
 import { useForm } from "@/library/hooks/use-form";
 import { checkFormValidity } from "@/library/utility";
 import { VALIDATOR_REQUIRE } from "@/library/validators/validators";
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import { useRouter } from "next/navigation";
 import { ToastContainer, toast } from "react-toastify";
 
@@ -39,23 +40,25 @@ const EditProfileForm = ({
       isValid: true,
     },
   });
-  const router = useRouter();
+  const router: AppRouterInstance = useRouter();
 
-  const changedInputs =
+  const changedInputs: boolean =
     formState.inputs.name.value === name &&
     formState.inputs.username.value === username &&
     formState.inputs.location.value === location &&
     formState.inputs.biography.value === biography;
 
-  const formInputs =
+  const formInputs: boolean =
     formState.inputs.name.isValid &&
     formState.inputs.username.isValid &&
     formState.inputs.location.isValid &&
     formState.inputs.biography.isValid;
 
-  const isDisabled = checkFormValidity(!changedInputs && formInputs);
+  const isDisabled: boolean = checkFormValidity(!changedInputs && formInputs);
 
-  async function submitHandler(e: React.FormEvent<HTMLFormElement>) {
+  async function submitHandler(
+    e: React.FormEvent<HTMLFormElement>
+  ): Promise<void> {
     e.preventDefault();
 
     if (isDisabled) {

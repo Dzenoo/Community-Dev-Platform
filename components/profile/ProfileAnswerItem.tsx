@@ -12,9 +12,9 @@ const ProfileAnswerItem: React.FC<ProfileAsnwersDataItemPropsTypes> = ({
   question,
   description,
 }) => {
-  const pathname = usePathname();
+  const pathname: string = usePathname();
 
-  async function deleteAnserConfirm() {
+  async function deleteAnserConfirm(): Promise<void> {
     const confirm = window.confirm(
       "Are you sure you want to delete this answer?"
     );

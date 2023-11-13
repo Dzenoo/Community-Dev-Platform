@@ -14,7 +14,7 @@ const Button: React.FC<ButtonPropsTypes> = ({
   onClick,
   disabled,
 }) => {
-  const variantClassName = variantClassNames[variant];
+  const variantClassName: string = variantClassNames[variant];
 
   return (
     <button

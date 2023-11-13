@@ -3,9 +3,10 @@ import { useRouter } from "next/navigation";
 import { deleteSearchParams, updateSearchParams } from "@/library/utility";
 import { type ChangeEvent } from "react";
 import { ProgrammingLanguagesData } from "@/constants";
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 
 const TagsTopBar = () => {
-  const router = useRouter();
+  const router: AppRouterInstance = useRouter();
 
   function handleUpdateSearchParams(title: string, value: string): void {
     const newPathname = updateSearchParams(title, value.toLowerCase());

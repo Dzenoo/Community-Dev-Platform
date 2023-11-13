@@ -30,14 +30,16 @@ const QuestionAnswerForm = ({ questionId }: { questionId: string }) => {
     return <p className="text-center">Login To Answer</p>;
   }
 
-  const isLang = formState.inputs.description.value.includes("```");
+  const isLang: boolean = formState.inputs.description.value.includes("```");
 
-  const formIsValid = checkFormValidity(
+  const formIsValid: boolean = checkFormValidity(
     !formState.inputs.description.isValid ||
       (isLang && !formState.inputs.language.isValid)
   );
 
-  async function onAnswerSubmitHandler(e: ChangeEvent<HTMLFormElement>) {
+  async function onAnswerSubmitHandler(
+    e: ChangeEvent<HTMLFormElement>
+  ): Promise<void> {
     e.preventDefault();
 
     if (!session) {
