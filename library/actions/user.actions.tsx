@@ -56,7 +56,7 @@ export async function signupUser<
   }
 }
 
-export async function fetchUsers<Path extends string>(path: Path) {
+export async function fetchUsers<Path extends string>(path?: Path) {
   try {
     connectToDb();
 
@@ -66,7 +66,9 @@ export async function fetchUsers<Path extends string>(path: Path) {
 
     if (!users) return;
 
-    revalidatePath(path);
+    if (path) {
+      revalidatePath(path);
+    }
 
     return users;
   } catch (error) {

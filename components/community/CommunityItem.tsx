@@ -13,7 +13,7 @@ const CommunityItem: React.FC<CommunityItemPropsTypes> = ({
   return (
     <Card>
       <div className="flex flex-col gap-4 justify-center items-center overflow-hidden">
-        <img
+        <Image
           src="/assets/images/profile.png"
           alt="profile"
           width={130}

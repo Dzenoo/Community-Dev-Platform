@@ -1,46 +1,8 @@
-export const SidebarNavigationData = [
-  {
-    id: "s1",
-    href: "/",
-    icon: "/assets/graphics/dashboard.png",
-    title: "Home",
-  },
-  {
-    id: "s3",
-    href: "/community",
-    icon: "/assets/graphics/community.png",
-    title: "Community",
-  },
-  {
-    id: "s5",
-    href: "/tags",
-    icon: "/assets/graphics/price-tag.png",
-    title: "Tags",
-  },
-];
-export const InformationTagsNavigationData = [
-  {
-    id: "s1",
-    href: "/",
-    title: "Next.Js",
-  },
-  {
-    id: "s2",
-    href: "/",
-    title: "React.Js",
-  },
-  {
-    id: "s3",
-    href: "/",
-    title: "JavaScript",
-  },
-  {
-    id: "s4",
-    href: "/",
-    title: "typescript",
-  },
-];
-export const FilterButtonsData = [
+export const FilterButtonsData: {
+  id: string;
+  filter: string;
+  title: string;
+}[] = [
   {
     id: "b0",
     title: "All",
@@ -62,7 +24,11 @@ export const FilterButtonsData = [
     filter: "frequent",
   },
 ];
-export const ProgrammingLanguagesData = [
+export const ProgrammingLanguagesData: {
+  id: number;
+  name: string;
+  value: string;
+}[] = [
   { id: 0, name: "Select Language", value: "" },
   { id: 1, name: "JavaScript", value: "javascript" },
   { id: 2, name: "Python", value: "python" },
@@ -78,7 +44,11 @@ export const ProgrammingLanguagesData = [
   { id: 12, name: "SQL", value: "sql" },
 ];
 
-export const TagsData = [
+export const TagsData: {
+  id: string;
+  name: string;
+  description: string;
+}[] = [
   {
     id: "1",
     name: "JavaScript",

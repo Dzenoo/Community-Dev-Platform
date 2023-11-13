@@ -4,7 +4,7 @@ import ProfileTopBar from "@/components/profile/ProfileTopBar";
 import QuestionList from "@/components/questions/QuestionList";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { fetchUserAnswers } from "@/library/actions/questions.actions";
-import { fetchUser } from "@/library/actions/user.actions";
+import { fetchUser, fetchUsers } from "@/library/actions/user.actions";
 import { notAuthNavigate } from "@/library/utility";
 import {
   type ProfileAsnwersDataItemPropsTypes,
@@ -12,6 +12,16 @@ import {
 } from "@/types/profile";
 import { getServerSession } from "next-auth";
 import { notFound } from "next/navigation";
+
+export async function generateStaticParams() {
+  const CommunityUsers = (await fetchUsers()) as FetchedProfilePropsTypes[];
+
+  return {
+    paths: CommunityUsers.map((user: FetchedProfilePropsTypes) => ({
+      params: { profileId: user._id },
+    })),
+  };
+}
 
 const ProfilePage = async ({ params }: { params: { profileId: string } }) => {
   const session = await getServerSession(authOptions);

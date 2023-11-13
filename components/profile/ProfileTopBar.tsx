@@ -3,6 +3,7 @@ import LinkButton from "@/components/shared/ui/elements/link";
 import { type ProfilePropsTypes } from "@/types/profile";
 import { calculateDate } from "@/library/utility";
 import { ImageDate, ImageLocation } from "./ProfileImages";
+import Image from "next/image";
 
 const ProfileTopBar: React.FC<ProfilePropsTypes> = ({
   name,
@@ -18,7 +19,12 @@ const ProfileTopBar: React.FC<ProfilePropsTypes> = ({
     <div className="flex justify-between items-start card_animation gap-12 max-md:flex-wrap">
       <div className="flex gap-6 items-center max-md:flex-wrap">
         <div>
-          <img src="/assets/images/profile.png" alt="user" />
+          <Image
+            src="/assets/images/profile.png"
+            alt="user"
+            width={210}
+            height={210}
+          />
         </div>
         <div className="flex flex-col gap-4 justify-between">
           <div className="flex flex-col gap-2">

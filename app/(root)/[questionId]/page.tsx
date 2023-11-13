@@ -1,9 +1,19 @@
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import QuestionDetailsContent from "@/components/questions/details/QuestionDetailsContent";
-import { fetchQuestionById } from "@/library/actions/questions.actions";
+import {
+  fetchQuestionById,
+  fetchQuestions,
+} from "@/library/actions/questions.actions";
 import { getServerSession } from "next-auth";
 import { type QuestionItemPropsTypes as FetchedQuestionsPropsTypes } from "@/types/questions";
 import { notFound } from "next/navigation";
+
+export const generateStaticParams = async () => {
+  const questions = (await fetchQuestions()) as FetchedQuestionsPropsTypes[];
+  return questions.map((question: FetchedQuestionsPropsTypes) => ({
+    params: { questionId: question._id },
+  }));
+};
 
 const QuestionDetails = async ({
   params,
