@@ -13,6 +13,7 @@ import {
 import { getServerSession } from "next-auth";
 import { notFound } from "next/navigation";
 
+// This function generates the static parameters for the dynamic route
 export async function generateStaticParams() {
   const CommunityUsers = (await fetchUsers()) as FetchedProfilePropsTypes[];
 
@@ -21,18 +22,28 @@ export async function generateStaticParams() {
   }));
 }
 
+// This is the main component
 const ProfilePage = async ({ params }: { params: { profileId: string } }) => {
+  // Get the session
   const session = await getServerSession(authOptions);
+
+  // Fetch the user and their answers
   const user = (await fetchUser(params.profileId)) as FetchedProfilePropsTypes;
   const answers = (await fetchUserAnswers(
     params.profileId
   )) as ProfileAsnwersDataItemPropsTypes[];
 
+  // If the user is not found, return a 404 error
   if (!user) notFound();
+
+  // If the user is not authenticated, redirect to the login page
   if (!session) notAuthNavigate("/");
+
+  // If the user is not the owner of the profile, redirect to the homepage
   // @ts-ignore
   if (params.profileId !== session?.user.id) notAuthNavigate("/");
 
+  // Define the data for the profile statistics
   const ProfileStatisticsData = [
     {
       id: 1,
@@ -54,6 +65,7 @@ const ProfilePage = async ({ params }: { params: { profileId: string } }) => {
     },
   ];
 
+  // Render the profile page
   return (
     <section className="my-6 flex flex-col gap-12">
       <ProfileTopBar

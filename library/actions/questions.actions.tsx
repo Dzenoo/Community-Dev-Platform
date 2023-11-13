@@ -4,7 +4,7 @@ import Question from "../models/question";
 import User from "../models/user";
 import Answer from "../models/answer";
 import { revalidatePath } from "next/cache";
-import { FetchedQuestionsPropsTypes } from "@/types/questions";
+import { QuestionItemPropsTypes } from "@/types/questions";
 
 export async function postQuestion(
   title: string,
@@ -48,7 +48,7 @@ export async function fetchQuestions() {
   try {
     connectToDb();
 
-    const questions: FetchedQuestionsPropsTypes[] = await Question.find(
+    const questions: QuestionItemPropsTypes[] = await Question.find(
       {}
     ).populate("user", "username");
 
@@ -325,10 +325,9 @@ export async function fetchQuestionByTag<Tag extends string | undefined>(
   try {
     await connectToDb();
 
-    const questions = await Question.find({ tags: { $in: tag } }).populate(
-      "user",
-      "username"
-    );
+    const questions = await Question.find({
+      tags: { $in: tag },
+    }).populate("user", "username");
 
     return questions;
   } catch (error) {

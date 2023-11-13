@@ -158,3 +158,19 @@ export async function editProfile<
     throw new Error("Editing profile failed");
   }
 }
+
+export async function fetchCommunity(): Promise<any> {
+  try {
+    await connectToDb();
+
+    const community = await User.find({})
+      .sort({ goldBadges: -1, silverBadges: -1, bronzeBadges: -1 })
+      .limit(10)
+      .select("username email name goldBadges silverBadges bronzeBadges");
+
+    console.log(community);
+    return community;
+  } catch (error) {
+    console.log(error);
+  }
+}

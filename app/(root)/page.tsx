@@ -4,20 +4,26 @@ import QuestionList from "@/components/questions/QuestionList";
 import { fetchQuestions } from "@/library/actions/questions.actions";
 import { type QuestionItemPropsTypes as FetchedQuestionsPropsTypes } from "@/types/questions";
 
+// Define an enum for the different filter options
 enum SearchParamsFilter {
   Newest = "newest",
   Frequent = "frequent",
   Recommended = "recommended",
 }
 
+// Define the Home component
 export default async function Home({
   searchParams,
 }: {
   searchParams: { search: string; filter: SearchParamsFilter };
 }) {
+  // Fetch the questions and cast them to the appropriate type
   const questions = (await fetchQuestions()) as FetchedQuestionsPropsTypes[];
+
+  // Initialize the filteredQuestions array with all the questions
   let filteredQuestions: FetchedQuestionsPropsTypes[] = questions;
 
+  // If there is a search term, filter the questions by title and description
   if (searchParams.search) {
     const searchLower = searchParams.search.toLowerCase();
     filteredQuestions = questions.filter(
@@ -31,6 +37,7 @@ export default async function Home({
       }
     );
   } else {
+    // If there is no search term, sort the questions based on the selected filter
     if (searchParams.filter === SearchParamsFilter.Newest) {
       filteredQuestions = questions
         .slice()
@@ -67,6 +74,8 @@ export default async function Home({
         );
     }
   }
+
+  // Render the Home component with the appropriate components and props
   return (
     <main className="flex flex-col gap-8">
       <TopBar />
