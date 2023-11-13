@@ -10,6 +10,7 @@ import { notFound } from "next/navigation";
 
 export const generateStaticParams = async () => {
   const questions = (await fetchQuestions()) as FetchedQuestionsPropsTypes[];
+
   return questions.map((question: FetchedQuestionsPropsTypes) => ({
     params: { questionId: question._id },
   }));

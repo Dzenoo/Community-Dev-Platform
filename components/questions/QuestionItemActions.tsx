@@ -4,6 +4,8 @@ import { deleteQuestion } from "@/library/actions/questions.actions";
 import { useSession } from "next-auth/react";
 import { ToastContainer, toast } from "react-toastify";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
+import Image from "next/image";
 
 const QuestionItemActions = ({ id }: { id: string }) => {
   const { data: session } = useSession();
@@ -37,16 +39,17 @@ const QuestionItemActions = ({ id }: { id: string }) => {
             X
           </button>
         </div>
-        {/* <div>
-          <button>
+        <div>
+          {/* @ts-ignore */}
+          <Link href={`/profile/${session?.user.id}/${id}/edit-question`}>
             <Image
               src="/assets/graphics/editing.png"
               alt="editing"
               width={20}
               height={20}
             />
-          </button>
-        </div> */}
+          </Link>
+        </div>
       </div>
     </div>
   );

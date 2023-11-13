@@ -16,11 +16,9 @@ import { notFound } from "next/navigation";
 export async function generateStaticParams() {
   const CommunityUsers = (await fetchUsers()) as FetchedProfilePropsTypes[];
 
-  return {
-    paths: CommunityUsers.map((user: FetchedProfilePropsTypes) => ({
-      params: { profileId: user._id },
-    })),
-  };
+  return CommunityUsers.map((user: FetchedProfilePropsTypes) => ({
+    params: { profileId: user._id },
+  }));
 }
 
 const ProfilePage = async ({ params }: { params: { profileId: string } }) => {
