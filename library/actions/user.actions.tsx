@@ -174,3 +174,25 @@ export async function fetchCommunity(): Promise<any> {
     console.log(error);
   }
 }
+
+export async function fetchCommunityByParams<T extends string | undefined>(
+  params?: T
+) {
+  try {
+    await connectToDb();
+    let community = [];
+
+    if (params) {
+      const search = new RegExp(params, "i");
+      community = await User.find({
+        $or: [{ username: search }, { email: search }, { name: search }],
+      }).select("-password");
+    } else {
+      community = await User.find({}).select("-password");
+    }
+
+    return community;
+  } catch (error) {
+    console.log(error);
+  }
+}

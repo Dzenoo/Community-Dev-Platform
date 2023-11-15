@@ -25,14 +25,17 @@ const LoginForm = () => {
     },
   });
 
+  // Check if the form is valid
   const isFormValid = checkFormValidity(
     formState.inputs.email.value === "" ||
       formState.inputs.password.value === ""
   );
 
+  // Handle form submission
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
+    // Check if all fields are filled
     if (
       formState.inputs.email.value === "" ||
       formState.inputs.password.value === ""
@@ -40,6 +43,7 @@ const LoginForm = () => {
       toast.error("Please fill all the fields.");
     }
 
+    // If the form is valid, try to sign in
     if (isFormValid) {
       try {
         const result = await signIn("credentials", {
@@ -61,6 +65,7 @@ const LoginForm = () => {
     }
   }
 
+  // Render the login form
   return (
     <form className="flex flex-col gap-9" onSubmit={handleSubmit}>
       <ToastContainer />

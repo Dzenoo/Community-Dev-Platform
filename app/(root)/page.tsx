@@ -18,61 +18,43 @@ export default async function Home({
   searchParams: { search: string; filter: SearchParamsFilter };
 }) {
   // Fetch the questions and cast them to the appropriate type
-  const questions = (await fetchQuestions()) as FetchedQuestionsPropsTypes[];
+  // const questions = (await fetchQuestions()) as FetchedQuestionsPropsTypes[];
+  const questions = (await fetchQuestions(
+    searchParams.search
+  )) as FetchedQuestionsPropsTypes[];
 
   // Initialize the filteredQuestions array with all the questions
   let filteredQuestions: FetchedQuestionsPropsTypes[] = questions;
 
-  // If there is a search term, filter the questions by title and description
-  if (searchParams.search) {
-    const searchLower = searchParams.search.toLowerCase();
-    filteredQuestions = questions.filter(
-      (question: FetchedQuestionsPropsTypes) => {
-        const titleLower = question.title.toLowerCase();
-        const descriptionLower = question.description!.toLowerCase();
+  // If there is no search term, sort the questions based on the selected filter
+  if (searchParams.filter === SearchParamsFilter.Newest) {
+    filteredQuestions = questions
+      .slice()
+      .sort((a: FetchedQuestionsPropsTypes, b: FetchedQuestionsPropsTypes) => {
         return (
-          titleLower.includes(searchLower) ||
-          descriptionLower.includes(searchLower)
+          new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
         );
-      }
-    );
-  } else {
-    // If there is no search term, sort the questions based on the selected filter
-    if (searchParams.filter === SearchParamsFilter.Newest) {
-      filteredQuestions = questions
-        .slice()
-        .sort(
-          (a: FetchedQuestionsPropsTypes, b: FetchedQuestionsPropsTypes) => {
-            return (
-              new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-            );
-          }
+      });
+  } else if (searchParams.filter === SearchParamsFilter.Frequent) {
+    filteredQuestions = questions
+      .slice()
+      .sort((a: FetchedQuestionsPropsTypes, b: FetchedQuestionsPropsTypes) => {
+        return (
+          b.upvotes.length -
+          b.downvotes.length -
+          (a.upvotes.length - a.downvotes.length)
         );
-    } else if (searchParams.filter === SearchParamsFilter.Frequent) {
-      filteredQuestions = questions
-        .slice()
-        .sort(
-          (a: FetchedQuestionsPropsTypes, b: FetchedQuestionsPropsTypes) => {
-            return (
-              b.upvotes.length -
-              b.downvotes.length -
-              (a.upvotes.length - a.downvotes.length)
-            );
-          }
+      });
+  } else if (searchParams.filter === SearchParamsFilter.Recommended) {
+    filteredQuestions = questions
+      .slice()
+      .sort((a: FetchedQuestionsPropsTypes, b: FetchedQuestionsPropsTypes) => {
+        return (
+          b.answers.length -
+          b.upvotes.length -
+          (a.answers.length - a.upvotes.length)
         );
-    } else if (searchParams.filter === SearchParamsFilter.Recommended) {
-      filteredQuestions = questions
-        .slice()
-        .sort(
-          (a: FetchedQuestionsPropsTypes, b: FetchedQuestionsPropsTypes) => {
-            return (
-              b.answers.length -
-              b.upvotes.length -
-              (a.answers.length - a.upvotes.length)
-            );
-          }
-        );
-    }
+      });
   }
 
   // Render the Home component with the appropriate components and props

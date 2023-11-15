@@ -32,6 +32,7 @@ const SignupForm = () => {
     },
   });
 
+  // Check if the form is valid
   const isFormValid = checkFormValidity(
     formState.inputs.name.value === "" ||
       formState.inputs.email.value === "" ||
@@ -39,9 +40,11 @@ const SignupForm = () => {
       formState.inputs.password.value === ""
   );
 
+  // Handle form submission
   async function onSubmitHandler(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
+    // Check if all fields are filled
     if (
       formState.inputs.name.value === "" ||
       formState.inputs.email.value === "" ||
@@ -52,6 +55,7 @@ const SignupForm = () => {
       return;
     }
 
+    // If the form is valid, sign up the user
     if (isFormValid) {
       try {
         const response = await signupUser(
@@ -73,6 +77,7 @@ const SignupForm = () => {
     }
   }
 
+  // Render the form
   return (
     <form className="flex flex-col gap-9" onSubmit={onSubmitHandler}>
       <ToastContainer />

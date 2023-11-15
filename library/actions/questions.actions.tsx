@@ -44,20 +44,6 @@ export async function postQuestion(
   }
 }
 
-export async function fetchQuestions() {
-  try {
-    connectToDb();
-
-    const questions: QuestionItemPropsTypes[] = await Question.find(
-      {}
-    ).populate("user", "username");
-
-    return questions;
-  } catch (error) {
-    console.log(error);
-  }
-}
-
 export async function fetchQuestionById<Id extends string>(id: Id) {
   try {
     connectToDb();
@@ -328,6 +314,28 @@ export async function fetchQuestionByTag<Tag extends string | undefined>(
     const questions = await Question.find({
       tags: { $in: tag },
     }).populate("user", "username");
+
+    return questions;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function fetchQuestions<T extends string | undefined>(params?: T) {
+  try {
+    await connectToDb();
+
+    let questions: QuestionItemPropsTypes[] = [];
+
+    if (params) {
+      const search = new RegExp(params, "i");
+
+      questions = await Question.find({
+        $or: [{ title: search }, { tags: { $in: search } }],
+      }).populate("user", "username");
+    } else {
+      questions = await Question.find({}).populate("user", "username");
+    }
 
     return questions;
   } catch (error) {
