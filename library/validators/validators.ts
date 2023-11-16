@@ -1,5 +1,7 @@
+// Importing the ValidatorPropertiesTypes interface from the validation file
 import { ValidatorPropertiesTypes } from "@/types/validation";
 
+// Enum for the different types of validators
 enum ValidatorTypes {
   REQUIRE = "REQUIRE",
   FIRST_NAME = "FIRST_NAME",
@@ -12,6 +14,7 @@ enum ValidatorTypes {
   PASSWORD_MATCH = "PASSWORD_MATCH",
 }
 
+// Exporting different validator functions
 export const VALIDATOR_REQUIRE = () => ({ type: ValidatorTypes.REQUIRE });
 export const VALIDATOR_FIRSTNAME = () => ({ type: ValidatorTypes.FIRST_NAME });
 export const VALIDATOR_FILE = () => ({ type: ValidatorTypes.FILE });
@@ -37,6 +40,7 @@ export const VALIDATOR_PASSWORD_MATCH = (password: string) => ({
   password: password,
 });
 
+// Function to validate a given value based on the validators passed
 export const validate = (
   value: string,
   validators: ValidatorPropertiesTypes[]

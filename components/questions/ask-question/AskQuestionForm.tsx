@@ -1,3 +1,4 @@
+// Importing necessary components and libraries
 "use client";
 import Button from "@/components/shared/ui/elements/button";
 import Input from "@/components/shared/ui/elements/input";
@@ -15,7 +16,9 @@ import { ToastContainer, toast } from "react-toastify";
 import { useSession } from "next-auth/react";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 
+// Defining the AskQuestionForm component
 const AskQuestionForm = () => {
+  // Initializing state variables
   const [tags, setTags] = useState<string[]>([]);
   const { data: session } = useSession();
   const { formState, inputChangeHandler } = useForm({
@@ -39,12 +42,14 @@ const AskQuestionForm = () => {
   const router: AppRouterInstance = useRouter();
   const isCode: boolean = formState.inputs.description.value.includes("```");
 
+  // Checking if the form is valid
   const isFormValid: boolean = checkFormValidity(
     !formState.inputs.title.isValid ||
       !formState.inputs.description.isValid ||
       tags.length === 0
   );
 
+  // Function to add tags to the question
   function addTagsHandler(tagValue: string): void {
     if (tags.find((tag) => tag === tagValue)) {
       toast.warning("Tag already exists");
@@ -53,10 +58,12 @@ const AskQuestionForm = () => {
     }
   }
 
+  // Function to remove tags from the question
   function removeTagsHandler(tagValue: string): void {
     setTags((prevTags) => prevTags.filter((tag) => tag !== tagValue));
   }
 
+  // Function to handle form submission
   async function submitHandler(
     e: React.FormEvent<HTMLFormElement>
   ): Promise<void> {
@@ -73,6 +80,7 @@ const AskQuestionForm = () => {
       return;
     }
 
+    // Posting the question
     await postQuestion(
       formState.inputs.title.value,
       tags,
@@ -83,9 +91,11 @@ const AskQuestionForm = () => {
       "/"
     );
 
+    // Redirecting to the home page
     router.push("/");
   }
 
+  // Function to disable form submission on pressing enter
   const disableFormSubmitOnEnter = (
     event: React.KeyboardEvent<HTMLFormElement>
   ): void => {
@@ -94,6 +104,7 @@ const AskQuestionForm = () => {
     }
   };
 
+  // Rendering the AskQuestionForm component
   return (
     <form
       className="flex flex-col"
@@ -222,4 +233,5 @@ const AskQuestionForm = () => {
   );
 };
 
+// Exporting the AskQuestionForm component
 export default AskQuestionForm;

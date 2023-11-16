@@ -1,11 +1,11 @@
-"use server";
-
+// Importing necessary modules and models
 import Question from "../models/question";
 import User from "../models/user";
 import { connectToDb } from "../mongoose";
 import { revalidatePath } from "next/cache";
 import { hashPassword } from "../utility";
 
+// Function to sign up a user
 export async function signupUser<
   Name extends string,
   Email extends string,
@@ -20,10 +20,12 @@ export async function signupUser<
   try {
     await connectToDb();
 
+    // If any of the required fields are missing, return
     if (!name || !email || !username || !password) {
       return;
     }
 
+    // Check if user with the same email or username already exists
     const existingUserEmail = await User.findOne({
       email: email,
     });
@@ -36,6 +38,7 @@ export async function signupUser<
       return;
     }
 
+    // Hash the password and create a new user
     const hashedPassword = await hashPassword(password);
 
     const createdUser = await User.create({
@@ -56,16 +59,19 @@ export async function signupUser<
   }
 }
 
+// Function to fetch all users
 export async function fetchUsers<Path extends string>(path?: Path) {
   try {
     connectToDb();
 
+    // Find all users and select only necessary fields
     const users = await User.find({}).select(
       "username name email biography goldBadges silverBadges bronzeBadges"
     );
 
     if (!users) return;
 
+    // If a path is provided, revalidate the path
     if (path) {
       revalidatePath(path);
     }
@@ -77,10 +83,12 @@ export async function fetchUsers<Path extends string>(path?: Path) {
   }
 }
 
+// Function to fetch a single user by ID
 export async function fetchUser<Uid extends string>(userId: Uid) {
   try {
     connectToDb();
 
+    // Find the user by ID and populate their questions and saved questions
     const user = await User.findById(userId)
       .populate({
         path: "questions",
@@ -102,6 +110,7 @@ export async function fetchUser<Uid extends string>(userId: Uid) {
   }
 }
 
+// Function to edit a user's profile
 export async function editProfile<
   Name extends string,
   Username extends string,
@@ -118,10 +127,12 @@ export async function editProfile<
   try {
     connectToDb();
 
+    // Find the user by ID
     const user = await User.findById(userId);
 
     if (!user) return;
 
+    // Check if another user already has the same name or username
     const existingUserWithName = await User.findOne({ name });
     const existingUserWithUsername = await User.findOne({ username });
 
@@ -134,8 +145,10 @@ export async function editProfile<
       return;
     }
 
+    // If any of the required fields are missing, return
     if (!name || !username || !biography || !location) return;
 
+    // If the user's profile has not changed, return
     if (
       user.username === username &&
       user.name === name &&
@@ -144,6 +157,7 @@ export async function editProfile<
     )
       return;
 
+    // Update the user's profile and revalidate the path
     user.name = name;
     user.username = username;
     user.biography = biography;
@@ -159,10 +173,12 @@ export async function editProfile<
   }
 }
 
+// Function to fetch the top 10 users in the community
 export async function fetchCommunity(): Promise<any> {
   try {
     await connectToDb();
 
+    // Find all users and sort them by badge count, then select only necessary fields
     const community = await User.find({})
       .sort({ goldBadges: -1, silverBadges: -1, bronzeBadges: -1 })
       .limit(10)
@@ -175,6 +191,7 @@ export async function fetchCommunity(): Promise<any> {
   }
 }
 
+// Function to search for users in the community by name, email, or username
 export async function fetchCommunityByParams<T extends string | undefined>(
   params?: T
 ) {
@@ -183,11 +200,15 @@ export async function fetchCommunityByParams<T extends string | undefined>(
     let community = [];
 
     if (params) {
+      // Create a regular expression to search for the given parameter
       const search = new RegExp(params, "i");
+
+      // Find all users that match the search parameter and select only necessary fields
       community = await User.find({
         $or: [{ username: search }, { email: search }, { name: search }],
       }).select("-password");
     } else {
+      // If no parameter is provided, find all users and select only necessary fields
       community = await User.find({}).select("-password");
     }
 

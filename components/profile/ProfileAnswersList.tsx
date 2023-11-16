@@ -1,9 +1,12 @@
+// Importing ProfileAnswerItem component and ProfileAnswersDataListPropsTypes type from their respective files
 import ProfileAnswerItem from "./ProfileAnswerItem";
 import { type ProfileAnswersDataListPropsTypes } from "@/types/profile";
 
+// Defining ProfileAnswersList component as a functional component that takes in profileAnswers as a prop
 const ProfileAnswersList: React.FC<ProfileAnswersDataListPropsTypes> = ({
   profileAnswers,
 }) => {
+  // Returning a div that contains either a message saying "No Answers Yet" or a list of ProfileAnswerItem components
   return (
     <div className="flex flex-col gap-2">
       {profileAnswers.length === 0 ? (
@@ -25,4 +28,5 @@ const ProfileAnswersList: React.FC<ProfileAnswersDataListPropsTypes> = ({
   );
 };
 
+// Exporting ProfileAnswersList component as the default export of this module
 export default ProfileAnswersList;

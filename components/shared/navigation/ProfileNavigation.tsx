@@ -1,4 +1,9 @@
-import Image from 'next/image'
+/**
+ * This component displays the user's name and profile picture in the navigation bar.
+ * @param name The name of the user.
+ */
+
+import Image from "next/image";
 
 const ProfileNavigation = ({ name }: { name: string | undefined }) => {
   return (
@@ -11,7 +16,7 @@ const ProfileNavigation = ({ name }: { name: string | undefined }) => {
         height={40}
       />
     </div>
-  )
-}
+  );
+};
 
-export default ProfileNavigation
+export default ProfileNavigation;

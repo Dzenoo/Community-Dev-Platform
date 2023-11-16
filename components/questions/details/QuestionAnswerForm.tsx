@@ -1,4 +1,4 @@
-"use client";
+// Importing necessary components and functions
 import Button from "@/components/shared/ui/elements/button";
 import Input from "@/components/shared/ui/elements/input";
 import { ProgrammingLanguagesData } from "@/constants";
@@ -13,8 +13,12 @@ import {
 import { ToastContainer, toast } from "react-toastify";
 import { type ChangeEvent } from "react";
 
+// Defining the QuestionAnswerForm component
 const QuestionAnswerForm = ({ questionId }: { questionId: string }) => {
+  // Getting the user session
   const { data: session } = useSession();
+
+  // Initializing the form state and input change handler
   const { formState, inputChangeHandler } = useForm({
     description: {
       value: "",
@@ -26,27 +30,33 @@ const QuestionAnswerForm = ({ questionId }: { questionId: string }) => {
     },
   });
 
+  // If user is not logged in, display a message
   if (!session) {
     return <p className="text-center">Login To Answer</p>;
   }
 
+  // Check if the answer includes code
   const isLang: boolean = formState.inputs.description.value.includes("```");
 
+  // Check if the form is valid
   const formIsValid: boolean = checkFormValidity(
     !formState.inputs.description.isValid ||
       (isLang && !formState.inputs.language.isValid)
   );
 
+  // Handle form submission
   async function onAnswerSubmitHandler(
     e: ChangeEvent<HTMLFormElement>
   ): Promise<void> {
     e.preventDefault();
 
+    // If user is not logged in, display an error message
     if (!session) {
       toast.error("You must be logged in to answer a question.");
       return;
     }
 
+    // If form is valid, submit the answer
     if (formIsValid) {
       await answerOnQuestion(
         // @ts-ignore
@@ -60,10 +70,12 @@ const QuestionAnswerForm = ({ questionId }: { questionId: string }) => {
       formState.inputs.description.isValid = false;
       isLang && (formState.inputs.language.value = "");
     } else {
+      // If form is not valid, display an error message
       toast.error("Please fill all fields.");
     }
   }
 
+  // Render the form
   return (
     <form className="flex flex-col gap-2" onSubmit={onAnswerSubmitHandler}>
       <ToastContainer />
@@ -120,4 +132,5 @@ const QuestionAnswerForm = ({ questionId }: { questionId: string }) => {
   );
 };
 
+// Export the component
 export default QuestionAnswerForm;

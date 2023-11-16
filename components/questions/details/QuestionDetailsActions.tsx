@@ -1,3 +1,4 @@
+// Importing necessary modules
 "use client";
 import { type QuestionDetailsActionsContentPropsTypes } from "@/types/questions";
 import QuestionDetailsActionsData from "./QuestionDetailsActionsData";
@@ -11,15 +12,19 @@ import { ToastContainer, toast } from "react-toastify";
 import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
 
+// Defining the component
 const QuestionDetailsActions: React.FC<
   QuestionDetailsActionsContentPropsTypes
 > = ({ id, upvotes, downvotes, isUserCollections }) => {
+  // Using hooks to get session, theme and pathname
   const { data: session } = useSession();
   const { theme } = useTheme();
   const pathname: string = usePathname();
 
+  // If user is not logged in, show a message to login
   if (!session) return <p>Login to Vote Question</p>;
 
+  // Setting the path for the heart icon based on theme and user collections
   const isDarkTheme: boolean = theme === "dark";
   const path: string = isDarkTheme
     ? isUserCollections
@@ -29,6 +34,7 @@ const QuestionDetailsActions: React.FC<
     ? "/assets/graphics/dark/like.png"
     : "/assets/graphics/dark/heart.png";
 
+  // Returning the component with QuestionDetailsActionsData component for each action
   return (
     <div id={id} className="flex items-center gap-2">
       <ToastContainer />
@@ -83,4 +89,5 @@ const QuestionDetailsActions: React.FC<
   );
 };
 
+// Exporting the component
 export default QuestionDetailsActions;

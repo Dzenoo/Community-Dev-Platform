@@ -1,5 +1,7 @@
+// Importing the InputPropsTypes interface from the input file in the types folder
 import { type InputPropsTypes } from "@/types/input";
 
+// Defining the Input component as a functional component that takes in the InputPropsTypes interface as props
 const Input: React.FC<InputPropsTypes> = ({
   type,
   elementType,
@@ -13,6 +15,7 @@ const Input: React.FC<InputPropsTypes> = ({
   defaultValue,
   val,
 }) => {
+  // Defining the element variable as a JSX.Element that is either an input or a textarea depending on the elementType prop
   const element: JSX.Element =
     elementType === "textarea" ? (
       <textarea
@@ -39,6 +42,7 @@ const Input: React.FC<InputPropsTypes> = ({
       />
     );
 
+  // Returning the JSX for the Input component
   return (
     <div className="flex flex-col gap-2 max-md:basis-full">
       <label htmlFor={id} className="label">
@@ -55,4 +59,5 @@ const Input: React.FC<InputPropsTypes> = ({
   );
 };
 
+// Exporting the Input component as the default export of the module
 export default Input;

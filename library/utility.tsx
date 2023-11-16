@@ -1,7 +1,9 @@
+// Importing types and dependencies
 import { QuestionItemPropsTypes } from "@/types/questions";
 import { redirect } from "next/navigation";
 import bcrypt from "bcryptjs";
 
+// Function to generate question actions data
 export function generateQuestionActionsData<T extends number, Q extends string>(
   data: T,
   type: Q
@@ -16,10 +18,12 @@ export function generateQuestionActionsData<T extends number, Q extends string>(
   );
 }
 
+// Function to hash a password
 export function hashPassword<T extends string>(password: T): Promise<string> {
   return bcrypt.hash(password, 12);
 }
 
+// Function to compare a password with a hashed password
 export async function comparePassword<T extends string>(
   password: T,
   hashedPassword: T
@@ -27,6 +31,7 @@ export async function comparePassword<T extends string>(
   return await bcrypt.compare(password, hashedPassword);
 }
 
+// Function to calculate a date
 export function calculateDate(date: Date): string {
   const createdAt = new Date(date);
 
@@ -37,6 +42,7 @@ export function calculateDate(date: Date): string {
   });
 }
 
+// Function to check form validity
 export function checkFormValidity<T extends any>(condition: T): boolean {
   let formIsValid;
 
@@ -49,6 +55,7 @@ export function checkFormValidity<T extends any>(condition: T): boolean {
   return formIsValid;
 }
 
+// Function to get questions tags
 export function getQuestionsTags(typeOfQuestions: QuestionItemPropsTypes[]) {
   const tagsSet = new Set();
 
@@ -63,6 +70,7 @@ export function getQuestionsTags(typeOfQuestions: QuestionItemPropsTypes[]) {
   return tags;
 }
 
+// Function to update search params
 export function updateSearchParams<T extends string>(
   type: T,
   value: T
@@ -75,6 +83,7 @@ export function updateSearchParams<T extends string>(
   return newPathname;
 }
 
+// Function to delete search params
 export function deleteSearchParams<T extends string>(type: T): string {
   const searchParams = new URLSearchParams(window.location.search);
   searchParams.delete(type);
@@ -84,6 +93,7 @@ export function deleteSearchParams<T extends string>(type: T): string {
   return newPathname;
 }
 
+// Function to redirect to a path if not authenticated
 export function notAuthNavigate(path: string): void {
   return redirect(path);
 }

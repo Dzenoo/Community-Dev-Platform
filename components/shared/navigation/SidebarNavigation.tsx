@@ -1,4 +1,4 @@
-"use client";
+// Import necessary modules and components
 import Image from "next/image";
 import Link from "next/link";
 import LinkButton from "@/components/shared/ui/elements/link";
@@ -8,6 +8,7 @@ import { usePathname } from "next/navigation";
 import { signOut, useSession } from "next-auth/react";
 import { useTheme } from "next-themes";
 
+// Define SidebarNavigation component
 const SidebarNavigation = ({
   sidebarIsOpen,
   setSidebarIsOpen,
@@ -15,15 +16,20 @@ const SidebarNavigation = ({
   sidebarIsOpen: boolean;
   setSidebarIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
+  // Get user session data and current pathname
   const { data: session } = useSession();
   const pathname = usePathname();
+  // Get current theme
   const { theme } = useTheme();
+  // Set initial sidebar class name
   const [sidebarClassName, setSidebarClassName] = useState<string>("sidebar");
 
+  // Function to close sidebar
   function exitSidebar(): void {
     setSidebarIsOpen(false);
   }
 
+  // Function to handle sidebar resizing
   function handleResize(): void {
     if (window.innerWidth > 1024) {
       setSidebarClassName("sidebar");
@@ -34,6 +40,7 @@ const SidebarNavigation = ({
     }
   }
 
+  // Add event listener for window resizing and remove it on component unmount
   useEffect(() => {
     handleResize();
     window.addEventListener("resize", handleResize);
@@ -42,6 +49,7 @@ const SidebarNavigation = ({
     };
   }, [sidebarIsOpen]);
 
+  // Render sidebar navigation links and buttons
   return (
     <div className={sidebarClassName}>
       <ul className="flex flex-col gap-2">
@@ -207,4 +215,5 @@ const SidebarNavigation = ({
   );
 };
 
+// Export SidebarNavigation component
 export default SidebarNavigation;

@@ -1,3 +1,4 @@
+// Importing necessary modules and components
 "use client";
 import { type QuestionDetailsActionsContentPropsTypes } from "@/types/questions";
 import QuestionDetailsActionsData from "./QuestionDetailsActionsData";
@@ -10,14 +11,19 @@ import {
 } from "@/library/actions/questions.actions";
 import { useTheme } from "next-themes";
 
+// Defining the component and its props
 const QuestionDetailsAnswerActions: React.FC<
   QuestionDetailsActionsContentPropsTypes
 > = ({ id, upvotes, downvotes }) => {
+  // Getting the user session and the current theme
   const { data: session } = useSession();
   const { theme } = useTheme();
   const pathname: string = usePathname();
+
+  // If the user is not logged in, display a message to prompt them to log in
   if (!session) return <p>Login to Vote Answer</p>;
 
+  // Rendering the component with the upvote and downvote buttons
   return (
     <div id={id} className="flex items-center gap-2">
       <ToastContainer />
@@ -59,4 +65,5 @@ const QuestionDetailsAnswerActions: React.FC<
   );
 };
 
+// Exporting the component
 export default QuestionDetailsAnswerActions;

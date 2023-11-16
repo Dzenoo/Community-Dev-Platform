@@ -1,12 +1,17 @@
-import Image from 'next/image'
-import Card from '@/components/shared/ui/elements/card'
-import { type ProfileItemPropsTypes } from '@/types/profile'
+// Importing the Image component from the Next.js library
+import Image from "next/image";
 
+// Importing the Card component and the ProfileItemPropsTypes interface from their respective files
+import Card from "@/components/shared/ui/elements/card";
+import { type ProfileItemPropsTypes } from "@/types/profile";
+
+// Defining the ProfileStatisticsItem functional component that receives the path, name and quantity props
 const ProfileStatisticsItem: React.FC<ProfileItemPropsTypes> = ({
   path,
   name,
-  quantity
+  quantity,
 }) => {
+  // Returning a Card component that contains an Image component and a div element with two child elements
   return (
     <Card>
       <div className="flex gap-4">
@@ -21,7 +26,8 @@ const ProfileStatisticsItem: React.FC<ProfileItemPropsTypes> = ({
         </div>
       </div>
     </Card>
-  )
-}
+  );
+};
 
-export default ProfileStatisticsItem
+// Exporting the ProfileStatisticsItem component as the default export of this module
+export default ProfileStatisticsItem;

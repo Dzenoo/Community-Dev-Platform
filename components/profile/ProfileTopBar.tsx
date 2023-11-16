@@ -1,3 +1,4 @@
+// Importing necessary modules
 import Link from "next/link";
 import LinkButton from "@/components/shared/ui/elements/link";
 import { type ProfilePropsTypes } from "@/types/profile";
@@ -5,6 +6,7 @@ import { calculateDate } from "@/library/utility";
 import { ImageDate, ImageLocation } from "./ProfileImages";
 import Image from "next/image";
 
+// Defining the ProfileTopBar component
 const ProfileTopBar: React.FC<ProfilePropsTypes> = ({
   name,
   username,
@@ -13,8 +15,10 @@ const ProfileTopBar: React.FC<ProfilePropsTypes> = ({
   createdAt,
   id,
 }) => {
+  // Calculating the joined date using the createdAt prop
   const joinedDate: string = calculateDate(createdAt);
 
+  // Returning the JSX for the ProfileTopBar component
   return (
     <div className="flex justify-between items-start card_animation gap-12 max-md:flex-wrap">
       <div className="flex gap-6 items-center max-md:flex-wrap">
@@ -73,4 +77,5 @@ const ProfileTopBar: React.FC<ProfilePropsTypes> = ({
   );
 };
 
+// Exporting the ProfileTopBar component as the default export
 export default ProfileTopBar;
