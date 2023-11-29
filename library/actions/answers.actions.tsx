@@ -1,3 +1,4 @@
+"use server";
 // Importing the Answer and Question models
 import Answer from "../models/answer";
 import Question from "../models/question";

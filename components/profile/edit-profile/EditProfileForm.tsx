@@ -1,3 +1,4 @@
+"use client";
 // Importing necessary components and functions
 import Button from "@/components/shared/ui/elements/button";
 import Input from "@/components/shared/ui/elements/input";

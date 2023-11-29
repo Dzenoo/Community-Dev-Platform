@@ -1,5 +1,5 @@
-// Importing necessary modules
 "use client";
+// Importing necessary modules
 import Link from "next/link";
 import Card from "@/components/shared/ui/elements/card";
 import { type ProfileAsnwersDataItemPropsTypes } from "@/types/profile";

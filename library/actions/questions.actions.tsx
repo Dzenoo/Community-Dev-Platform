@@ -1,4 +1,3 @@
-// Importing necessary modules
 "use server";
 import { connectToDb } from "../mongoose";
 import Question from "../models/question";

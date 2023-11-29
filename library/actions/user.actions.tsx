@@ -1,3 +1,4 @@
+"use server";
 // Importing necessary modules and models
 import Question from "../models/question";
 import User from "../models/user";

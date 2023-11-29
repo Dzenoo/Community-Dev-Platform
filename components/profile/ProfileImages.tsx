@@ -1,3 +1,4 @@
+"use client";
 // Importing the useTheme hook from the next-themes package and the Image component from the next/image package
 import { useTheme } from "next-themes";
 import Image from "next/image";

@@ -1,3 +1,4 @@
+"use client";
 // Importing types from a custom module
 import {
   InitialInputsTypes,

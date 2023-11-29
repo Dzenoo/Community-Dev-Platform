@@ -22,26 +22,27 @@ const RootLayoutWrapper = ({
     <>
       <AuthProvider>
         {" "}
-        // Wrapping the following components with AuthProvider context
+        {/* // Wrapping the following components with AuthProvider context */}
         <ThemeProvider attribute="class">
           {" "}
-          // Wrapping the following components with ThemeProvider context
-          <LogoNavigation setSidebarIsOpen={setSidebarIsOpen} /> // Rendering
-          LogoNavigation component with setSidebarIsOpen prop
+          {/* // Wrapping the following components with ThemeProvider context */}
+          <LogoNavigation setSidebarIsOpen={setSidebarIsOpen} />
+          {/* // Rendering LogoNavigation component with setSidebarIsOpen prop */}
           <main className="flex">
             {" "}
-            // Defining a main element with a class of flex
+            {/* // Defining a main element with a class of flex */}
             <SidebarNavigation // Rendering SidebarNavigation component with sidebarIsOpen and setSidebarIsOpen props
               sidebarIsOpen={sidebarIsOpen}
               setSidebarIsOpen={setSidebarIsOpen}
             />
             <section className="relative p-4 py-16 grow basis-full h-screen overflow-y-scroll md:p-8">
               {" "}
-              // Defining a section element with classes and styles
-              {children} // Rendering the children prop
+              {/* // Defining a section element with classes and styles */}
+              {children}
+              {/* // Rendering the children prop */}
             </section>
-            <div>{informationComponent}</div> // Rendering the
-            informationComponent prop inside a div element
+            <div>{informationComponent}</div>
+            {/* // Rendering the informationComponent prop inside a div element */}
           </main>
         </ThemeProvider>
       </AuthProvider>
